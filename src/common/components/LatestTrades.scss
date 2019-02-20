@@ -1,0 +1,10 @@
+@import '../styles/variables.scss';
+
+.LatestTrades {
+    height: 500px;
+    width: 100%;
+    padding: $padding;
+    border-radius: $radius;
+    background-color: $color-white;
+    box-sizing: border-box;
+}

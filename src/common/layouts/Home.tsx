@@ -1,7 +1,10 @@
 import React from 'react';
-
-import logo from '../images/react.svg';
-import FetchTradesButton from '../components/FetchTradesButton';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Indicators from '../components/Indicators';
+import Chart from '../components/Chart';
+import TopTokens from '../components/TopTokens';
+import LatestTrades from '../components/LatestTrades';
 
 import './Home.scss';
 
@@ -9,11 +12,22 @@ class Home extends React.Component {
   public render() {
     return (
       <div className="Home">
-        <div className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
-          <h2>Welcome to Hydroscan</h2>
+        <Header />
+        <div className="container">
+          <Indicators />
+          <div className="chart-and-top-tokens">
+            <div className="chart-wrapper">
+              <Chart />
+            </div>
+            <div className="top-tokens-wrapper">
+              <TopTokens />
+            </div>
+          </div>
+          <div className="latest-trades-wrapper">
+            <LatestTrades />
+          </div>
         </div>
-        <FetchTradesButton />
+        <Footer />
       </div>
     );
   }

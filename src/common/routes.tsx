@@ -2,6 +2,7 @@ import { makeRouteConfig, Route } from 'found';
 import React from 'react';
 import { fetchTrades } from './actions/trade';
 import Home from './layouts/Home';
+import NotFound from './layouts/NotFound';
 import { Providers } from './layouts/Providers';
 
 const routes = (
@@ -15,6 +16,7 @@ const routes = (
         })
       }
     />
+    <Route path="*" Component={NotFound} />
   </Route>
 );
 export default makeRouteConfig(routes);

@@ -1,4 +1,4 @@
-import { purple } from '@material-ui/core/colors';
+import { blue } from '@material-ui/core/colors';
 import { createGenerateClassName, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import * as React from 'react';
 
@@ -8,18 +8,20 @@ const generateClassName = createGenerateClassName();
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
-    type: 'light',
+    primary: blue,
+    type: 'light'
   },
   typography: {
-    useNextVariants: true,
-  },
+    useNextVariants: true
+  }
 });
 
 export const styleSheets = new SheetsRegistry();
 
-export const Providers: React.FunctionComponent<any> = ({ children }) => (
-  <JssProvider {...generateClassName} registry={styleSheets}>
-    <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
-  </JssProvider>
-);
+export const Providers: React.FunctionComponent<any> = ({ children }) => {
+  return (
+    <JssProvider {...generateClassName} registry={styleSheets}>
+      <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+    </JssProvider>
+  );
+};

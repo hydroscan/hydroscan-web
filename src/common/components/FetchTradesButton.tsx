@@ -6,7 +6,7 @@ import { fetchTrades } from '../actions/trade';
 
 const mapStateToProps = state => {
   return {
-    trades: state.trade,
+    trades: state.trade
   };
 };
 
@@ -16,7 +16,7 @@ class FetchTradesButton extends React.Component<any, any> {
     // console.log('trades:', JSON.stringify(this.props.trades));
     return (
       <div>
-        <div>{JSON.stringify(this.props.trades)}</div>
+        <div>{JSON.stringify(this.props.trades.list[0])}</div>
         <Button variant="contained" color="primary" onClick={() => dispatch(fetchTrades())}>
           fetchTrades
         </Button>

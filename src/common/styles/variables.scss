@@ -1,0 +1,41 @@
+$color-blue: #0667d0;
+$color-purple: #6872e0;
+$color-pink: #db85a5;
+$color-red: #dc3545;
+$color-orange: #fd7e14;
+$color-yellow: #ffc107;
+$color-green: #28a745;
+$color-teal: #20c997;
+$color-cyan: #17a2b8;
+$color-white: #fff;
+$color-gray-light: #f1f3f4;
+$color-gray: #7a8289; //for gray placeholder or inactive text
+$color-gray-dark: #343a40; //for dark gray active text
+$color-primary: #278ad8; //blue;
+$color-secondary: #7a8289; //gray
+$color-success: #28a745; //green
+$color-info: #16a8bf;
+$color-warning: #fd7e14; //orange
+$color-danger: #dc3545; //red
+$color-light: #f8f9fa;
+$color-dark: #343a40;
+$color-green-light: #95d6bc;
+
+$padding: 15px;
+$radius: 4px;
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+$font-size-sm: 11px; //tooltips and notes
+$font-size-md: 12px;
+$font-size-lg: 15px; //section headers, bold, non-bold.
+$font-size-xl: 26px;
+
+$font-family-basic: 'PT Sans Caption', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+$font-family-arial-rounded: 'arial rounded mt bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';

@@ -1,0 +1,10 @@
+@import '../styles/variables.scss';
+
+.Header {
+    width: 100%;
+    height: 91px;
+    background: -webkit-linear-gradient(left, $color-purple, $color-green-light); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, $color-purple, $color-green-light); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, $color-purple, $color-green-light); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, $color-purple, $color-green-light); /* Standard（must be last） */
+}

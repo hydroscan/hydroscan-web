@@ -1,0 +1,9 @@
+@import '../styles/variables.scss';
+
+.Indicators {
+    display: flex;
+    .indicator-wrapper {
+        width: 25%;
+        padding: $padding;
+    }
+}

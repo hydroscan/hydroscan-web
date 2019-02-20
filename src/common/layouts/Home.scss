@@ -1,36 +1,33 @@
+@import '../styles/variables.scss';
+
+body {
+    font-family: $font-family-basic;
+    background-color: $color-gray-light;
+}
+
 .Home {
-  text-align: center;
-}
-.Home-logo {
-  animation: logo-spin infinite 20s linear;
-  height: 80px;
-}
+    .container {
+        max-width: 1170px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding: $padding;
 
-.Home-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+        .chart-and-top-tokens {
+            display: flex;
+            .chart-wrapper {
+                width: 50%;
+                padding: $padding;
+            }
 
-.Home-intro {
-  font-size: large;
-}
+            .top-tokens-wrapper {
+                width: 50%;
+                padding: $padding;
+            }
+        }
 
-.Home-resources {
-  list-style: none;
-}
-
-.Home-resources > li {
-  display: inline-block;
-  padding: 1rem;
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+        .latest-trades-wrapper {
+            padding: $padding;
+        }
+    }
 }

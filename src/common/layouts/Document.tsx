@@ -27,14 +27,14 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
           <div
             id="root"
             dangerouslySetInnerHTML={{
-              __html: html,
+              __html: html
             }}
           />
           <script
             id="server-app-state"
             type="application/json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({ initialState }),
+              __html: JSON.stringify({ initialState })
             }}
           />
           <script type="text/javascript" src={assets.client.js} defer={true} crossOrigin="anonymous" />
