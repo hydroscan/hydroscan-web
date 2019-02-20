@@ -2,7 +2,12 @@
 
 .Indicators {
     display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     .indicator-wrapper {
+        min-width: 206px;
         width: 25%;
         padding: $padding;
     }

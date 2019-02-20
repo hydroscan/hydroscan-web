@@ -12,15 +12,18 @@ body {
         margin-right: auto;
         margin-left: auto;
         padding: $padding;
+        box-sizing: border-box;
 
         .chart-and-top-tokens {
             display: flex;
             .chart-wrapper {
+                box-sizing: border-box;
                 width: 50%;
                 padding: $padding;
             }
 
             .top-tokens-wrapper {
+                box-sizing: border-box;
                 width: 50%;
                 padding: $padding;
             }
@@ -28,6 +31,24 @@ body {
 
         .latest-trades-wrapper {
             padding: $padding;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+    .Home {
+        .container {
+            .chart-and-top-tokens {
+                width: 100%;
+                display: block;
+                .chart-wrapper {
+                    width: 100%;
+                }
+
+                .top-tokens-wrapper {
+                    width: 100%;
+                }
+            }
         }
     }
 }
