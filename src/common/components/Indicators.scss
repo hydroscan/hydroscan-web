@@ -6,6 +6,17 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    /* hide scrolbar */
+    scrollbar-width: none; /* Firefox */
+    scrollbar-height: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    &::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+        background: transparent; /* Chrome/Safari/Webkit */
+    }
+
     .indicator-wrapper {
         min-width: 206px;
         width: 25%;
