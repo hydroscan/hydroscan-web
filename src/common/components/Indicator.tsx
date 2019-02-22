@@ -2,16 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Indicator.scss';
 
-const mapStateToProps = state => {
+interface Props {
+  title: string;
+  data: string;
+}
+
+const mapStateToProps = (state: any, ownProps?: Props) => {
   return {};
 };
 
-class Indicator extends React.PureComponent<any, any> {
+class Indicator extends React.Component<Props, any> {
   public render() {
+    const { title, data } = this.props;
     return (
       <div className="Indicator">
-        <div className="title">NETWORK VOLUME (24H)</div>
-        <div className="content">$123,245.12</div>
+        <div className="title">{title}</div>
+        <div className="content">{`${data}`}</div>
       </div>
     );
   }

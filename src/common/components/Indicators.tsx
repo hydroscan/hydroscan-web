@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Indicator from './Indicator';
 import './Indicators.scss';
 import { fetchTradesIndicators } from '../actions/trade';
+import { formatVolumeUsd, formatCount, formatAmount } from '../lib/formatter';
 
 const mapStateToProps = state => {
   return {
@@ -15,21 +16,21 @@ class Indicators extends React.PureComponent<any, any> {
     const { dispatch } = this.props;
     dispatch(fetchTradesIndicators());
   }
-
   public render() {
+    const { indicators } = this.props;
     return (
       <div className="Indicators">
         <div className="indicator-wrapper">
-          <Indicator />
+          <Indicator title="NETWORK VOLUME (24H)" data={formatVolumeUsd(indicators.volume24h)} />
         </div>
         <div className="indicator-wrapper">
-          <Indicator />
+          <Indicator title="TRADES (24H)" data={formatCount(indicators.trades24h)} />
         </div>
         <div className="indicator-wrapper">
-          <Indicator />
+          <Indicator title="MAKER REBATE (24H)" data={formatAmount(indicators.marketRabate24h)} />
         </div>
         <div className="indicator-wrapper">
-          <Indicator />
+          <Indicator title="TRADERS (24H)" data={formatCount(indicators.traders24h)} />
         </div>
       </div>
     );

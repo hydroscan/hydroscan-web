@@ -7,4 +7,22 @@
     border-radius: $radius;
     background-color: $color-white;
     box-sizing: border-box;
+    .section-header {
+        height: 25px;
+        position: relative;
+        .section-title {
+            color: $color-dark;
+            font-size: $font-size-lg;
+            height: $font-size-lg;
+            font-weight: 600;
+        }
+        .bottom-border {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            background-color: $color-gray-light;
+            height: 1px;
+        }
+    }
 }
