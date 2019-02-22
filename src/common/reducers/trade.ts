@@ -1,6 +1,10 @@
 const initialState: any = {
-  list: [],
-  loading: false,
+  trades: [],
+  tradesLoading: false,
+  indicators: {},
+  indicatorsLoading: false,
+  chartData: [],
+  chartDataLoading: false
 };
 
 const trade = (state: any = initialState, action: any): any => {
@@ -8,14 +12,28 @@ const trade = (state: any = initialState, action: any): any => {
     case 'SET_TRADES_LOADING':
       return {
         ...state,
-        loading: action.payload,
+        tradesLoading: action.payload
+      };
+    case 'UPDATE_TRADES':
+      return {
+        ...state,
+        trades: state.trades.concat(action.payload.trades)
       };
     case 'SET_TRADES':
       return {
         ...state,
-        list: state.list.concat(action.payload.trades),
+        trades: action.payload.trades
       };
-
+    case 'SET_TRADES_INDICATORS':
+      return {
+        ...state,
+        indicators: action.payload.indicators
+      };
+    case 'SET_TRADES_CHART':
+      return {
+        ...state,
+        chartData: action.payload.chartData
+      };
     default:
       return state;
   }

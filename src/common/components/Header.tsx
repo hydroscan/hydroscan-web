@@ -8,7 +8,13 @@ const mapStateToProps = state => {
 
 class Header extends React.PureComponent<any, any> {
   public render() {
-    return <div className="Header">Hydroscan Header</div>;
+    return (
+      <div className="Header">
+        <div className="container">
+          <img src={require('../images/hydroscan.svg')} />
+        </div>
+      </div>
+    );
   }
 }
 
