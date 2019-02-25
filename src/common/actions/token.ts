@@ -4,9 +4,12 @@ export const fetchTokens = () => {
   };
 };
 
-export const fetchTokensTop = () => {
+export const fetchTokensTop = (filter: string = '24H') => {
   return {
-    type: 'FETCH_TOKENS_TOP'
+    type: 'FETCH_TOKENS_TOP',
+    payload: {
+      filter
+    }
   };
 };
 

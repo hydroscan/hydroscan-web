@@ -28,8 +28,8 @@ export const fetchTokensTop: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKENS_TOP'),
     delay(1),
-    flatMap(() => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/tokens_top`);
+    flatMap(action => {
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/tokens_top?filter=${action.payload.filter}`);
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),

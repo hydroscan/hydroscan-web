@@ -7,7 +7,7 @@ interface Props {
   data: string;
 }
 
-const mapStateToProps = (state: any, ownProps?: Props) => {
+const mapStateToProps = (state: any, props?: Props) => {
   return {};
 };
 

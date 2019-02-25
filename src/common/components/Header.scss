@@ -3,17 +3,64 @@
 .Header {
     width: 100%;
     height: 91px;
-    background: -webkit-linear-gradient(left, $color-purple, $color-green-light); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, $color-purple, $color-green-light); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, $color-purple, $color-green-light); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, $color-purple, $color-green-light); /* Standard（must be last） */
+    background: -webkit-linear-gradient(left, $color-purple, $color-purple-light); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, $color-purple, $color-purple-light); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, $color-purple, $color-purple-light); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, $color-purple, $color-purple-light); /* Standard（must be last） */
 
-    .container {
+    .header-container {
         max-width: 1200px;
         width: 100%;
+        height: 100%;
         margin-right: auto;
         margin-left: auto;
-        padding: $padding;
+        padding: 30px;
         box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .tabs {
+            color: $color-white;
+            display: flex;
+            margin-left: 60px;
+
+            .tab {
+                margin-right: 30px;
+                cursor: pointer;
+            }
+        }
+
+        .search-wrapper {
+            width: 307px;
+            height: 42px;
+            position: absolute;
+            right: 30px;
+
+            i {
+                position: absolute;
+                left: 10px;
+                top: 6px;
+                font-size: 28px;
+                -webkit-text-stroke: 2px white;
+                color: $color-secondary;
+            }
+
+            .search-input {
+                height: 100%;
+                width: 100%;
+                border-radius: 21px;
+                outline: none;
+                padding: 0 21px 0 38px;
+                border-width: 0;
+                border: 1px solid $color-white;
+                font-size: 15px;
+
+                &:focus {
+                    border: 1px inset $color-dark;
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,28 @@
+@import '../styles/variables.scss';
+
+.FilterTabs {
+    background-color: $color-gray-light;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    height: 26px;
+    border-radius: 13px;
+
+    .filter-tab {
+        cursor: pointer;
+        margin-right: 10px;
+        color: $color-gray;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            color: $color-dark;
+        }
+
+        &.active {
+            color: $color-dark;
+        }
+    }
+}

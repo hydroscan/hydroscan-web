@@ -56,7 +56,7 @@
     "switch-default": true,
     "trailing-comma": true,
     "triple-equals": [true, "allow-null-check"],
-    "typedef": [true, "parameter", "property-declaration"],
+    "typedef": false,
     "typedef-whitespace": [
       true,
       {

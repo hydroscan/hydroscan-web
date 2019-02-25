@@ -18,6 +18,10 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
           <meta charSet="utf-8" />
           <title>Hydroscan</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          />
           {assets.client.css ? <link rel="stylesheet" href={assets.client.css} /> : ''}
           <style type="text/css" id="server-side-styles">
             {styleSheets.toString()}
