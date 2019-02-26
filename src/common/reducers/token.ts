@@ -1,6 +1,12 @@
 const initialState: any = {
   tokens: [],
-  tokensLoading: false
+  page: 1,
+  pageSize: 0,
+  totalPage: 0,
+  total: 0,
+  tokensLoading: false,
+
+  tokensTop: []
 };
 
 const token = (state: any = initialState, action: any): any => {
@@ -19,7 +25,13 @@ const token = (state: any = initialState, action: any): any => {
     case 'SET_TOKENS':
       return {
         ...state,
-        tokens: action.payload.tokens
+        ...action.payload
+      };
+
+    case 'SET_TOKENS_TOP':
+      return {
+        ...state,
+        tokensTop: action.payload.tokensTop
       };
 
     default:

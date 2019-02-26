@@ -3,8 +3,8 @@ import BigNumber from 'bignumber.js';
 
 BigNumber.config({ EXPONENTIAL_AT: 18 });
 
-export const formatAmount = (data: string): string => {
-  return parseFloat(data) >= 1000 ? numeral(data).format('0,0') : new BigNumber(data).toPrecision(4);
+export const formatAmount = (data: string | number): string => {
+  return data && parseFloat(data.toString()) >= 1000 ? numeral(data).format('0,0') : new BigNumber(data).toPrecision(4);
 };
 
 export const formatPriceUsd = (data: string, showSymbol: boolean = true): string => {
@@ -19,8 +19,18 @@ export const formatVolumeUsd = (data: string, showSymbol: boolean = true): strin
   return prefix + result;
 };
 
+export const formatVolumeUsdShort = (data: string, showSymbol: boolean = true): string => {
+  const prefix = showSymbol ? '$' : '';
+  const result = numeral(data).format('0a');
+  return prefix + result;
+};
+
 export const formatCount = (data: string | number): string => {
   return numeral(data).format('0,0');
+};
+
+export const formatCountShort = (data: string | number): string => {
+  return numeral(data).format('0a');
 };
 
 export const formatPercent = (data: string | number, showPositiveSign: boolean = true): string => {

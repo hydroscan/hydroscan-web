@@ -2,11 +2,6 @@
 
 .TopTokens {
     height: 335px;
-    width: 100%;
-    padding: $padding;
-    border-radius: $radius;
-    background-color: $color-white;
-    box-sizing: border-box;
 
     .section-header {
         height: 25px;
@@ -69,14 +64,14 @@
             thead {
                 color: $color-gray;
                 tr {
-                    height: 28px;
+                    height: 28px !important;
                 }
             }
 
             tbody {
                 color: $color-dark;
                 tr {
-                    height: 23px;
+                    height: 23px !important;
 
                     .rank {
                         color: $color-gray;

@@ -1,20 +1,37 @@
 import fetch from 'isomorphic-fetch';
 import { catchError, filter, flatMap, map } from 'rxjs/operators';
-import { setTrades, setTradesLoading, setTradesIndicators, setTradesChart } from '../actions/trade';
+import {
+  setTrades,
+  setTradesLoading,
+  setTradesIndicators,
+  setTradesChart,
+  setTrade,
+  setTradesLatest
+} from '../actions/trade';
 import Epic from './epic';
 
 export const fetchTrades: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES'),
-    map(() => {
-      return setTradesLoading(true);
+    map(action => {
+      setTradesLoading(true);
+      return action;
     }),
-    flatMap(() => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades`);
+    flatMap(action => {
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades?page=${action.payload.page}`);
     }),
     flatMap(response => response.json()),
-    map(body => body as any[]),
-    flatMap((trades: any[]) => [setTrades({ trades }), setTradesLoading(false)]),
+    map(body => body as any),
+    flatMap((res: any) => [
+      setTrades({
+        trades: res.trades,
+        page: res.page,
+        pageSize: res.pageSize,
+        totalPage: res.totalPage,
+        total: res.count
+      }),
+      setTradesLoading(false)
+    ]),
     catchError((error: Error) => [console.log(error), setTradesLoading(false)])
   );
 
@@ -29,7 +46,7 @@ export const fetchTradesLatest: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),
-    flatMap((trades: any[]) => [setTrades({ trades }), setTradesLoading(false)]),
+    flatMap((trades: any[]) => [setTradesLatest({ tradesLatest: trades }), setTradesLoading(false)]),
     catchError((error: Error) => [console.log(error), setTradesLoading(false)])
   );
 
@@ -54,5 +71,17 @@ export const fetchTradesChart: Epic = action$ =>
     flatMap(response => response.json()),
     map(body => body as any[]),
     flatMap((chartData: any[]) => [setTradesChart({ chartData })]),
+    catchError((error: Error) => [console.log(error)])
+  );
+
+export const fetchTrade: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADE'),
+    flatMap(action => {
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades/${action.payload.uuid}`);
+    }),
+    flatMap(response => response.json()),
+    map(body => body as any[]),
+    flatMap((trade: any[]) => [setTrade({ trade })]),
     catchError((error: Error) => [console.log(error)])
   );

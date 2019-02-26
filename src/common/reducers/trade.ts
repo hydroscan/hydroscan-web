@@ -1,10 +1,16 @@
 const initialState: any = {
   trades: [],
+  page: 1,
+  pageSize: 0,
+  totalPage: 0,
+  total: 0,
   tradesLoading: false,
+
   indicators: {},
-  indicatorsLoading: false,
   chartData: [],
-  chartDataLoading: false
+  tradesLatest: [],
+
+  trade: {}
 };
 
 const trade = (state: any = initialState, action: any): any => {
@@ -22,7 +28,12 @@ const trade = (state: any = initialState, action: any): any => {
     case 'SET_TRADES':
       return {
         ...state,
-        trades: action.payload.trades
+        ...action.payload
+      };
+    case 'SET_TRADES_LATEST':
+      return {
+        ...state,
+        tradesLatest: action.payload.tradesLatest
       };
     case 'SET_TRADES_INDICATORS':
       return {
@@ -33,6 +44,11 @@ const trade = (state: any = initialState, action: any): any => {
       return {
         ...state,
         chartData: action.payload.chartData
+      };
+    case 'SET_TRADE':
+      return {
+        ...state,
+        trade: action.payload.trade
       };
     default:
       return state;

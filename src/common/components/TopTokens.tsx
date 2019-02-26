@@ -7,7 +7,7 @@ import FilterTabs from './FilterTabs';
 
 const mapStateToProps = state => {
   return {
-    tokens: state.token.tokens
+    tokens: state.token.tokensTop
   };
 };
 
@@ -23,16 +23,16 @@ class TopTokens extends React.PureComponent<any, any> {
   public componentDidMount() {
     const { currentTab } = this.state;
     const { dispatch } = this.props;
-    dispatch(fetchTokensTop(currentTab));
+    dispatch(fetchTokensTop({ filter: currentTab }));
   }
 
   public render() {
     const { tabs, currentTab } = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, tokens } = this.props;
     const volumeKey = `volume${currentTab.charAt(0).toUpperCase() + currentTab.slice(1).toLowerCase()}`;
     const changeKey = volumeKey + 'Change';
     return (
-      <div className="TopTokens">
+      <div className="TopTokens section-wrapper">
         <div className="section-header">
           <div className="section-title">TOP TOKENS</div>
           <div className="filter-wrapper">
@@ -41,7 +41,7 @@ class TopTokens extends React.PureComponent<any, any> {
               tabs={tabs}
               clickTab={tab => {
                 this.setState({ currentTab: tab });
-                dispatch(fetchTokensTop(tab));
+                dispatch(fetchTokensTop({ filter: tab }));
               }}
             />
           </div>
@@ -58,14 +58,14 @@ class TopTokens extends React.PureComponent<any, any> {
               </tr>
             </thead>
             <tbody>
-              {this.props.tokens.map((token, index) => {
+              {tokens.map((token, index) => {
                 return (
                   <tr key={token.ID}>
                     <td className="rank">{index + 1}</td>
                     <td className="token">{token.name}</td>
                     <td className="volume">{formatVolumeUsd(token[volumeKey])}</td>
                     {currentTab !== 'ALL' && (
-                      <td className={`change ${token.volume24hChange >= 0 ? 'green' : 'red'}`}>
+                      <td className={`change ${token[changeKey] >= 0 ? 'green' : 'red'}`}>
                         {formatPercent(token[changeKey])}
                       </td>
                     )}

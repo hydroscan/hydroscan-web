@@ -13,6 +13,7 @@
     "interface-name": [true, "never-prefix"],
     "jsdoc-format": true,
     "jsx-boolean-value": false,
+    "jsx-no-bind": false,
     "jsx-no-lambda": false,
     "jsx-curly-spacing": [
       "warn",

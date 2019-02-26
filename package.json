@@ -1,5 +1,6 @@
 {
   "name": "hydroscan-web",
+  "private": true,
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -22,6 +23,7 @@
     "numeral": "^2.0.6",
     "razzle": "^2.4.1",
     "razzle-plugin-typescript": "^2.4.1",
+    "rc-pagination": "^1.17.8",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-jss": "^8.6.1",

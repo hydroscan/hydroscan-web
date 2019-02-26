@@ -22,13 +22,18 @@
         position: relative;
 
         .tabs {
-            color: $color-white;
             display: flex;
             margin-left: 60px;
 
             .tab {
+                color: $color-white;
                 margin-right: 30px;
                 cursor: pointer;
+                text-decoration: none;
+
+                &:hover {
+                    color: $color-gray-dark;
+                }
             }
         }
 

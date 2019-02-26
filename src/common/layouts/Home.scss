@@ -3,13 +3,6 @@
 
 .Home {
     .container {
-        max-width: 1200px;
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-        padding: $padding;
-        box-sizing: border-box;
-
         .chart-and-top-tokens {
             display: flex;
             .chart-wrapper {

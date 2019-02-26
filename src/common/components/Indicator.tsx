@@ -15,7 +15,7 @@ class Indicator extends React.Component<Props, any> {
   public render() {
     const { title, data } = this.props;
     return (
-      <div className="Indicator">
+      <div className="Indicator section-wrapper">
         <div className="title">{title}</div>
         <div className="content">{`${data}`}</div>
       </div>

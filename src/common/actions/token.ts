@@ -1,21 +1,27 @@
-export const fetchTokens = () => {
+export const fetchTokens = payload => {
   return {
-    type: 'FETCH_TOKENS'
+    type: 'FETCH_TOKENS',
+    payload
   };
 };
 
-export const fetchTokensTop = (filter: string = '24H') => {
+export const fetchTokensTop = payload => {
   return {
     type: 'FETCH_TOKENS_TOP',
-    payload: {
-      filter
-    }
+    payload
   };
 };
 
 export const setTokens = payload => {
   return {
     type: 'SET_TOKENS',
+    payload
+  };
+};
+
+export const setTokensTop = payload => {
+  return {
+    type: 'SET_TOKENS_TOP',
     payload
   };
 };

@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Chart.scss';
 import { fetchTradesChart } from '../actions/trade';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-// import { formatVolumeUsd } from '../lib/formatter';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import moment from 'moment';
+import { formatVolumeUsdShort, formatCountShort } from '../lib/formatter';
 
 const mapStateToProps = state => {
   return {
@@ -24,26 +25,41 @@ class Chart extends React.PureComponent<any, any> {
     }
 
     return (
-      <div className="Chart">
-        <LineChart
-          width={500}
-          height={300}
-          data={chartData}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5
-          }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis yAxisId="volume" />
-          <YAxis yAxisId="trades" orientation="right" />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="volume" yAxisId="volume" stroke="#8884d8" />
-          <Line type="monotone" dataKey="trades" yAxisId="trades" stroke="#82ca9d" />
-        </LineChart>
+      <div className="Chart section-wrapper">
+        <ResponsiveContainer>
+          <LineChart
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 15,
+              left: 15,
+              bottom: 5
+            }}>
+            <XAxis
+              dataKey="date"
+              tickFormatter={tick => {
+                return moment(tick).format('MMM Do');
+              }}
+            />
+            <YAxis
+              yAxisId="volume"
+              tickFormatter={tick => {
+                return formatVolumeUsdShort(tick);
+              }}
+            />
+            <YAxis
+              yAxisId="trades"
+              tickFormatter={tick => {
+                return formatCountShort(tick);
+              }}
+              orientation="right"
+            />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="volume" yAxisId="volume" stroke="#8884d8" />
+            <Line type="monotone" dataKey="trades" yAxisId="trades" stroke="#82ca9d" />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     );
   }

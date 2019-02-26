@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'found';
 import './Header.scss';
 
 const mapStateToProps = state => {
@@ -11,11 +12,21 @@ class Header extends React.PureComponent<any, any> {
     return (
       <div className="Header">
         <div className="header-container">
-          <img src={require('../images/hydroscan.svg')} />
+          <Link to="/">
+            <img src={require('../images/hydroscan.svg')} />
+          </Link>
           <div className="tabs">
-            <div className="tab">RELAYERS</div>
-            <div className="tab">TOKENS</div>
-            <div className="tab">TRADES</div>
+            <Link className="tab" to="/relayers">
+              RELAYERS
+            </Link>
+
+            <Link className="tab" to="/tokens">
+              TOKENS
+            </Link>
+
+            <Link className="tab" to="/trades">
+              TRADES
+            </Link>
           </div>
           <div className="search-wrapper">
             <i className="fa fa-search" aria-hidden="true" />

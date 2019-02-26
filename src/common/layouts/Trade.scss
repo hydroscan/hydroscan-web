@@ -1,0 +1,30 @@
+@import '../styles/variables.scss';
+
+.Trade {
+    .container {
+        .main-body {
+            padding: 30px;
+            box-sizing: border-box;
+
+            .item {
+                display: flex;
+                color: $color-gray-dark;
+                font-size: 12px;
+                height: 40px;
+
+                .item-label {
+                    max-width: 200px;
+                    width: 20%;
+                    font-weight: 600;
+                }
+
+                .item-content {
+                    a {
+                        color: $color-blue;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}

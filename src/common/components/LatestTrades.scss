@@ -2,40 +2,8 @@
 
 .LatestTrades {
     height: 500px;
-    width: 100%;
-    padding: $padding;
-    border-radius: $radius;
-    background-color: $color-white;
-    box-sizing: border-box;
-    position: relative;
-
-    .section-header {
-        height: 25px;
-        position: relative;
-
-        .section-title {
-            color: $color-dark;
-            font-size: $font-size-lg;
-            height: $font-size-lg;
-            font-weight: 600;
-        }
-
-        .bottom-border {
-            position: absolute;
-            bottom: 0;
-            left: -15px;
-            right: -15px;
-            background-color: $color-gray-light;
-            height: 1px;
-        }
-    }
 
     .section-body {
-        .section-table {
-            table-layout: auto;
-            font-size: 12px;
-            width: 100%;
-        }
         .pair {
             .pair-main {
                 font-weight: 600;
@@ -69,20 +37,6 @@
         .sell-amount {
             padding-right: 15px;
             text-align: right;
-        }
-
-        thead {
-            color: $color-gray;
-            tr {
-                height: 50px;
-            }
-        }
-
-        tbody {
-            color: $color-dark;
-            tr {
-                height: 40px;
-            }
         }
     }
 

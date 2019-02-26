@@ -1,21 +1,20 @@
 import { makeRouteConfig, Route } from 'found';
 import React from 'react';
-import { fetchTrades } from './actions/trade';
 import Home from './layouts/Home';
+import Relayers from './layouts/Relayers';
+import Tokens from './layouts/Tokens';
+import Trades from './layouts/Trades';
+import Trade from './layouts/Trade';
 import NotFound from './layouts/NotFound';
 import { Providers } from './layouts/Providers';
 
 const routes = (
   <Route path="/" Component={Providers}>
-    <Route
-      Component={Home}
-      getData={({ location, context }) =>
-        new Promise(resolve => {
-          context.store.dispatch(fetchTrades());
-          resolve({ store: context.store });
-        })
-      }
-    />
+    <Route Component={Home} />
+    <Route path="/relayers" Component={Relayers} />
+    <Route path="/tokens" Component={Tokens} />
+    <Route path="/trades" Component={Trades} />
+    <Route path="/trades/:uuid" Component={Trade} />
     <Route path="*" Component={NotFound} />
   </Route>
 );

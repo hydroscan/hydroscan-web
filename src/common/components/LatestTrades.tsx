@@ -5,10 +5,11 @@ import { fetchTradesLatest } from '../actions/trade';
 import { formatAmount, formatPriceUsd, formatAddress } from '../lib/formatter';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
+import { Link } from 'found';
 
 const mapStateToProps = state => {
   return {
-    trades: state.trade.trades
+    trades: state.trade.tradesLatest
   };
 };
 
@@ -19,8 +20,9 @@ class LatestTrades extends React.PureComponent<any, any> {
   }
 
   public render() {
+    const { trades } = this.props;
     return (
-      <div className="LatestTrades">
+      <div className="LatestTrades section-wrapper">
         <div className="section-header">
           <div className="section-title">LATEST TRADES</div>
           <div className="bottom-border" />
@@ -39,7 +41,7 @@ class LatestTrades extends React.PureComponent<any, any> {
               </tr>
             </thead>
             <tbody>
-              {this.props.trades.map(trade => {
+              {trades.map(trade => {
                 return (
                   <tr key={trade.ID}>
                     <td className="pair">
@@ -71,7 +73,9 @@ class LatestTrades extends React.PureComponent<any, any> {
           </table>
         </div>
 
-        <div className="view-more">VIEW MORE</div>
+        <Link to="/trades">
+          <div className="view-more">VIEW MORE</div>
+        </Link>
       </div>
     );
   }
