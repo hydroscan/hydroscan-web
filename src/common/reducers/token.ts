@@ -5,7 +5,10 @@ const initialState: any = {
   total: 0,
   tokensLoading: false,
 
-  tokensTop: []
+  tokensTop: [],
+
+  chartData: [],
+  token: {}
 };
 
 const token = (state: any = initialState, action: any): any => {
@@ -32,7 +35,16 @@ const token = (state: any = initialState, action: any): any => {
         ...state,
         tokensTop: action.payload.tokensTop
       };
-
+    case 'SET_TOKEN_CHART':
+      return {
+        ...state,
+        chartData: action.payload.chartData
+      };
+    case 'SET_TOKEN':
+      return {
+        ...state,
+        token: action.payload.token
+      };
     default:
       return state;
   }

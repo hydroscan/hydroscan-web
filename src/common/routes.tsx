@@ -5,6 +5,7 @@ import Relayers from './layouts/Relayers';
 import Tokens from './layouts/Tokens';
 import Trades from './layouts/Trades';
 import Trade from './layouts/Trade';
+import Token from './layouts/Token';
 import NotFound from './layouts/NotFound';
 import { Providers } from './layouts/Providers';
 
@@ -15,6 +16,7 @@ const routes = (
     <Route path="/tokens" Component={Tokens} />
     <Route path="/trades" Component={Trades} />
     <Route path="/trades/:uuid" Component={Trade} />
+    <Route path="/tokens/:address" Component={Token} />
     <Route path="*" Component={NotFound} />
   </Route>
 );

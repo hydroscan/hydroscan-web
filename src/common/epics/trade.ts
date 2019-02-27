@@ -77,7 +77,7 @@ export const fetchTrade: Epic = action$ =>
       return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades/${action.payload.uuid}`);
     }),
     flatMap(response => response.json()),
-    map(body => body as any[]),
-    flatMap((trade: any[]) => [setTrade({ trade })]),
+    map(body => body as any),
+    flatMap((trade: any) => [setTrade({ trade })]),
     catchError((error: Error) => [console.log(error)])
   );

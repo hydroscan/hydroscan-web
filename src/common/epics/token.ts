@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import { catchError, filter, flatMap, map } from 'rxjs/operators';
-import { setTokens, setTokensLoading, setTokensTop } from '../actions/token';
+import { setTokens, setTokensLoading, setTokensTop, setToken, setTokenChart } from '../actions/token';
 import Epic from './epic';
 
 export const tokensLoading: Epic = (action$, state$) =>
@@ -40,5 +40,29 @@ export const fetchTokensTop: Epic = action$ =>
     flatMap(response => response.json()),
     map(body => body as any),
     flatMap((json: any) => [setTokensTop({ tokensTop: json.tokens })]),
+    catchError((error: Error) => [console.log(error)])
+  );
+
+export const fetchTokenChart: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TOKEN_CHART'),
+    flatMap(action => {
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/tokens/${action.payload.address}/chart`);
+    }),
+    flatMap(response => response.json()),
+    map(body => body as any[]),
+    flatMap((chartData: any[]) => [setTokenChart({ chartData })]),
+    catchError((error: Error) => [console.log(error)])
+  );
+
+export const fetchToken: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TOKEN'),
+    flatMap(action => {
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/tokens/${action.payload.address}`);
+    }),
+    flatMap(response => response.json()),
+    map(body => body as any),
+    flatMap((token: any) => [setToken({ token })]),
     catchError((error: Error) => [console.log(error)])
   );

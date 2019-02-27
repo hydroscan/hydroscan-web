@@ -32,3 +32,31 @@ export const setTokensLoading = payload => {
     payload
   };
 };
+
+export const fetchTokenChart = payload => {
+  return {
+    type: 'FETCH_TOKEN_CHART',
+    payload
+  };
+};
+
+export const setTokenChart = payload => {
+  return {
+    type: 'SET_TOKEN_CHART',
+    payload
+  };
+};
+
+export const fetchToken = payload => {
+  return {
+    type: 'FETCH_TOKEN',
+    payload
+  };
+};
+
+export const setToken = payload => {
+  return {
+    type: 'SET_TOKEN',
+    payload
+  };
+};
