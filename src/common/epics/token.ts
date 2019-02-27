@@ -19,13 +19,12 @@ export const fetchTokens: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any),
-    flatMap((res: any) => [
+    flatMap((json: any) => [
       setTokens({
-        tokens: res.tokens,
-        page: res.page,
-        pageSize: res.pageSize,
-        totalPage: res.totalPage,
-        total: res.count
+        tokens: json.tokens,
+        page: json.page,
+        pageSize: json.pageSize,
+        total: json.count
       }),
       setTokensLoading(false)
     ]),
@@ -36,10 +35,10 @@ export const fetchTokensTop: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKENS_TOP'),
     flatMap(action => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/tokens_top?filter=${action.payload.filter}`);
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/tokens?pageSize=10&filter=${action.payload.filter}`);
     }),
     flatMap(response => response.json()),
-    map(body => body as any[]),
-    flatMap((tokens: any[]) => [setTokensTop({ tokensTop: tokens })]),
+    map(body => body as any),
+    flatMap((json: any) => [setTokensTop({ tokensTop: json.tokens })]),
     catchError((error: Error) => [console.log(error)])
   );

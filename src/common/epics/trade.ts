@@ -22,13 +22,12 @@ export const fetchTrades: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any),
-    flatMap((res: any) => [
+    flatMap((json: any) => [
       setTrades({
-        trades: res.trades,
-        page: res.page,
-        pageSize: res.pageSize,
-        totalPage: res.totalPage,
-        total: res.count
+        trades: json.trades,
+        page: json.page,
+        pageSize: json.pageSize,
+        total: json.count
       }),
       setTradesLoading(false)
     ]),
@@ -38,16 +37,13 @@ export const fetchTrades: Epic = action$ =>
 export const fetchTradesLatest: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_LATEST'),
-    map(() => {
-      return setTradesLoading(true);
-    }),
     flatMap(() => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades_latest`);
+      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades?pageSize=8`);
     }),
     flatMap(response => response.json()),
-    map(body => body as any[]),
-    flatMap((trades: any[]) => [setTradesLatest({ tradesLatest: trades }), setTradesLoading(false)]),
-    catchError((error: Error) => [console.log(error), setTradesLoading(false)])
+    map(body => body as any),
+    flatMap((json: any) => [setTradesLatest({ tradesLatest: json.trades })]),
+    catchError((error: Error) => [console.log(error)])
   );
 
 export const fetchTradesIndicators: Epic = action$ =>

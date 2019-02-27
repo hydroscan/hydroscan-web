@@ -2,7 +2,6 @@ const initialState: any = {
   trades: [],
   page: 1,
   pageSize: 0,
-  totalPage: 0,
   total: 0,
   tradesLoading: false,
 

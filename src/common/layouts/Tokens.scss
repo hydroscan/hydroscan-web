@@ -1,8 +1,15 @@
+@import '../styles/variables.scss';
+
 .Tokens {
     .container {
-        padding: 30px;
+        padding: 15px 30px;
 
         .main-wrapper {
+            a {
+                color: $color-blue;
+                text-decoration: none;
+            }
+
             .volume {
                 text-align: right;
             }
@@ -17,6 +24,12 @@
 
             .price {
                 text-align: right;
+            }
+
+            .secondary {
+                font-weight: lighter;
+                font-size: $font-size-md;
+                color: $color-gray;
             }
         }
     }

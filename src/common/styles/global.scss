@@ -12,6 +12,14 @@ body {
         padding: $padding;
         box-sizing: border-box;
 
+        .green {
+            color: $color-green;
+        }
+
+        .red {
+            color: $color-red;
+        }
+
         .main-wrapper {
             .main-header {
                 font-size: 15px;

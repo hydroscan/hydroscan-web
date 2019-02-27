@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { formatAmount, formatPriceUsd, formatAddress } from '../lib/formatter';
+import { formatAmount, formatPriceUsd, formatAddress, formatCount } from '../lib/formatter';
 import { fetchTrades } from '../actions/trade';
 import { connect } from 'react-redux';
 import BigNumber from 'bignumber.js';
@@ -16,7 +16,6 @@ const mapStateToProps = state => {
     trades: state.trade.trades,
     page: state.trade.page,
     pageSize: state.trade.pageSize,
-    totalPage: state.trade.totalPage,
     total: state.trade.total
   };
 };
@@ -101,9 +100,7 @@ class Trades extends React.Component<any, any> {
           </div>
           <div className="pagination-wrapper">
             <div className="showing-range">
-              {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatAmount(
-                total
-              )}`}
+              {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}
             </div>
             <Pagination
               className="ant-pagination"
