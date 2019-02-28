@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Chart.scss';
 import { fetchTradesChart } from '../actions/trade';
 import { fetchTokenChart } from '../actions/token';
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { ComposedChart, Area, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
 import { formatVolumeUsdShort, formatCountShort } from '../lib/formatter';
 
@@ -32,7 +32,7 @@ class Chart extends React.PureComponent<any, any> {
     return (
       <div className="Chart section-wrapper">
         <ResponsiveContainer>
-          <LineChart
+          <ComposedChart
             data={chartData}
             margin={{
               top: 5,
@@ -53,7 +53,8 @@ class Chart extends React.PureComponent<any, any> {
               }}
             />
             <YAxis
-              yAxisId="trades"
+              height={50}
+              yAxisId="traders"
               tickFormatter={tick => {
                 return formatCountShort(tick);
               }}
@@ -61,9 +62,16 @@ class Chart extends React.PureComponent<any, any> {
             />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="volume" yAxisId="volume" stroke="#8884d8" />
-            <Line type="monotone" dataKey="trades" yAxisId="trades" stroke="#82ca9d" />
-          </LineChart>
+            <Bar type="monotone" dataKey="traders" yAxisId="traders" barSize={10} stroke="#f1f3f4" fill="#f1f3f4" />
+            <defs>
+              <linearGradient id="LineGradient" x1="0" y1="100%" x2="0" y2="0%">
+                <stop offset="0%" stopColor={'#00c6a3'} stopOpacity={0} />
+                <stop offset="50%" stopColor={'#00c6a3'} stopOpacity={0.5} />
+                <stop offset="100%" stopColor={'#00c6a3'} stopOpacity={0.1} />
+              </linearGradient>
+            </defs>
+            <Area type="monotone" dataKey="volume" yAxisId="volume" stroke="#00c6a3" fill="url(#LineGradient)" />
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
     );
