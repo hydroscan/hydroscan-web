@@ -4,4 +4,62 @@
     width: 100%;
     height: 230px;
     background-color: $color-gray;
+    color: $color-light;
+    position: relative;
+
+    .content-wrapper {
+        width: 100%;
+        height: 153px;
+        font-size: $font-size-md;
+        display: flex;
+        text-align: center;
+
+        .headline {
+            font-weight: 600;
+            line-height: 36px;
+        }
+
+        .item {
+            line-height: 28px;
+        }
+
+        .hydro-wrapper {
+            width: 20%;
+        }
+
+        .developer-wrapper {
+            width: 20%;
+        }
+
+        .products-wrapper {
+            width: 20%;
+        }
+
+        .links-wrapper {
+            width: 40%;
+        }
+    }
+
+    .bottom-line {
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        background-color: $color-gray-mid;
+        bottom: 45px;
+    }
+
+    .bottom-container {
+        padding: 0;
+        height: 44px;
+        position: relative;
+        bottom: 0;
+    }
+
+    .copyright {
+        font-size: $font-size-sm;
+        line-height: 44px;
+        position: absolute;
+        right: 30px;
+        bottom: 0;
+    }
 }
