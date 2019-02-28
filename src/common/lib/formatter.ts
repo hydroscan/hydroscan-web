@@ -7,6 +7,10 @@ export const formatAmount = (data: string | number): string => {
   return data && parseFloat(data.toString()) >= 1000 ? numeral(data).format('0,0') : new BigNumber(data).toPrecision(4);
 };
 
+export const formatAmountWithDecimals = (data: string, decimals: number = 18): string => {
+  return numeral(new BigNumber(data).div(Math.pow(10, decimals)).toFixed()).format('0,0.[000000000000000000]');
+};
+
 export const formatPriceUsd = (data: string, showSymbol: boolean = true): string => {
   const prefix = showSymbol ? '$' : '';
   const result = parseFloat(data) >= 1 ? numeral(data).format('0,0.00') : new BigNumber(data).toPrecision(4);

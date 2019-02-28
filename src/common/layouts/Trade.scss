@@ -9,7 +9,7 @@
             .item {
                 display: flex;
                 color: $color-gray-dark;
-                font-size: 12px;
+                font-size: $font-size-md;
                 height: 40px;
 
                 .item-label {
@@ -19,10 +19,6 @@
                 }
 
                 .item-content {
-                    a {
-                        color: $color-blue;
-                        text-decoration: none;
-                    }
                 }
             }
         }

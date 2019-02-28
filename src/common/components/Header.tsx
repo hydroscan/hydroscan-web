@@ -12,7 +12,7 @@ class Header extends React.PureComponent<any, any> {
     return (
       <div className="Header">
         <div className="header-container">
-          <Link to="/">
+          <Link className="link" to="/">
             <img src={require('../images/hydroscan.svg')} />
           </Link>
           <div className="tabs">

@@ -20,9 +20,14 @@ body {
             color: $color-red;
         }
 
+        .link {
+            color: $color-blue;
+            text-decoration: none;
+        }
+
         .main-wrapper {
             .main-header {
-                font-size: 15px;
+                font-size: $font-size-lg;
                 color: $color-gray-dark;
                 font-weight: 600;
                 margin: 10px 0 25px;
@@ -38,7 +43,7 @@ body {
 
                 .main-table {
                     table-layout: auto;
-                    font-size: 12px;
+                    font-size: $font-size-md;
                     width: 100%;
                     border-spacing: 0;
                 }
@@ -107,7 +112,7 @@ body {
             .section-body {
                 .section-table {
                     table-layout: auto;
-                    font-size: 12px;
+                    font-size: $font-size-md;
                     width: 100%;
                     border-spacing: 0;
                 }
@@ -148,7 +153,7 @@ body {
             .showing-range {
                 float: right;
                 margin-right: $padding;
-                font-size: 15px;
+                font-size: $font-size-lg;
                 color: $color-gray-dark;
                 margin-top: 18px;
             }

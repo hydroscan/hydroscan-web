@@ -2,20 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Chart.scss';
 import { fetchTradesChart } from '../actions/trade';
+import { fetchTokenChart } from '../actions/token';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
 import { formatVolumeUsdShort, formatCountShort } from '../lib/formatter';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
-    chartData: state.trade.chartData
+    chartData: props.tokenAddress ? state.token.chartData : state.trade.chartData
   };
 };
 
 class Chart extends React.PureComponent<any, any> {
   public componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchTradesChart());
+    const { dispatch, tokenAddress } = this.props;
+    if (tokenAddress) {
+      dispatch(fetchTokenChart({ address: tokenAddress }));
+    } else {
+      dispatch(fetchTradesChart());
+    }
   }
 
   public render() {

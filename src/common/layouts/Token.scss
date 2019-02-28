@@ -6,5 +6,91 @@
             padding: 30px;
             box-sizing: border-box;
         }
+        .item {
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            font-size: $font-size-md;
+            align-items: center;
+
+            .item-label {
+                color: $color-gray-dark;
+                font-weight: 600;
+            }
+        }
+
+        .top-sections {
+            display: flex;
+
+            .token-info {
+                width: 50%;
+                margin-right: $padding;
+                padding: $padding 30px;
+
+                .item {
+                    .item-label {
+                        width: 30%;
+                    }
+                    .item-content {
+                        width: 70%;
+                        text-align: right;
+                    }
+                }
+            }
+
+            .trades-info {
+                width: 50%;
+                margin-left: $padding;
+                padding: $padding 30px;
+
+                .item {
+                    .item-label {
+                        width: 30%;
+                    }
+                    .item-content {
+                        width: 50%;
+                        text-align: right;
+                    }
+                    .item-change-wrapper {
+                        width: 20%;
+                        text-align: right;
+
+                        .change {
+                            float: right;
+
+                            height: 21px;
+                            line-height: 21px;
+                            text-align: center;
+                            width: 59px;
+                            font-size: $font-size-sm;
+                            border-radius: $radius;
+
+                            &.green {
+                                color: $color-green;
+                                background-color: $color-green-light;
+                            }
+
+                            &.red {
+                                color: $color-red;
+                                background-color: $color-red-light;
+                            }
+
+                            &.gray {
+                                color: $color-gray;
+                                background-color: $color-gray-light;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .chart-wrapper {
+            margin-top: 30px;
+        }
+
+        .latest-trades-wrapper {
+            margin-top: 30px;
+        }
     }
 }

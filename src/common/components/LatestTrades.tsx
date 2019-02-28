@@ -1,26 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './LatestTrades.scss';
-import { fetchTradesLatest } from '../actions/trade';
-import { formatAmount, formatPriceUsd, formatAddress } from '../lib/formatter';
+import { fetchTradesLatest, fetchTrades } from '../actions/trade';
+import { formatAmount, formatPriceUsd, formatAddress, formatCount } from '../lib/formatter';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
 import { Link } from 'found';
+import Pagination from 'rc-pagination';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
-    trades: state.trade.tradesLatest
+    trades: props.tokenAddress ? state.trade.trades : state.trade.tradesLatest,
+    page: state.trade.page,
+    pageSize: state.trade.pageSize,
+    total: state.trade.total
   };
 };
 
 class LatestTrades extends React.PureComponent<any, any> {
   public componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchTradesLatest());
+    const { dispatch, tokenAddress } = this.props;
+    if (tokenAddress) {
+      dispatch(fetchTrades({ tokenAddress }));
+    } else {
+      dispatch(fetchTradesLatest());
+    }
   }
 
   public render() {
-    const { trades } = this.props;
+    const { trades, page, pageSize, total, tokenAddress } = this.props;
     return (
       <div className="LatestTrades section-wrapper">
         <div className="section-header">
@@ -72,12 +80,33 @@ class LatestTrades extends React.PureComponent<any, any> {
             </tbody>
           </table>
         </div>
-
-        <Link to="/trades">
-          <div className="view-more">VIEW MORE</div>
-        </Link>
+        {tokenAddress ? (
+          <div className="pagination-wrapper">
+            <div className="showing-range">
+              {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}
+            </div>
+            <Pagination
+              className="ant-pagination"
+              defaultCurrent={page}
+              pageSize={pageSize}
+              total={total}
+              onChange={this.handlePageChange.bind(this)}
+            />
+          </div>
+        ) : (
+          <div className="view-more-wrapper">
+            <Link className="link" to="/trades">
+              <div className="view-more">VIEW MORE</div>
+            </Link>
+          </div>
+        )}
       </div>
     );
+  }
+
+  public handlePageChange(current, size) {
+    const { dispatch } = this.props;
+    dispatch(fetchTrades({ page: current }));
   }
 }
 

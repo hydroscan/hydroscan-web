@@ -36,7 +36,7 @@ class Trade extends React.Component<any, any> {
               <div className="item">
                 <div className="item-label">Transaction Hash</div>
                 <div className="item-content">
-                  <a href={`https://etherscan.io/tx/${trade.transactionHash}`} target="_blank">
+                  <a className="link" href={`https://etherscan.io/tx/${trade.transactionHash}`} target="_blank">
                     {trade.transactionHash}
                   </a>
                 </div>
@@ -67,7 +67,7 @@ class Trade extends React.Component<any, any> {
               <div className="item">
                 <div className="item-label">Relayer</div>
                 <div className="item-content">
-                  <a href={trade.relayer.url} target="_blank">
+                  <a className="link" href={trade.relayer.url} target="_blank">
                     {trade.relayer.name}
                   </a>
                 </div>
@@ -75,7 +75,7 @@ class Trade extends React.Component<any, any> {
               <div className="item">
                 <div className="item-label">Maker</div>
                 <div className="item-content">
-                  <a href={`https://etherscan.io/address/${trade.makerAddress}`} target="_blank">
+                  <a className="link" href={`https://etherscan.io/address/${trade.makerAddress}`} target="_blank">
                     {trade.makerAddress}
                   </a>
                 </div>
@@ -83,8 +83,7 @@ class Trade extends React.Component<any, any> {
               <div className="item">
                 <div className="item-label">Taker</div>
                 <div className="item-content">
-                  {' '}
-                  <a href={`https://etherscan.io/address/${trade.takerAddress}`} target="_blank">
+                  <a className="link" href={`https://etherscan.io/address/${trade.takerAddress}`} target="_blank">
                     {trade.takerAddress}
                   </a>
                 </div>

@@ -1,7 +1,7 @@
 @import '../styles/variables.scss';
 
 .LatestTrades {
-    height: 500px;
+    padding-bottom: 60px;
 
     .section-body {
         .pair {
@@ -10,7 +10,7 @@
             }
 
             .pair-secondary {
-                font-size: 11px;
+                font-size: $font-size-sm;
                 color: $color-secondary;
             }
         }
@@ -24,7 +24,7 @@
             }
 
             .trade-price-secondary {
-                font-size: 11px;
+                font-size: $font-size-sm;
                 color: $color-secondary;
             }
         }
@@ -40,19 +40,24 @@
         }
     }
 
-    .view-more {
-        width: 106px;
-        height: 38px;
-        border-radius: 19px;
-        background-color: $color-gray-light;
-        font-size: 12px;
-        color: $color-secondary;
-        position: absolute;
-        right: 15px;
-        bottom: 15px;
-        cursor: pointer;
-        text-align: center;
-        line-height: 38px;
-        vertical-align: middle;
+    .view-more-wrapper {
+        width: 100%;
+        height: 45px;
+
+        .view-more {
+            width: 106px;
+            height: 38px;
+            border-radius: 19px;
+            background-color: $color-gray-light;
+            font-size: $font-size-md;
+            color: $color-secondary;
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 38px;
+            vertical-align: middle;
+        }
     }
 }

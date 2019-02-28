@@ -7,6 +7,7 @@ import TopTokens from '../components/TopTokens';
 import LatestTrades from '../components/LatestTrades';
 
 import './Home.scss';
+import 'rc-pagination/assets/index.css';
 
 class Home extends React.Component {
   public render() {

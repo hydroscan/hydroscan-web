@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
 import './Trades.scss';
-import 'rc-pagination/assets/index.css';
 import Pagination from 'rc-pagination';
 import { Link } from 'found';
 
@@ -54,7 +53,7 @@ class Trades extends React.Component<any, any> {
                     return (
                       <tr key={trade.ID}>
                         <td className="pair">
-                          <Link to={`/trades/${trade.uuid}`}>
+                          <Link className="link" to={`/trades/${trade.uuid}`}>
                             <div className="main">{`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}</div>
                           </Link>
 

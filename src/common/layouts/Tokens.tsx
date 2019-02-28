@@ -5,7 +5,6 @@ import { formatCount, formatPriceUsd, formatPercent, formatVolumeUsd, formatAmou
 import { fetchTokens } from '../actions/token';
 import { connect } from 'react-redux';
 import './Tokens.scss';
-import 'rc-pagination/assets/index.css';
 import Pagination from 'rc-pagination';
 import moment from 'moment';
 import { Link } from 'found';
@@ -53,7 +52,7 @@ class Tokens extends React.Component<any, any> {
                       <tr key={token.ID}>
                         <td className="rank">{(page - 1) * pageSize + index + 1}</td>
                         <td className="token">
-                          <Link to={`/tokens/${token.address}`}>
+                          <Link className="link" to={`/tokens/${token.address}`}>
                             <div className="main">{token.name}</div>
                           </Link>
                           <div className="secondary">{token.symbol}</div>

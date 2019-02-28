@@ -18,7 +18,12 @@ export const fetchTrades: Epic = action$ =>
       return action;
     }),
     flatMap(action => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades?page=${action.payload.page}`);
+      const { page, tokenAddress } = action.payload;
+      return fetch(
+        `${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades?page=${page ? page : ''}&tokenAddress=${
+          tokenAddress ? tokenAddress : ''
+        }`
+      );
     }),
     flatMap(response => response.json()),
     map(body => body as any),
