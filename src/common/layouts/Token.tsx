@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
-import { fetchToken } from '../actions/token';
+import { fetchToken, setToken } from '../actions/token';
 import { formatAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
@@ -21,19 +21,29 @@ class Token extends React.Component<any, any> {
     dispatch(fetchToken({ address: params.address }));
   }
 
+  public componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(setToken({ token: {} }));
+  }
+
   public render() {
-    const { token } = this.props;
+    const { token, params } = this.props;
     if (!token.address) {
-      return '';
+      return (
+        <div className="Token">
+          <Header />
+        </div>
+      );
     }
 
     return (
       <div className="Token">
         <Header />
+
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              <div className="main-title">TOKEN DETAIL</div>
+              <div className="main-title">{`TOKENS - ${token.name} (${token.symbol})`}</div>
             </div>
           </div>
           <div className="top-sections">
