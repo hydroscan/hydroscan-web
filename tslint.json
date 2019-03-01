@@ -28,7 +28,7 @@
     "jsx-wrap-multiline": false,
     "jsx-alignment": false,
     "label-position": true,
-    "max-line-length": [true, 120],
+    "max-line-length": [false, 120],
     "member-ordering": [true, "private-before-public", "static-before-instance", "variables-before-functions"],
     "no-any": false,
     "no-arg": true,

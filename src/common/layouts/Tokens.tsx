@@ -52,10 +52,17 @@ class Tokens extends React.Component<any, any> {
                       <tr key={token.ID}>
                         <td className="rank">{(page - 1) * pageSize + index + 1}</td>
                         <td className="token">
-                          <Link className="link" to={`/tokens/${token.address}`}>
-                            <div className="main">{token.name}</div>
-                          </Link>
-                          <div className="secondary">{token.symbol}</div>
+                          <object
+                            data={`https://raw.githubusercontent.com/TrustWallet/tokens/master/tokens/${token.address.toLowerCase()}.png`}
+                            type="image/png">
+                            <div className="default-img" />
+                          </object>
+                          <div>
+                            <Link className="link" to={`/tokens/${token.address}`}>
+                              <div className="main">{token.name}</div>
+                            </Link>
+                            <div className="secondary">{token.symbol}</div>
+                          </div>
                         </td>
                         <td className="volume">
                           <div className="main">{formatVolumeUsd(token.volume24h)}</div>
