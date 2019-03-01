@@ -9,6 +9,7 @@ import {
   setTradesLatest
 } from '../actions/trade';
 import Epic from './epic';
+import { HYDROSCAN_API_URL } from '../lib/config';
 
 export const fetchTrades: Epic = action$ =>
   action$.pipe(
@@ -20,9 +21,7 @@ export const fetchTrades: Epic = action$ =>
     flatMap(action => {
       const { page, tokenAddress } = action.payload;
       return fetch(
-        `${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades?page=${page ? page : ''}&tokenAddress=${
-          tokenAddress ? tokenAddress : ''
-        }`
+        `${HYDROSCAN_API_URL}/api/v1/trades?page=${page ? page : ''}&tokenAddress=${tokenAddress ? tokenAddress : ''}`
       );
     }),
     flatMap(response => response.json()),
@@ -43,7 +42,7 @@ export const fetchTradesLatest: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_LATEST'),
     flatMap(() => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades?pageSize=8`);
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades?pageSize=8`);
     }),
     flatMap(response => response.json()),
     map(body => body as any),
@@ -55,7 +54,7 @@ export const fetchTradesIndicators: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_INDICATORS'),
     flatMap(() => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades_indicators`);
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades_indicators`);
     }),
     flatMap(response => response.json()),
     map(body => body),
@@ -67,7 +66,7 @@ export const fetchTradesChart: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_CHART'),
     flatMap(() => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades_chart`);
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades_chart`);
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),
@@ -79,7 +78,7 @@ export const fetchTrade: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADE'),
     flatMap(action => {
-      return fetch(`${process.env.RAZZLE_HYDROSCAN_API_URL}/api/v1/trades/${action.payload.uuid}`);
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades/${action.payload.uuid}`);
     }),
     flatMap(response => response.json()),
     map(body => body as any),

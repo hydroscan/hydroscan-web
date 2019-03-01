@@ -1,0 +1,1 @@
+export const HYDROSCAN_API_URL = process.env.RAZZLE_HYDROSCAN_API_URL;
