@@ -45,9 +45,10 @@ export const setTradesIndicators = payload => {
   };
 };
 
-export const fetchTradesChart = () => {
+export const fetchTradesChart = payload => {
   return {
-    type: 'FETCH_TRADES_CHART'
+    type: 'FETCH_TRADES_CHART',
+    payload
   };
 };
 

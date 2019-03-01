@@ -48,7 +48,9 @@ export const fetchTokenChart: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKEN_CHART'),
     flatMap(action => {
-      return fetch(`${runtimeEnv.HYDROSCAN_API_URL}/api/v1/tokens/${action.payload.address}/chart`);
+      return fetch(
+        `${runtimeEnv.HYDROSCAN_API_URL}/api/v1/tokens/${action.payload.address}/chart?filter=${action.payload.filter}`
+      );
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),

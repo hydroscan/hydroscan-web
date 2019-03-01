@@ -67,8 +67,8 @@ export const fetchTradesIndicators: Epic = action$ =>
 export const fetchTradesChart: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_CHART'),
-    flatMap(() => {
-      return fetch(`${runtimeEnv.HYDROSCAN_API_URL}/api/v1/trades_chart`);
+    flatMap(action => {
+      return fetch(`${runtimeEnv.HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${action.payload.filter}`);
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),
