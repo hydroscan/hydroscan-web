@@ -1,7 +1,7 @@
 import { DocumentProps } from '@christophediprima/razzle-react-redux-observable-found';
 import React from 'react';
-
 import { SheetsRegistry } from 'react-jss';
+import { runtimeEnv } from '../lib/config';
 
 export interface DocumentExtraProps {
   styleSheets: SheetsRegistry;
@@ -42,6 +42,12 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
             }}
           />
           <script type="text/javascript" src={assets.client.js} defer={true} crossOrigin="anonymous" />
+          <script
+            id="window-env"
+            dangerouslySetInnerHTML={{
+              __html: 'window.env = ' + JSON.stringify(runtimeEnv)
+            }}
+          />
         </body>
       </html>
     );
