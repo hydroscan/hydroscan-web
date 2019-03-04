@@ -7,7 +7,8 @@ import { formatVolumeUsd, formatCount, formatAmount } from '../lib/formatter';
 
 const mapStateToProps = state => {
   return {
-    indicators: state.trade.indicators
+    indicators: state.trade.indicators,
+    indicatorsLoading: state.trade.indicatorsLoading
   };
 };
 
@@ -17,20 +18,36 @@ class Indicators extends React.PureComponent<any, any> {
   //   dispatch(fetchTradesIndicators());
   // }
   public render() {
-    const { indicators } = this.props;
+    const { indicators, indicatorsLoading } = this.props;
     return (
       <div className="Indicators">
         <div className="indicator-wrapper">
-          <Indicator title="NETWORK VOLUME (24H)" data={formatVolumeUsd(indicators.volume24h)} />
+          <Indicator
+            title="NETWORK VOLUME (24H)"
+            data={formatVolumeUsd(indicators.volume24h)}
+            indicatorsLoading={indicatorsLoading}
+          />
         </div>
         <div className="indicator-wrapper">
-          <Indicator title="TRADES (24H)" data={formatCount(indicators.trades24h)} />
+          <Indicator
+            title="TRADES (24H)"
+            data={formatCount(indicators.trades24h)}
+            indicatorsLoading={indicatorsLoading}
+          />
         </div>
         <div className="indicator-wrapper">
-          <Indicator title="MAKER REBATE (24H)" data={formatAmount(indicators.marketRabate24h)} />
+          <Indicator
+            title="MAKER REBATE (24H)"
+            data={formatAmount(indicators.marketRabate24h)}
+            indicatorsLoading={indicatorsLoading}
+          />
         </div>
         <div className="indicator-wrapper">
-          <Indicator title="TRADERS (24H)" data={formatCount(indicators.traders24h)} />
+          <Indicator
+            title="TRADERS (24H)"
+            data={formatCount(indicators.traders24h)}
+            indicatorsLoading={indicatorsLoading}
+          />
         </div>
       </div>
     );

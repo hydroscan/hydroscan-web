@@ -8,7 +8,8 @@ import './Relayers.scss';
 
 const mapStateToProps = state => {
   return {
-    relayers: state.relayer.relayers
+    relayers: state.relayer.relayers,
+    relayersLoading: state.relayer.relayersLoading
   };
 };
 
@@ -19,7 +20,7 @@ class Relayers extends React.Component<any, any> {
   // }
 
   public render() {
-    const { relayers } = this.props;
+    const { relayers, relayersLoading } = this.props;
     return (
       <div className="Relayers">
         <Header />

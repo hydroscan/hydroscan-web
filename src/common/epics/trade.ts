@@ -4,18 +4,30 @@ import {
   setTrades,
   setTradesLoading,
   setTradesIndicators,
+  setTradesIndicatorsLoading,
   setTradesChart,
+  setTradesChartLoading,
   setTrade,
-  setTradesLatest
+  setTradeLoading,
+  setTradesLatest,
+  setTradesLatestLoading
 } from '../actions/trade';
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
+
+export const fetchTradesLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADES'),
+    map(() => {
+      return setTradesLoading({ loading: true });
+    })
+  );
 
 export const fetchTrades: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES'),
     map(action => {
-      setTradesLoading(true);
+      setTradesLoading({ loading: true });
       return action;
     }),
     flatMap(action => {
@@ -31,9 +43,17 @@ export const fetchTrades: Epic = action$ =>
         pageSize: json.pageSize,
         total: json.count
       }),
-      setTradesLoading(false)
+      setTradesLoading({ loading: false })
     ]),
-    catchError((error: Error) => [console.log(error), setTradesLoading(false)])
+    catchError((error: Error) => [console.log(error), setTradesLoading({ loading: false })])
+  );
+
+export const fetchTradesLatestLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADES_LATEST'),
+    map(() => {
+      return setTradesLatestLoading({ loading: true });
+    })
   );
 
 export const fetchTradesLatest: Epic = action$ =>
@@ -44,8 +64,19 @@ export const fetchTradesLatest: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any),
-    flatMap((json: any) => [setTradesLatest({ tradesLatest: json.trades })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((json: any) => [
+      setTradesLatest({ tradesLatest: json.trades }),
+      setTradesLatestLoading({ loading: false })
+    ]),
+    catchError((error: Error) => [console.log(error), setTradesLatestLoading({ loading: false })])
+  );
+
+export const fetchTradesIndicatorsLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADES_INDICATORS'),
+    map(() => {
+      return setTradesIndicatorsLoading({ loading: true });
+    })
   );
 
 export const fetchTradesIndicators: Epic = action$ =>
@@ -56,8 +87,16 @@ export const fetchTradesIndicators: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body),
-    flatMap((indicators: any) => [setTradesIndicators({ indicators })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((indicators: any) => [setTradesIndicators({ indicators }), setTradesIndicatorsLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTradesIndicatorsLoading({ loading: false })])
+  );
+
+export const fetchTradesChartLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADES_CHART'),
+    map(() => {
+      return setTradesChartLoading({ loading: true });
+    })
   );
 
 export const fetchTradesChart: Epic = action$ =>
@@ -68,8 +107,16 @@ export const fetchTradesChart: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),
-    flatMap((chartData: any[]) => [setTradesChart({ chartData })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((chartData: any[]) => [setTradesChart({ chartData }), setTradesChartLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTradesChartLoading({ loading: false })])
+  );
+
+export const fetchTradeLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADE'),
+    map(() => {
+      return setTradeLoading({ loading: true });
+    })
   );
 
 export const fetchTrade: Epic = action$ =>
@@ -80,6 +127,6 @@ export const fetchTrade: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any),
-    flatMap((trade: any) => [setTrade({ trade })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((trade: any) => [setTrade({ trade }), setTradeLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTradeLoading({ loading: false })])
   );

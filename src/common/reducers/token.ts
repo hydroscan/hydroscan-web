@@ -6,28 +6,26 @@ const initialState: any = {
   tokensLoading: false,
 
   tokensTop: [],
+  tokensTopLoading: false,
 
   chartData: [],
-  token: {}
+  chartDataLoading: false,
+
+  token: {},
+  tokenLoading: false
 };
 
 const token = (state: any = initialState, action: any): any => {
   switch (action.type) {
-    case 'SET_TOKENS_LOADING':
-      return {
-        ...state,
-        tokensLoading: action.payload
-      };
-    case 'UPDATE_TOKENS':
-      return {
-        ...state,
-        tokens: state.tokens.concat(action.payload.tokens)
-      };
-
     case 'SET_TOKENS':
       return {
         ...state,
         ...action.payload
+      };
+    case 'SET_TOKENS_LOADING':
+      return {
+        ...state,
+        tokensLoading: action.payload.loading
       };
 
     case 'SET_TOKENS_TOP':
@@ -35,15 +33,32 @@ const token = (state: any = initialState, action: any): any => {
         ...state,
         tokensTop: action.payload.tokensTop
       };
+    case 'SET_TOKENS_TOP_LOADING':
+      return {
+        ...state,
+        tokensTopLoading: action.payload.loading
+      };
+
     case 'SET_TOKEN_CHART':
       return {
         ...state,
         chartData: action.payload.chartData
       };
+    case 'SET_TOKEN_CHART_LOADING':
+      return {
+        ...state,
+        chartDataLoading: action.payload.loading
+      };
+
     case 'SET_TOKEN':
       return {
         ...state,
         token: action.payload.token
+      };
+    case 'SET_TOKEN_LOADING':
+      return {
+        ...state,
+        tokenLoading: action.payload.loading
       };
     default:
       return state;

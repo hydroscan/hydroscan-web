@@ -1,23 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Indicator.scss';
+import Loading from '../components/Loading';
 
-interface Props {
-  title: string;
-  data: string;
-}
-
-const mapStateToProps = (state: any, props?: Props) => {
+const mapStateToProps = (state, props) => {
   return {};
 };
 
-class Indicator extends React.Component<Props, any> {
+class Indicator extends React.Component<any, any> {
   public render() {
-    const { title, data } = this.props;
+    const { title, data, indicatorsLoading } = this.props;
     return (
       <div className="Indicator section-wrapper">
-        <div className="title">{title}</div>
-        <div className="content">{`${data}`}</div>
+        {indicatorsLoading ? (
+          <Loading />
+        ) : (
+          <div>
+            <div className="title">{title}</div>
+            <div className="content">{`${data}`}</div>
+          </div>
+        )}
       </div>
     );
   }

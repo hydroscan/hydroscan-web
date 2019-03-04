@@ -40,6 +40,7 @@ body {
                 background-color: $color-white;
                 box-sizing: border-box;
                 position: relative;
+                min-height: 500px;
 
                 .main-table {
                     table-layout: auto;
@@ -110,6 +111,11 @@ body {
             }
 
             .section-body {
+                width: 100%;
+                min-height: 280px;
+                margin-top: 8px;
+                position: relative;
+
                 .section-table {
                     table-layout: auto;
                     font-size: $font-size-md;

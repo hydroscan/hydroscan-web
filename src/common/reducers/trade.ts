@@ -6,48 +6,73 @@ const initialState: any = {
   tradesLoading: false,
 
   indicators: {},
-  chartData: [],
-  tradesLatest: [],
+  indicatorsLoading: false,
 
-  trade: {}
+  chartData: [],
+  chartDataLoading: false,
+
+  tradesLatest: [],
+  tradesLatestLoading: false,
+
+  trade: {},
+  tradeLoading: false
 };
 
 const trade = (state: any = initialState, action: any): any => {
   switch (action.type) {
-    case 'SET_TRADES_LOADING':
-      return {
-        ...state,
-        tradesLoading: action.payload
-      };
-    case 'UPDATE_TRADES':
-      return {
-        ...state,
-        trades: state.trades.concat(action.payload.trades)
-      };
     case 'SET_TRADES':
       return {
         ...state,
         ...action.payload
       };
+    case 'SET_TRADES_LOADING':
+      return {
+        ...state,
+        tradesLoading: action.payload.loading
+      };
+
     case 'SET_TRADES_LATEST':
       return {
         ...state,
         tradesLatest: action.payload.tradesLatest
       };
+    case 'SET_TRADES_LATEST_LOADING':
+      return {
+        ...state,
+        tradesLatestLoading: action.payload.loading
+      };
+
     case 'SET_TRADES_INDICATORS':
       return {
         ...state,
         indicators: action.payload.indicators
       };
+    case 'SET_TRADES_INDICATORS_LOADING':
+      return {
+        ...state,
+        indicatorsLoading: action.payload.loading
+      };
+
     case 'SET_TRADES_CHART':
       return {
         ...state,
         chartData: action.payload.chartData
       };
+    case 'SET_TRADES_CHART_LOADING':
+      return {
+        ...state,
+        chartDataLoading: action.payload.loading
+      };
+
     case 'SET_TRADE':
       return {
         ...state,
         trade: action.payload.trade
+      };
+    case 'SET_TRADE_LOADING':
+      return {
+        ...state,
+        tradeLoading: action.payload.loading
       };
     default:
       return state;

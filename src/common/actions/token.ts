@@ -5,16 +5,23 @@ export const fetchTokens = payload => {
   };
 };
 
-export const fetchTokensTop = payload => {
+export const setTokens = payload => {
   return {
-    type: 'FETCH_TOKENS_TOP',
+    type: 'SET_TOKENS',
     payload
   };
 };
 
-export const setTokens = payload => {
+export const setTokensLoading = payload => {
   return {
-    type: 'SET_TOKENS',
+    type: 'SET_TOKENS_LOADING',
+    payload
+  };
+};
+
+export const fetchTokensTop = payload => {
+  return {
+    type: 'FETCH_TOKENS_TOP',
     payload
   };
 };
@@ -26,9 +33,9 @@ export const setTokensTop = payload => {
   };
 };
 
-export const setTokensLoading = payload => {
+export const setTokensTopLoading = payload => {
   return {
-    type: 'SET_TOKENS_LOADING',
+    type: 'SET_TOKENS_TOP_LOADING',
     payload
   };
 };
@@ -47,6 +54,13 @@ export const setTokenChart = payload => {
   };
 };
 
+export const setTokenChartLoading = payload => {
+  return {
+    type: 'SET_TOKEN_CHART_LOADING',
+    payload
+  };
+};
+
 export const fetchToken = payload => {
   return {
     type: 'FETCH_TOKEN',
@@ -57,6 +71,13 @@ export const fetchToken = payload => {
 export const setToken = payload => {
   return {
     type: 'SET_TOKEN',
+    payload
+  };
+};
+
+export const setTokenLoading = payload => {
+  return {
+    type: 'SET_TOKEN_LOADING',
     payload
   };
 };

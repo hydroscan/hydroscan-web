@@ -1,14 +1,23 @@
 import fetch from 'isomorphic-fetch';
 import { catchError, filter, flatMap, map } from 'rxjs/operators';
-import { setTokens, setTokensLoading, setTokensTop, setToken, setTokenChart } from '../actions/token';
+import {
+  setTokens,
+  setTokensLoading,
+  setTokensTop,
+  setTokensTopLoading,
+  setToken,
+  setTokenLoading,
+  setTokenChart,
+  setTokenChartLoading
+} from '../actions/token';
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
 
-export const tokensLoading: Epic = (action$, state$) =>
+export const fetchTokensLoading: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKENS'),
     map(() => {
-      return setTokensLoading(true);
+      return setTokensLoading({ loading: true });
     })
   );
 
@@ -27,9 +36,17 @@ export const fetchTokens: Epic = action$ =>
         pageSize: json.pageSize,
         total: json.count
       }),
-      setTokensLoading(false)
+      setTokensLoading({ loading: false })
     ]),
-    catchError((error: Error) => [console.log(error), setTokensLoading(false)])
+    catchError((error: Error) => [console.log(error), setTokensLoading({ loading: false })])
+  );
+
+export const fetchTokensTopLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TOKENS_TOP'),
+    map(() => {
+      return setTokensTopLoading({ loading: true });
+    })
   );
 
 export const fetchTokensTop: Epic = action$ =>
@@ -40,8 +57,16 @@ export const fetchTokensTop: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any),
-    flatMap((json: any) => [setTokensTop({ tokensTop: json.tokens })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((json: any) => [setTokensTop({ tokensTop: json.tokens }), setTokensTopLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTokensTopLoading({ loading: false })])
+  );
+
+export const fetchTokenChartLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TOKEN_CHART'),
+    map(() => {
+      return setTokenChartLoading({ loading: true });
+    })
   );
 
 export const fetchTokenChart: Epic = action$ =>
@@ -54,8 +79,16 @@ export const fetchTokenChart: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),
-    flatMap((chartData: any[]) => [setTokenChart({ chartData })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((chartData: any[]) => [setTokenChart({ chartData }), setTokenChartLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTokenChartLoading({ loading: false })])
+  );
+
+export const fetchTokenLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TOKEN'),
+    map(() => {
+      return setTokenLoading({ loading: true });
+    })
   );
 
 export const fetchToken: Epic = action$ =>
@@ -66,6 +99,6 @@ export const fetchToken: Epic = action$ =>
     }),
     flatMap(response => response.json()),
     map(body => body as any),
-    flatMap((token: any) => [setToken({ token })]),
-    catchError((error: Error) => [console.log(error)])
+    flatMap((token: any) => [setToken({ token }), setTokenLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTokenLoading({ loading: false })])
   );

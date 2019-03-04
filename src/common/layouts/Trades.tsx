@@ -9,13 +9,15 @@ import moment from 'moment';
 import './Trades.scss';
 import Pagination from 'rc-pagination';
 import { Link } from 'found';
+import Loading from '../components/Loading';
 
 const mapStateToProps = state => {
   return {
     trades: state.trade.trades,
     page: state.trade.page,
     pageSize: state.trade.pageSize,
-    total: state.trade.total
+    total: state.trade.total,
+    tradesLoading: state.token.tradesLoading
   };
 };
 
@@ -26,7 +28,7 @@ class Trades extends React.Component<any, any> {
   // }
 
   public render() {
-    const { trades, page, pageSize, total } = this.props;
+    const { trades, page, pageSize, total, tradesLoading } = this.props;
     return (
       <div className="Trades">
         <Header />
@@ -36,65 +38,69 @@ class Trades extends React.Component<any, any> {
               <div className="main-title">TRADES</div>
             </div>
             <div className="main-body">
-              <table className="main-table">
-                <thead>
-                  <tr>
-                    <td className="pair">Pair</td>
-                    <td className="trade-price">Trade Price</td>
-                    <td className="buyer">Buyer</td>
-                    <td className="buy-amount">Buy Amount</td>
-                    <td className="sell-amount">Sell Amount</td>
-                    <td className="seller">Seller</td>
-                    <td className="transaction">Trascation</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {trades.map(trade => {
-                    return (
-                      <tr key={trade.ID}>
-                        <td className="pair">
-                          <Link className="link" to={`/trades/${trade.uuid}`}>
-                            <div className="main">{`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}</div>
-                          </Link>
+              {tradesLoading ? (
+                <Loading />
+              ) : (
+                <table className="main-table">
+                  <thead>
+                    <tr>
+                      <td className="pair">Pair</td>
+                      <td className="trade-price">Trade Price</td>
+                      <td className="buyer">Buyer</td>
+                      <td className="buy-amount">Buy Amount</td>
+                      <td className="sell-amount">Sell Amount</td>
+                      <td className="seller">Seller</td>
+                      <td className="transaction">Trascation</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {trades.map(trade => {
+                      return (
+                        <tr key={trade.ID}>
+                          <td className="pair">
+                            <Link className="link" to={`/trades/${trade.uuid}`}>
+                              <div className="main">{`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}</div>
+                            </Link>
 
-                          <div className="secondary">{moment(trade.date).fromNow()}</div>
-                        </td>
+                            <div className="secondary">{moment(trade.date).fromNow()}</div>
+                          </td>
 
-                        <td className="trade-price">
-                          <div className="main">
-                            {formatAmount(new BigNumber(trade.quoteTokenAmount).div(trade.baseTokenAmount).toFixed())}
-                          </div>
-                          <div className="secondary">
-                            {formatPriceUsd(
-                              new BigNumber(trade.quoteTokenAmount)
-                                .div(trade.baseTokenAmount)
-                                .times(trade.quoteTokenPriceUSD)
-                                .toFixed()
-                            )}
-                          </div>
-                        </td>
-                        <td className="buyer">
-                          <div className="main">{formatAddress(trade.makerAddress)}</div>
-                          <div className="secondary">maker</div>
-                        </td>
-                        <td className="buy-amount">
-                          <div className="main">{formatAmount(trade.baseTokenAmount)}</div>
-                          <div className="secondary">{trade.baseToken.symbol}</div>
-                        </td>
-                        <td className="sell-amount">
-                          <div className="main">{formatAmount(trade.quoteTokenAmount)}</div>
-                          <div className="secondary">{trade.quoteToken.symbol}</div>
-                        </td>
-                        <td className="seller">
-                          <div className="main">{formatAddress(trade.takerAddress)}</div>
-                          <div className="secondary">taker</div>
-                        </td>
-                        <td className="transaction">{formatAddress(trade.transactionHash)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                          <td className="trade-price">
+                            <div className="main">
+                              {formatAmount(new BigNumber(trade.quoteTokenAmount).div(trade.baseTokenAmount).toFixed())}
+                            </div>
+                            <div className="secondary">
+                              {formatPriceUsd(
+                                new BigNumber(trade.quoteTokenAmount)
+                                  .div(trade.baseTokenAmount)
+                                  .times(trade.quoteTokenPriceUSD)
+                                  .toFixed()
+                              )}
+                            </div>
+                          </td>
+                          <td className="buyer">
+                            <div className="main">{formatAddress(trade.makerAddress)}</div>
+                            <div className="secondary">maker</div>
+                          </td>
+                          <td className="buy-amount">
+                            <div className="main">{formatAmount(trade.baseTokenAmount)}</div>
+                            <div className="secondary">{trade.baseToken.symbol}</div>
+                          </td>
+                          <td className="sell-amount">
+                            <div className="main">{formatAmount(trade.quoteTokenAmount)}</div>
+                            <div className="secondary">{trade.quoteToken.symbol}</div>
+                          </td>
+                          <td className="seller">
+                            <div className="main">{formatAddress(trade.takerAddress)}</div>
+                            <div className="secondary">taker</div>
+                          </td>
+                          <td className="transaction">{formatAddress(trade.transactionHash)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
           <div className="pagination-wrapper">

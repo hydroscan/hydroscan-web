@@ -5,19 +5,6 @@ export const fetchTrades = payload => {
   };
 };
 
-export const fetchTradesLatest = () => {
-  return {
-    type: 'FETCH_TRADES_LATEST'
-  };
-};
-
-export const setTradesLatest = payload => {
-  return {
-    type: 'SET_TRADES_LATEST',
-    payload
-  };
-};
-
 export const setTrades = payload => {
   return {
     type: 'SET_TRADES',
@@ -32,6 +19,26 @@ export const setTradesLoading = payload => {
   };
 };
 
+export const fetchTradesLatest = () => {
+  return {
+    type: 'FETCH_TRADES_LATEST'
+  };
+};
+
+export const setTradesLatest = payload => {
+  return {
+    type: 'SET_TRADES_LATEST',
+    payload
+  };
+};
+
+export const setTradesLatestLoading = payload => {
+  return {
+    type: 'SET_TRADES_LATEST_LOADING',
+    payload
+  };
+};
+
 export const fetchTradesIndicators = () => {
   return {
     type: 'FETCH_TRADES_INDICATORS'
@@ -41,6 +48,13 @@ export const fetchTradesIndicators = () => {
 export const setTradesIndicators = payload => {
   return {
     type: 'SET_TRADES_INDICATORS',
+    payload
+  };
+};
+
+export const setTradesIndicatorsLoading = payload => {
+  return {
+    type: 'SET_TRADES_INDICATORS_LOADING',
     payload
   };
 };
@@ -59,6 +73,13 @@ export const setTradesChart = payload => {
   };
 };
 
+export const setTradesChartLoading = payload => {
+  return {
+    type: 'SET_TRADES_CHART_LOADING',
+    payload
+  };
+};
+
 export const fetchTrade = payload => {
   return {
     type: 'FETCH_TRADE',
@@ -69,6 +90,13 @@ export const fetchTrade = payload => {
 export const setTrade = payload => {
   return {
     type: 'SET_TRADE',
+    payload
+  };
+};
+
+export const setTradeLoading = payload => {
+  return {
+    type: 'SET_TRADE_LOADING',
     payload
   };
 };

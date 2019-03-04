@@ -7,12 +7,14 @@ import { formatAddress, formatVolumeUsd, formatCount, formatPercent, formatAmoun
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
 import { getTokenLogoUrl } from '../lib/tokenLogo';
+import Loading from '../components/Loading';
 
 import './Token.scss';
 
 const mapStateToProps = state => {
   return {
-    token: state.token.token
+    token: state.token.token,
+    tokenLoading: state.token.tokenLoading
   };
 };
 
@@ -28,14 +30,14 @@ class Token extends React.Component<any, any> {
   }
 
   public render() {
-    const { token, params } = this.props;
-    if (!token.address) {
-      return (
-        <div className="Token">
-          <Header />
-        </div>
-      );
-    }
+    const { token, params, tokenLoading } = this.props;
+    // if (!token.address) {
+    //   return (
+    //     <div className="Token">
+    //       <Header />
+    //     </div>
+    //   );
+    // }
 
     return (
       <div className="Token">
@@ -44,66 +46,78 @@ class Token extends React.Component<any, any> {
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              <object data={getTokenLogoUrl(token.address)} type="image/png">
+              <object data={getTokenLogoUrl(params.address)} type="image/png">
                 <div className="default-img" />
               </object>
-              <div className="main-title">{`TOKENS - ${token.name} (${token.symbol})`}</div>
+              {!tokenLoading && <div className="main-title">{`TOKENS - ${token.name} (${token.symbol})`}</div>}
             </div>
           </div>
           <div className="top-sections">
             <div className="token-info section-wrapper">
-              <div className="item">
-                <div className="item-label">Total Supply</div>
-                <div className="item-content">{formatAmountWithDecimals(token.totalSupply, token.decimals)}</div>
-              </div>
-              <div className="item">
-                <div className="item-label">Holders</div>
-                <div className="item-content">{formatCount(token.holdersCount)}</div>
-              </div>
-              <div className="item">
-                <div className="item-label">Contract Address</div>
-                <div className="item-content">
-                  <a className="link" href={`https://etherscan.io/address/${token.address}`} target="_blank">
-                    {formatAddress(token.address)}
-                  </a>
+              {tokenLoading ? (
+                <Loading />
+              ) : (
+                <div>
+                  <div className="item">
+                    <div className="item-label">Total Supply</div>
+                    <div className="item-content">{formatAmountWithDecimals(token.totalSupply, token.decimals)}</div>
+                  </div>
+                  <div className="item">
+                    <div className="item-label">Holders</div>
+                    <div className="item-content">{formatCount(token.holdersCount)}</div>
+                  </div>
+                  <div className="item">
+                    <div className="item-label">Contract Address</div>
+                    <div className="item-content">
+                      <a className="link" href={`https://etherscan.io/address/${token.address}`} target="_blank">
+                        {formatAddress(token.address)}
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="trades-info section-wrapper">
-              <div className="item">
-                <div className="item-label">24h Volume</div>
-                <div className="item-content">{formatVolumeUsd(token.volume24h)}</div>
-                <div className={'item-change-wrapper'}>
-                  <div className={`change ${this.changeClass(token.volume24hChange)}`}>
-                    {formatPercent(token.volume24hChange)}
+              {tokenLoading ? (
+                <Loading />
+              ) : (
+                <div>
+                  <div className="item">
+                    <div className="item-label">24h Volume</div>
+                    <div className="item-content">{formatVolumeUsd(token.volume24h)}</div>
+                    <div className={'item-change-wrapper'}>
+                      <div className={`change ${this.changeClass(token.volume24hChange)}`}>
+                        {formatPercent(token.volume24hChange)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="item">
+                    <div className="item-label">24h Trades</div>
+                    <div className="item-content">{formatCount(token.trades24h)}</div>
+                    <div className={'item-change-wrapper'}>
+                      <div className={`change ${this.changeClass(token.trades24hChange)}`}>
+                        {formatPercent(token.trades24hChange)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="item">
+                    <div className="item-label">24h Traders</div>
+                    <div className="item-content">{formatCount(token.traders24h)}</div>
+                    <div className={'item-change-wrapper'}>
+                      <div className={`change ${this.changeClass(token.traders24hChange)}`}>
+                        {formatPercent(token.traders24hChange)}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="item">
-                <div className="item-label">24h Trades</div>
-                <div className="item-content">{formatCount(token.trades24h)}</div>
-                <div className={'item-change-wrapper'}>
-                  <div className={`change ${this.changeClass(token.trades24hChange)}`}>
-                    {formatPercent(token.trades24hChange)}
-                  </div>
-                </div>
-              </div>
-              <div className="item">
-                <div className="item-label">24h Traders</div>
-                <div className="item-content">{formatCount(token.traders24h)}</div>
-                <div className={'item-change-wrapper'}>
-                  <div className={`change ${this.changeClass(token.traders24hChange)}`}>
-                    {formatPercent(token.traders24hChange)}
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
           <div className="chart-wrapper">
-            <Chart tokenAddress={token.address} />
+            <Chart tokenAddress={params.address} />
           </div>
           <div className="latest-trades-wrapper">
-            <LatestTrades tokenAddress={token.address} />
+            <LatestTrades tokenAddress={params.address} />
           </div>
         </div>
 
