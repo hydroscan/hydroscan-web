@@ -2,6 +2,15 @@
 
 .Token {
     .container {
+        .main-header {
+            display: flex;
+            align-items: center;
+            object {
+                max-height: 30px;
+                max-width: 30px;
+                margin-right: 8px;
+            }
+        }
         .main-body {
             padding: 30px;
             box-sizing: border-box;

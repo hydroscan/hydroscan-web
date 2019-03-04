@@ -41,9 +41,11 @@ const routes = (
     <Route
       path="/tokens"
       Component={Tokens}
-      getData={({ params, context }) =>
+      getData={({ params, context, location }) =>
         new Promise(resolve => {
-          context.store.dispatch(fetchTokens({}));
+          // back to tokens page: delta === -1
+          const page = location.delta === -1 ? context.store.getState().token.page : 1;
+          context.store.dispatch(fetchTokens({ page }));
           resolve({ store: context.store });
         })
       }
@@ -51,9 +53,11 @@ const routes = (
     <Route
       path="/trades"
       Component={Trades}
-      getData={({ params, context }) =>
+      getData={({ params, context, location }) =>
         new Promise(resolve => {
-          context.store.dispatch(fetchTrades({}));
+          // back to trades page: delta === -1
+          const page = location.delta === -1 ? context.store.getState().token.page : 1;
+          context.store.dispatch(fetchTrades({ page }));
           resolve({ store: context.store });
         })
       }

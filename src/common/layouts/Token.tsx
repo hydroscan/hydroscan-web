@@ -6,6 +6,7 @@ import { fetchToken, setToken } from '../actions/token';
 import { formatAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
+import { getTokenLogoUrl } from '../lib/tokenLogo';
 
 import './Token.scss';
 
@@ -43,6 +44,9 @@ class Token extends React.Component<any, any> {
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
+              <object data={getTokenLogoUrl(token.address)} type="image/png">
+                <div className="default-img" />
+              </object>
               <div className="main-title">{`TOKENS - ${token.name} (${token.symbol})`}</div>
             </div>
           </div>
