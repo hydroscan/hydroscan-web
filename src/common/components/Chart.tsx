@@ -25,15 +25,15 @@ class Chart extends React.PureComponent<any, any> {
     };
   }
 
-  public componentDidMount() {
-    const { dispatch, tokenAddress } = this.props;
-    const { currentTab } = this.state;
-    if (tokenAddress) {
-      dispatch(fetchTokenChart({ address: tokenAddress, filter: currentTab }));
-    } else {
-      dispatch(fetchTradesChart({ filter: currentTab }));
-    }
-  }
+  // public componentDidMount() {
+  //   const { dispatch, tokenAddress } = this.props;
+  //   const { currentTab } = this.state;
+  //   if (tokenAddress) {
+  //     dispatch(fetchTokenChart({ address: tokenAddress, filter: currentTab }));
+  //   } else {
+  //     dispatch(fetchTradesChart({ filter: currentTab }));
+  //   }
+  // }
 
   public render() {
     const { chartData, tokenAddress, dispatch } = this.props;

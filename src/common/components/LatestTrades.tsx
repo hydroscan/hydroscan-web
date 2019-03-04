@@ -18,14 +18,14 @@ const mapStateToProps = (state, props) => {
 };
 
 class LatestTrades extends React.PureComponent<any, any> {
-  public componentDidMount() {
-    const { dispatch, tokenAddress } = this.props;
-    if (tokenAddress) {
-      dispatch(fetchTrades({ tokenAddress }));
-    } else {
-      dispatch(fetchTradesLatest());
-    }
-  }
+  // public componentDidMount() {
+  //   const { dispatch, tokenAddress } = this.props;
+  //   if (tokenAddress) {
+  //     dispatch(fetchTrades({ tokenAddress }));
+  //   } else {
+  //     dispatch(fetchTradesLatest());
+  //   }
+  // }
 
   public render() {
     const { trades, page, pageSize, total, tokenAddress } = this.props;

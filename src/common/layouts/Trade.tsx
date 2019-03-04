@@ -14,10 +14,10 @@ const mapStateToProps = state => {
 };
 
 class Trade extends React.Component<any, any> {
-  public componentDidMount() {
-    const { dispatch, params } = this.props;
-    dispatch(fetchTrade({ uuid: params.uuid }));
-  }
+  // public componentDidMount() {
+  //   const { dispatch, params } = this.props;
+  //   dispatch(fetchTrade({ uuid: params.uuid }));
+  // }
 
   public render() {
     const { trade } = this.props;

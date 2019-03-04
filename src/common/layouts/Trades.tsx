@@ -20,10 +20,10 @@ const mapStateToProps = state => {
 };
 
 class Trades extends React.Component<any, any> {
-  public componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchTrades({ page: 1 }));
-  }
+  // public componentDidMount() {
+  //   const { dispatch } = this.props;
+  //   dispatch(fetchTrades({ page: 1 }));
+  // }
 
   public render() {
     const { trades, page, pageSize, total } = this.props;

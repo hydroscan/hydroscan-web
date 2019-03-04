@@ -13,10 +13,10 @@ const mapStateToProps = state => {
 };
 
 class Relayers extends React.Component<any, any> {
-  public componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchRelayers());
-  }
+  // public componentDidMount() {
+  //   const { dispatch } = this.props;
+  //   dispatch(fetchRelayers());
+  // }
 
   public render() {
     const { relayers } = this.props;

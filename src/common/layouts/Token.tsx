@@ -16,10 +16,10 @@ const mapStateToProps = state => {
 };
 
 class Token extends React.Component<any, any> {
-  public componentDidMount() {
-    const { dispatch, params } = this.props;
-    dispatch(fetchToken({ address: params.address }));
-  }
+  // public componentDidMount() {
+  //   const { dispatch, params } = this.props;
+  //   dispatch(fetchToken({ address: params.address }));
+  // }
 
   public componentWillUnmount() {
     const { dispatch } = this.props;

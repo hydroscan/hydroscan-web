@@ -8,6 +8,7 @@ import './Tokens.scss';
 import Pagination from 'rc-pagination';
 import moment from 'moment';
 import { Link } from 'found';
+import { getTokenLogoUrl } from '../lib/tokenLogo';
 
 const mapStateToProps = state => {
   return {
@@ -19,10 +20,10 @@ const mapStateToProps = state => {
 };
 
 class Tokens extends React.Component<any, any> {
-  public componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchTokens({ page: 1 }));
-  }
+  // public componentDidMount() {
+  //   const { dispatch } = this.props;
+  //   dispatch(fetchTokens({ page: 1 }));
+  // }
 
   public render() {
     const { tokens, page, pageSize, total } = this.props;
@@ -52,9 +53,7 @@ class Tokens extends React.Component<any, any> {
                       <tr key={token.ID}>
                         <td className="rank">{(page - 1) * pageSize + index + 1}</td>
                         <td className="token">
-                          <object
-                            data={`https://raw.githubusercontent.com/TrustWallet/tokens/master/tokens/${token.address.toLowerCase()}.png`}
-                            type="image/png">
+                          <object data={getTokenLogoUrl(token.address)} type="image/png">
                             <div className="default-img" />
                           </object>
                           <div>

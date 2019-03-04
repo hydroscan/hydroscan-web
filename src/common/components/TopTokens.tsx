@@ -20,11 +20,11 @@ class TopTokens extends React.PureComponent<any, any> {
     };
   }
 
-  public componentDidMount() {
-    const { currentTab } = this.state;
-    const { dispatch } = this.props;
-    dispatch(fetchTokensTop({ filter: currentTab }));
-  }
+  // public componentDidMount() {
+  //   const { currentTab } = this.state;
+  //   const { dispatch } = this.props;
+  //   dispatch(fetchTokensTop({ filter: currentTab }));
+  // }
 
   public render() {
     const { tabs, currentTab } = this.state;
