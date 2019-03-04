@@ -7,8 +7,8 @@ import Trades from './layouts/Trades';
 import Trade from './layouts/Trade';
 import Token from './layouts/Token';
 import NotFound from './layouts/NotFound';
-import { fetchTrades, fetchTrade, fetchTradesIndicators, fetchTradesChart, fetchTradesLatest } from './actions/trade';
-import { fetchTokens, fetchToken, fetchTokenChart, fetchTokensTop } from './actions/token';
+import { fetchTrades, fetchTrade, fetchTradesIndicators, fetchTradesChart } from './actions/trade';
+import { fetchTokens, fetchToken, fetchTokenChart } from './actions/token';
 import { fetchRelayers } from './actions/relayer';
 import { Providers } from './layouts/Providers';
 
@@ -18,11 +18,10 @@ const routes = (
       Component={Home}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          context.store.dispatch(fetchTradesLatest());
           context.store.dispatch(fetchTradesIndicators());
-          context.store.dispatch(fetchTradesChart({ filter: '1M' }));
-          context.store.dispatch(fetchTokensTop({ filter: '24H' }));
-          context.store.dispatch(fetchTradesLatest());
+          context.store.dispatch(fetchTradesChart({ tab: '1M' }));
+          context.store.dispatch(fetchTokens({ pageSize: 10, tab: '24H' }));
+          context.store.dispatch(fetchTrades({ pageSize: 8 }));
 
           resolve({ store: context.store });
         })
@@ -79,7 +78,7 @@ const routes = (
         new Promise(resolve => {
           context.store.dispatch(fetchToken({ address: params.address }));
           context.store.dispatch(fetchTrades({ tokenAddress: params.address }));
-          context.store.dispatch(fetchTokenChart({ address: params.address, filter: '1M' }));
+          context.store.dispatch(fetchTokenChart({ address: params.address, tab: '1M' }));
           resolve({ store: context.store });
         })
       }

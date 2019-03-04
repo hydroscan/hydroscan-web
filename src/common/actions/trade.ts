@@ -19,26 +19,6 @@ export const setTradesLoading = payload => {
   };
 };
 
-export const fetchTradesLatest = () => {
-  return {
-    type: 'FETCH_TRADES_LATEST'
-  };
-};
-
-export const setTradesLatest = payload => {
-  return {
-    type: 'SET_TRADES_LATEST',
-    payload
-  };
-};
-
-export const setTradesLatestLoading = payload => {
-  return {
-    type: 'SET_TRADES_LATEST_LOADING',
-    payload
-  };
-};
-
 export const fetchTradesIndicators = () => {
   return {
     type: 'FETCH_TRADES_INDICATORS'

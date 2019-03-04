@@ -11,8 +11,8 @@ const initialState: any = {
   chartData: [],
   chartDataLoading: false,
 
-  tradesLatest: [],
-  tradesLatestLoading: false,
+  // tradesLatest: [],
+  // tradesLatestLoading: false,
 
   trade: {},
   tradeLoading: false
@@ -29,17 +29,6 @@ const trade = (state: any = initialState, action: any): any => {
       return {
         ...state,
         tradesLoading: action.payload.loading
-      };
-
-    case 'SET_TRADES_LATEST':
-      return {
-        ...state,
-        tradesLatest: action.payload.tradesLatest
-      };
-    case 'SET_TRADES_LATEST_LOADING':
-      return {
-        ...state,
-        tradesLatestLoading: action.payload.loading
       };
 
     case 'SET_TRADES_INDICATORS':

@@ -19,27 +19,6 @@ export const setTokensLoading = payload => {
   };
 };
 
-export const fetchTokensTop = payload => {
-  return {
-    type: 'FETCH_TOKENS_TOP',
-    payload
-  };
-};
-
-export const setTokensTop = payload => {
-  return {
-    type: 'SET_TOKENS_TOP',
-    payload
-  };
-};
-
-export const setTokensTopLoading = payload => {
-  return {
-    type: 'SET_TOKENS_TOP_LOADING',
-    payload
-  };
-};
-
 export const fetchTokenChart = payload => {
   return {
     type: 'FETCH_TOKEN_CHART',

@@ -3,8 +3,6 @@ import { catchError, filter, flatMap, map } from 'rxjs/operators';
 import {
   setTokens,
   setTokensLoading,
-  setTokensTop,
-  setTokensTopLoading,
   setToken,
   setTokenLoading,
   setTokenChart,
@@ -25,7 +23,10 @@ export const fetchTokens: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKENS'),
     flatMap(action => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/tokens?page=${action.payload.page || 1}`);
+      const { page, pageSize, tab } = action.payload;
+      return fetch(
+        `${HYDROSCAN_API_URL}/api/v1/tokens?page=${page || 1}&pageSize=${pageSize || 25}&filter=${tab || '24H'}`
+      );
     }),
     flatMap(response => response.json()),
     map(body => body as any),
@@ -41,26 +42,6 @@ export const fetchTokens: Epic = action$ =>
     catchError((error: Error) => [console.log(error), setTokensLoading({ loading: false })])
   );
 
-export const fetchTokensTopLoading: Epic = action$ =>
-  action$.pipe(
-    filter(action => action.type === 'FETCH_TOKENS_TOP'),
-    map(() => {
-      return setTokensTopLoading({ loading: true });
-    })
-  );
-
-export const fetchTokensTop: Epic = action$ =>
-  action$.pipe(
-    filter(action => action.type === 'FETCH_TOKENS_TOP'),
-    flatMap(action => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/tokens?pageSize=10&filter=${action.payload.filter || '24H'}`);
-    }),
-    flatMap(response => response.json()),
-    map(body => body as any),
-    flatMap((json: any) => [setTokensTop({ tokensTop: json.tokens }), setTokensTopLoading({ loading: false })]),
-    catchError((error: Error) => [console.log(error), setTokensTopLoading({ loading: false })])
-  );
-
 export const fetchTokenChartLoading: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKEN_CHART'),
@@ -74,7 +55,7 @@ export const fetchTokenChart: Epic = action$ =>
     filter(action => action.type === 'FETCH_TOKEN_CHART'),
     flatMap(action => {
       return fetch(
-        `${HYDROSCAN_API_URL}/api/v1/tokens/${action.payload.address}/chart?filter=${action.payload.filter || '1M'}`
+        `${HYDROSCAN_API_URL}/api/v1/tokens/${action.payload.address}/chart?filter=${action.payload.tab || '1M'}`
       );
     }),
     flatMap(response => response.json()),

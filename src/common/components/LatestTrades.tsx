@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './LatestTrades.scss';
-import { fetchTradesLatest, fetchTrades } from '../actions/trade';
+import { fetchTrades } from '../actions/trade';
 import { formatAmount, formatPriceUsd, formatAddress, formatCount } from '../lib/formatter';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
@@ -11,24 +11,15 @@ import Loading from '../components/Loading';
 
 const mapStateToProps = (state, props) => {
   return {
-    trades: props.tokenAddress ? state.trade.trades : state.trade.tradesLatest,
+    trades: state.trade.trades,
     page: state.trade.page,
     pageSize: state.trade.pageSize,
     total: state.trade.total,
-    tradesLoading: props.tokenAddress ? state.trade.tradesLoading : state.trade.tradesLatestLoading
+    tradesLoading: state.trade.tradesLoading
   };
 };
 
 class LatestTrades extends React.PureComponent<any, any> {
-  // public componentDidMount() {
-  //   const { dispatch, tokenAddress } = this.props;
-  //   if (tokenAddress) {
-  //     dispatch(fetchTrades({ tokenAddress }));
-  //   } else {
-  //     dispatch(fetchTradesLatest());
-  //   }
-  // }
-
   public render() {
     const { trades, page, pageSize, total, tokenAddress, tradesLoading } = this.props;
     return (

@@ -8,9 +8,7 @@ import {
   setTradesChart,
   setTradesChartLoading,
   setTrade,
-  setTradeLoading,
-  setTradesLatest,
-  setTradesLatestLoading
+  setTradeLoading
 } from '../actions/trade';
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
@@ -31,8 +29,11 @@ export const fetchTrades: Epic = action$ =>
       return action;
     }),
     flatMap(action => {
-      const { page, tokenAddress } = action.payload;
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&tokenAddress=${tokenAddress || ''}`);
+      const { page, pageSize, tokenAddress } = action.payload;
+      return fetch(
+        `${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&pageSize=${pageSize || 25}&tokenAddress=${tokenAddress ||
+          ''}`
+      );
     }),
     flatMap(response => response.json()),
     map(body => body as any),
@@ -46,29 +47,6 @@ export const fetchTrades: Epic = action$ =>
       setTradesLoading({ loading: false })
     ]),
     catchError((error: Error) => [console.log(error), setTradesLoading({ loading: false })])
-  );
-
-export const fetchTradesLatestLoading: Epic = action$ =>
-  action$.pipe(
-    filter(action => action.type === 'FETCH_TRADES_LATEST'),
-    map(() => {
-      return setTradesLatestLoading({ loading: true });
-    })
-  );
-
-export const fetchTradesLatest: Epic = action$ =>
-  action$.pipe(
-    filter(action => action.type === 'FETCH_TRADES_LATEST'),
-    flatMap(() => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades?pageSize=8`);
-    }),
-    flatMap(response => response.json()),
-    map(body => body as any),
-    flatMap((json: any) => [
-      setTradesLatest({ tradesLatest: json.trades }),
-      setTradesLatestLoading({ loading: false })
-    ]),
-    catchError((error: Error) => [console.log(error), setTradesLatestLoading({ loading: false })])
   );
 
 export const fetchTradesIndicatorsLoading: Epic = action$ =>
@@ -103,7 +81,7 @@ export const fetchTradesChart: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_CHART'),
     flatMap(action => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${action.payload.filter || '1M'}`);
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${action.payload.tab || '1M'}`);
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),

@@ -27,16 +27,6 @@ class Chart extends React.PureComponent<any, any> {
     };
   }
 
-  // public componentDidMount() {
-  //   const { dispatch, tokenAddress } = this.props;
-  //   const { currentTab } = this.state;
-  //   if (tokenAddress) {
-  //     dispatch(fetchTokenChart({ address: tokenAddress, filter: currentTab }));
-  //   } else {
-  //     dispatch(fetchTradesChart({ filter: currentTab }));
-  //   }
-  // }
-
   public render() {
     const { chartData, tokenAddress, dispatch, chartDataLoading } = this.props;
     const { currentTab, tabs, currentSection, sections } = this.state;
@@ -70,9 +60,9 @@ class Chart extends React.PureComponent<any, any> {
               clickTab={tab => {
                 this.setState({ currentTab: tab });
                 if (tokenAddress) {
-                  dispatch(fetchTokenChart({ address: tokenAddress, filter: tab }));
+                  dispatch(fetchTokenChart({ address: tokenAddress, tab }));
                 } else {
-                  dispatch(fetchTradesChart({ filter: tab }));
+                  dispatch(fetchTradesChart({ tab }));
                 }
               }}
             />

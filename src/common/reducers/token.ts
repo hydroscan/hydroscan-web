@@ -5,9 +5,6 @@ const initialState: any = {
   total: 0,
   tokensLoading: false,
 
-  tokensTop: [],
-  tokensTopLoading: false,
-
   chartData: [],
   chartDataLoading: false,
 
@@ -26,17 +23,6 @@ const token = (state: any = initialState, action: any): any => {
       return {
         ...state,
         tokensLoading: action.payload.loading
-      };
-
-    case 'SET_TOKENS_TOP':
-      return {
-        ...state,
-        tokensTop: action.payload.tokensTop
-      };
-    case 'SET_TOKENS_TOP_LOADING':
-      return {
-        ...state,
-        tokensTopLoading: action.payload.loading
       };
 
     case 'SET_TOKEN_CHART':

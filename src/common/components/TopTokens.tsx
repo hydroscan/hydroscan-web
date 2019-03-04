@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './TopTokens.scss';
-import { fetchTokensTop } from '../actions/token';
+import { fetchTokens } from '../actions/token';
 import { formatVolumeUsd, formatPercent } from '../lib/formatter';
 import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
 
 const mapStateToProps = state => {
   return {
-    tokens: state.token.tokensTop,
-    tokensLoading: state.token.tokensTopLoading
+    tokens: state.token.tokens,
+    tokensLoading: state.token.tokensLoading
   };
 };
 
@@ -21,12 +21,6 @@ class TopTokens extends React.PureComponent<any, any> {
       tabs: ['24H', '7D', 'ALL']
     };
   }
-
-  // public componentDidMount() {
-  //   const { currentTab } = this.state;
-  //   const { dispatch } = this.props;
-  //   dispatch(fetchTokensTop({ filter: currentTab }));
-  // }
 
   public render() {
     const { tabs, currentTab } = this.state;
@@ -43,7 +37,7 @@ class TopTokens extends React.PureComponent<any, any> {
               tabs={tabs}
               clickTab={tab => {
                 this.setState({ currentTab: tab });
-                dispatch(fetchTokensTop({ filter: tab }));
+                dispatch(fetchTokens({ pageSize: 10, tab }));
               }}
             />
           </div>
