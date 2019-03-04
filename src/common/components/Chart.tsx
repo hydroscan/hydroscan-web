@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Chart.scss';
 import { fetchTradesChart } from '../actions/trade';
-import { fetchTokenChart } from '../actions/token';
 import { ComposedChart, Area, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
 import { formatVolumeUsdShort, formatCountShort } from '../lib/formatter';
@@ -11,8 +10,8 @@ import Loading from '../components/Loading';
 
 const mapStateToProps = (state, props) => {
   return {
-    chartData: props.tokenAddress ? state.token.chartData : state.trade.chartData,
-    chartDataLoading: props.tokenAddress ? state.token.chartDataLoading : state.trade.chartDataLoading
+    chartData: state.trade.chartData,
+    chartDataLoading: state.trade.chartDataLoading
   };
 };
 
@@ -59,11 +58,7 @@ class Chart extends React.PureComponent<any, any> {
               tabs={tabs}
               clickTab={tab => {
                 this.setState({ currentTab: tab });
-                if (tokenAddress) {
-                  dispatch(fetchTokenChart({ address: tokenAddress, tab }));
-                } else {
-                  dispatch(fetchTradesChart({ tab }));
-                }
+                dispatch(fetchTradesChart({ tokenAddress, tab }));
               }}
             />
           </div>

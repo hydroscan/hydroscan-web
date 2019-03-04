@@ -22,20 +22,20 @@ const mapStateToProps = state => {
 };
 
 class Trades extends React.Component<any, any> {
-  // public componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   dispatch(fetchTrades({ page: 1 }));
-  // }
-
   public render() {
-    const { trades, page, pageSize, total, tradesLoading } = this.props;
+    const { trades, page, pageSize, total, tradesLoading, location } = this.props;
+    const { baseTokenAddress, quoteTokenAddress } = location.query;
     return (
       <div className="Trades">
         <Header />
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              <div className="main-title">TRADES</div>
+              <div className="main-title">
+                {baseTokenAddress && quoteTokenAddress && trades[0]
+                  ? `All Trades - ${trades[0].baseToken.symbol}/${trades[0].quoteToken.symbol}`
+                  : 'All Trades'}
+              </div>
             </div>
             <div className="main-body">
               {tradesLoading ? (
@@ -58,7 +58,11 @@ class Trades extends React.Component<any, any> {
                       return (
                         <tr key={trade.ID}>
                           <td className="pair">
-                            <Link className="link" to={`/trades/${trade.uuid}`}>
+                            <Link
+                              className="link"
+                              to={`/trades/?baseTokenAddress=${trade.baseToken.address}&quoteTokenAddress=${
+                                trade.quoteToken.address
+                              }`}>
                               <div className="main">{`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}</div>
                             </Link>
 
@@ -94,7 +98,11 @@ class Trades extends React.Component<any, any> {
                             <div className="main">{formatAddress(trade.takerAddress)}</div>
                             <div className="secondary">taker</div>
                           </td>
-                          <td className="transaction">{formatAddress(trade.transactionHash)}</td>
+                          <td className="transaction">
+                            <Link className="link" to={`/trades/${trade.uuid}`}>
+                              {formatAddress(trade.transactionHash)}
+                            </Link>
+                          </td>
                         </tr>
                       );
                     })}
@@ -121,9 +129,10 @@ class Trades extends React.Component<any, any> {
     );
   }
 
-  public handlePageChange(current, size) {
-    const { dispatch } = this.props;
-    dispatch(fetchTrades({ page: current }));
+  public handlePageChange(page, size) {
+    const { dispatch, location } = this.props;
+    const { baseTokenAddress, quoteTokenAddress } = location.query;
+    dispatch(fetchTrades({ page, baseTokenAddress, quoteTokenAddress }));
   }
 }
 

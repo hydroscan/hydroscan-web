@@ -110,9 +110,9 @@ class Tokens extends React.Component<any, any> {
     );
   }
 
-  public handlePageChange(current, size) {
+  public handlePageChange(page, size) {
     const { dispatch } = this.props;
-    dispatch(fetchTokens({ page: current }));
+    dispatch(fetchTokens({ page }));
   }
 }
 

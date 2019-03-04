@@ -29,10 +29,10 @@ export const fetchTrades: Epic = action$ =>
       return action;
     }),
     flatMap(action => {
-      const { page, pageSize, tokenAddress } = action.payload;
+      const { page, pageSize, tokenAddress, baseTokenAddress, quoteTokenAddress } = action.payload;
       return fetch(
         `${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&pageSize=${pageSize || 25}&tokenAddress=${tokenAddress ||
-          ''}`
+          ''}&baseTokenAddress=${baseTokenAddress || ''}&quoteTokenAddress=${quoteTokenAddress || ''}`
       );
     }),
     flatMap(response => response.json()),
@@ -81,7 +81,11 @@ export const fetchTradesChart: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADES_CHART'),
     flatMap(action => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${action.payload.tab || '1M'}`);
+      const { tab, tokenAddress, traderAddress, relayerAddress } = action.payload;
+      return fetch(
+        `${HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${tab || '1M'}&tokenAddress=${tokenAddress ||
+          ''}&traderAddress=${traderAddress || ''}&relayerAddress=${relayerAddress || ''}`
+      );
     }),
     flatMap(response => response.json()),
     map(body => body as any[]),

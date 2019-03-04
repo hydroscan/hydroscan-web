@@ -8,7 +8,7 @@ import Trade from './layouts/Trade';
 import Token from './layouts/Token';
 import NotFound from './layouts/NotFound';
 import { fetchTrades, fetchTrade, fetchTradesIndicators, fetchTradesChart } from './actions/trade';
-import { fetchTokens, fetchToken, fetchTokenChart } from './actions/token';
+import { fetchTokens, fetchToken } from './actions/token';
 import { fetchRelayers } from './actions/relayer';
 import { Providers } from './layouts/Providers';
 
@@ -55,8 +55,10 @@ const routes = (
       getData={({ params, context, location }) =>
         new Promise(resolve => {
           // back to trades page: delta === -1
-          const page = location.delta === -1 ? context.store.getState().token.page : 1;
-          context.store.dispatch(fetchTrades({ page }));
+          // const page = location.delta === -1 ? context.store.getState().token.page : 1;
+          const page = 1;
+          const { baseTokenAddress, quoteTokenAddress } = location.query;
+          context.store.dispatch(fetchTrades({ page, baseTokenAddress, quoteTokenAddress }));
           resolve({ store: context.store });
         })
       }
@@ -78,7 +80,7 @@ const routes = (
         new Promise(resolve => {
           context.store.dispatch(fetchToken({ address: params.address }));
           context.store.dispatch(fetchTrades({ tokenAddress: params.address }));
-          context.store.dispatch(fetchTokenChart({ address: params.address, tab: '1M' }));
+          context.store.dispatch(fetchTradesChart({ tokenAddress: params.address, tab: '1M' }));
           resolve({ store: context.store });
         })
       }
