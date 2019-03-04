@@ -50,7 +50,7 @@ class Trades extends React.Component<any, any> {
                       <td className="buy-amount">Buy Amount</td>
                       <td className="sell-amount">Sell Amount</td>
                       <td className="seller">Seller</td>
-                      <td className="transaction">Trascation</td>
+                      <td className="transaction">Transaction</td>
                     </tr>
                   </thead>
                   <tbody>
