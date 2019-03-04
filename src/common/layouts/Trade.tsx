@@ -23,9 +23,7 @@ class Trade extends React.Component<any, any> {
 
   public render() {
     const { trade, tradeLoading } = this.props;
-    if (!trade.uuid) {
-      return '';
-    }
+
     return (
       <div className="Trade">
         <Header />

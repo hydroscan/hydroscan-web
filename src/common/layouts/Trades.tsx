@@ -17,7 +17,7 @@ const mapStateToProps = state => {
     page: state.trade.page,
     pageSize: state.trade.pageSize,
     total: state.trade.total,
-    tradesLoading: state.token.tradesLoading
+    tradesLoading: state.trade.tradesLoading
   };
 };
 
