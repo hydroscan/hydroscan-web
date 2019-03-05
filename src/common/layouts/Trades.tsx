@@ -83,7 +83,11 @@ class Trades extends React.Component<any, any> {
                             </div>
                           </td>
                           <td className="buyer">
-                            <div className="main">{formatAddress(trade.makerAddress)}</div>
+                            <div className="main">
+                              <Link className="link" to={`/traders/${trade.makerAddress}`}>
+                                {formatAddress(trade.makerAddress)}
+                              </Link>
+                            </div>
                             <div className="secondary">maker</div>
                           </td>
                           <td className="buy-amount">
@@ -95,7 +99,11 @@ class Trades extends React.Component<any, any> {
                             <div className="secondary">{trade.quoteToken.symbol}</div>
                           </td>
                           <td className="seller">
-                            <div className="main">{formatAddress(trade.takerAddress)}</div>
+                            <div className="main">
+                              <Link className="link" to={`/traders/${trade.takerAddress}`}>
+                                {formatAddress(trade.takerAddress)}
+                              </Link>
+                            </div>
                             <div className="secondary">taker</div>
                           </td>
                           <td className="transaction">

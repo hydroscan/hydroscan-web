@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>link</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Relayer---Detail" transform="translate(-435.000000, -158.000000)">
+            <g id="Group-4" transform="translate(70.000000, 152.000000)">
+                <g id="Group-2">
+                    <g id="link" transform="translate(365.000000, 6.000000)">
+                        <circle id="Oval" fill="#F1F3F4" fill-rule="nonzero" cx="15" cy="15" r="15"></circle>
+                        <polygon id="Path" fill="#6872E0" points="19.8398792 20.9941027 9.00589728 20.9941027 9.00589728 10.1601208 14.4228882 10.1601208 14.4228882 11.3202417 10.1660181 11.3202417 10.1660181 19.8339819 18.6797583 19.8339819 18.6797583 15.5771118 19.8398792 15.5771118"></polygon>
+                        <polygon id="Path" fill="#6872E0" points="19.9149003 9.26450755 20.7354924 10.0850997 15.4167251 15.4038671 14.5961329 14.5840483"></polygon>
+                        <polygon id="Path" fill="#6872E0" points="20.9899456 12.5607976 19.8298248 12.5607976 19.8298248 10.1601208 17.3162296 10.1601208 17.3162296 9 20.9899456 9"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

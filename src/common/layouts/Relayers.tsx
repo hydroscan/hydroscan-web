@@ -56,7 +56,12 @@ class Relayers extends React.Component<any, any> {
                               {relayer.url}
                             </a>
                           </td>
-                          <td>{relayer.address}</td>
+                          <td>
+                            {' '}
+                            <Link className="link" to={`/relayers/${relayer.slug}`}>
+                              {relayer.address}
+                            </Link>
+                          </td>
                         </tr>
                       );
                     })}

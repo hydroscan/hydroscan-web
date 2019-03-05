@@ -28,8 +28,45 @@
             }
         }
 
+        object {
+            height: 20px;
+            width: 20px;
+            margin-right: $padding;
+        }
+
+        .default-img {
+            height: 20px;
+            width: 20px;
+            margin-right: $padding;
+            background-color: $color-token-icon;
+            border-radius: 10px;
+        }
+
         .top-sections {
             display: flex;
+
+            .info-title {
+                color: $color-gray-dark;
+                font-size: $font-size-lg;
+                padding-bottom: 15px;
+
+                .info-link {
+                    float: right;
+                    margin-top: -22px;
+                }
+
+                .view-more {
+                    width: 95px;
+                    height: 25px;
+                    border-radius: 13px;
+                    background-color: $color-gray-light;
+                    font-size: $font-size-md;
+                    color: $color-secondary;
+                    cursor: pointer;
+                    text-align: center;
+                    line-height: 25px;
+                }
+            }
 
             .left-info {
                 width: 50%;
@@ -43,23 +80,6 @@
                     }
                     .item-content {
                         width: 70%;
-                        text-align: right;
-                    }
-                }
-            }
-
-            .right-info {
-                width: 50%;
-                margin-left: $padding;
-                padding: $padding 30px;
-                min-height: 150px;
-
-                .item {
-                    .item-label {
-                        width: 30%;
-                    }
-                    .item-content {
-                        width: 50%;
                         text-align: right;
                     }
                     .item-change-wrapper {
@@ -91,6 +111,28 @@
                                 background-color: $color-gray-light;
                             }
                         }
+                    }
+                }
+            }
+
+            .right-info {
+                width: 50%;
+                margin-left: $padding;
+                padding: $padding 30px;
+                min-height: 150px;
+
+                .item {
+                    .item-label {
+                        width: 40%;
+                        font-weight: 500;
+                    }
+                    .item-content {
+                        width: 30%;
+                        text-align: right;
+                    }
+                    .item-change-wrapper {
+                        width: 20%;
+                        text-align: right;
                     }
                 }
             }

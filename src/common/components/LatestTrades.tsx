@@ -49,7 +49,15 @@ class LatestTrades extends React.PureComponent<any, any> {
                   return (
                     <tr key={trade.ID}>
                       <td className="pair">
-                        <div className="pair-main">{`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}</div>
+                        <div className="pair-main">
+                          <Link
+                            className="link"
+                            to={`/trades/?baseTokenAddress=${trade.baseToken.address}&quoteTokenAddress=${
+                              trade.quoteToken.address
+                            }`}>
+                            {`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}
+                          </Link>
+                        </div>
                         <div className="pair-secondary">{moment(trade.date).fromNow()}</div>
                       </td>
                       <td className="trade-price">
@@ -65,11 +73,23 @@ class LatestTrades extends React.PureComponent<any, any> {
                           )}
                         </div>
                       </td>
-                      <td className="buyer">{formatAddress(trade.makerAddress)}</td>
+                      <td className="buyer">
+                        <Link className="link" to={`/traders/${trade.makerAddress}`}>
+                          {formatAddress(trade.makerAddress)}
+                        </Link>
+                      </td>
                       <td className="buy-amount">{formatAmount(trade.baseTokenAmount)}</td>
                       <td className="sell-amount">{formatAmount(trade.quoteTokenAmount)}</td>
-                      <td className="seller">{formatAddress(trade.takerAddress)}</td>
-                      <td className="transaction">{formatAddress(trade.transactionHash)}</td>
+                      <td className="seller">
+                        <Link className="link" to={`/traders/${trade.takerAddress}`}>
+                          {formatAddress(trade.takerAddress)}
+                        </Link>
+                      </td>
+                      <td className="transaction">
+                        <Link className="link" to={`/trades/${trade.uuid}`}>
+                          {formatAddress(trade.transactionHash)}
+                        </Link>
+                      </td>
                     </tr>
                   );
                 })}
@@ -77,7 +97,7 @@ class LatestTrades extends React.PureComponent<any, any> {
             </table>
           )}
         </div>
-        {tokenAddress ? (
+        {tokenAddress || relayerAddress || traderAddress ? (
           <div className="pagination-wrapper">
             <div className="showing-range">
               {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}

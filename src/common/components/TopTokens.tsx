@@ -5,6 +5,7 @@ import { fetchTokens } from '../actions/token';
 import { formatVolumeUsd, formatPercent } from '../lib/formatter';
 import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
+import { Link } from 'found';
 
 const mapStateToProps = state => {
   return {
@@ -61,7 +62,11 @@ class TopTokens extends React.PureComponent<any, any> {
                   return (
                     <tr key={token.ID}>
                       <td className="rank">{index + 1}</td>
-                      <td className="token">{token.name}</td>
+                      <td className="token">
+                        <Link className="link" to={`/tokens/${token.address}`}>
+                          {token.name}
+                        </Link>
+                      </td>
                       <td className="volume">{formatVolumeUsd(token[volumeKey])}</td>
                       {currentTab !== 'ALL' && (
                         <td className={`change ${token[changeKey] >= 0 ? 'green' : 'red'}`}>

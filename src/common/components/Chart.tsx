@@ -89,17 +89,28 @@ class Chart extends React.PureComponent<any, any> {
                     return currentSection === 'VOLUME' ? formatVolumeUsdShort(tick) : formatCountShort(tick);
                   }}
                 />
-                <YAxis
-                  height={50}
-                  yAxisId="traders"
-                  tickFormatter={tick => {
-                    return formatCountShort(tick);
-                  }}
-                  orientation="right"
-                />
+                {!traderAddress && (
+                  <YAxis
+                    height={50}
+                    yAxisId="traders"
+                    tickFormatter={tick => {
+                      return formatCountShort(tick);
+                    }}
+                    orientation="right"
+                  />
+                )}
                 <Tooltip />
                 <Legend />
-                <Bar type="monotone" dataKey="traders" yAxisId="traders" barSize={10} stroke="#f1f3f4" fill="#f1f3f4" />
+                {!traderAddress && (
+                  <Bar
+                    type="monotone"
+                    dataKey="traders"
+                    yAxisId="traders"
+                    barSize={10}
+                    stroke="#f1f3f4"
+                    fill="#f1f3f4"
+                  />
+                )}
                 <defs>
                   <linearGradient id="LineGradient" x1="0" y1="100%" x2="0" y2="0%">
                     <stop offset="0%" stopColor={'#00c6a3'} stopOpacity={0} />
