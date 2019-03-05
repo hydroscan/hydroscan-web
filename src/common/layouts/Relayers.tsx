@@ -5,6 +5,7 @@ import { fetchRelayers } from '../actions/relayer';
 import { connect } from 'react-redux';
 import './Relayers.scss';
 import Loading from '../components/Loading';
+import { Link } from 'found';
 
 const mapStateToProps = state => {
   return {
@@ -25,16 +26,15 @@ class Relayers extends React.Component<any, any> {
       <div className="Relayers">
         <Header />
         <div className="container">
-          <div className="section-wrapper">
-            <div className="section-header">
-              <div className="section-title">LATEST TRADES</div>
-              <div className="bottom-border" />
+          <div className="main-wrapper">
+            <div className="main-header">
+              <div className="main-title">Relayers</div>
             </div>
-            <div className="section-body">
+            <div className="main-body">
               {relayersLoading ? (
                 <Loading />
               ) : (
-                <table className="section-table">
+                <table className="main-table">
                   <thead>
                     <tr>
                       <td className="name">Name</td>
@@ -46,8 +46,16 @@ class Relayers extends React.Component<any, any> {
                     {relayers.map(relayer => {
                       return (
                         <tr key={relayer.ID}>
-                          <td>{relayer.name}</td>
-                          <td>{relayer.url}</td>
+                          <td>
+                            <Link className="link" to={`/relayers/${relayer.slug}`}>
+                              {relayer.name}
+                            </Link>
+                          </td>
+                          <td>
+                            <a className="link" href={relayer.url} target="_blank">
+                              {relayer.url}
+                            </a>
+                          </td>
                           <td>{relayer.address}</td>
                         </tr>
                       );

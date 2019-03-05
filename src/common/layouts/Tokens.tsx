@@ -35,7 +35,7 @@ class Tokens extends React.Component<any, any> {
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              <div className="main-title">TOKENS</div>
+              <div className="main-title">Tokens</div>
             </div>
             <div className="main-body">
               {tokensLoading ? (
@@ -46,8 +46,8 @@ class Tokens extends React.Component<any, any> {
                     <tr>
                       <td className="rank">#</td>
                       <td className="token">Token</td>
-                      <td className="volume">Volume</td>
-                      <td className="change">Vol Change</td>
+                      <td className="volume">24h Volume (USD)</td>
+                      <td className="change">24H Vol Change</td>
                       <td className="traders">Traders</td>
                       <td className="price">Last Price (USD)</td>
                     </tr>
