@@ -12,28 +12,57 @@ class Footer extends React.PureComponent<any, any> {
       <div className="Footer">
         <div className="container">
           <div className="content-wrapper">
-            <div className="hydro-wrapper">
+            <div className="col1-wrapper">
               <div className="headline">HYDRO FOUNDATION</div>
-              <div className="item">Hydro Protocol</div>
-              <div className="item">News and Updates</div>
+              <div className="item">
+                <a href="https://hydroprotocol.io/" target="_blank">
+                  Hydro Protocol
+                </a>
+              </div>
+              <div className="item">
+                <a href="https://medium.com/hydro-protocol" target="_blank">
+                  News and Updates
+                </a>
+              </div>
             </div>
-            <div className="developer-wrapper">
+            <div className="col2-wrapper">
               <div className="headline">DEVELOPER</div>
-              <div className="item">Github</div>
-              <div className="item">Smart Contracts</div>
-              <div className="item">Wiki</div>
+              <div className="item">
+                <a href="https://github.com/HydroProtocol" target="_blank">
+                  Github
+                </a>
+              </div>
+              <div className="item">
+                <a href="https://github.com/HydroProtocol/protocol" target="_blank">
+                  Smart Contracts
+                </a>
+              </div>
             </div>
-            <div className="products-wrapper">
-              <div className="headline">Products</div>
-              <div className="item">DDEX</div>
-              <div className="item">Hydro Swap</div>
+            <div className="col3-wrapper">
+              <div className="headline">CONNECT</div>
+              <div className="item">
+                <a href="https://twitter.com/protocol_hydro" target="_blank">
+                  Twitter
+                </a>
+              </div>
+              <div className="item">
+                <a href="https://www.reddit.com/r/hydroprotocol/" target="_blank">
+                  Reddit
+                </a>
+              </div>
+              <div className="item">
+                <a href="https://t.me/hydroprotocol" target="_blank">
+                  Telegram
+                </a>
+              </div>
             </div>
-            <div className="links-wrapper">links</div>
           </div>
         </div>
         <div className="bottom-line" />
-        <div className="container bottom-container">
-          <div className="copyright">COPYRIGHT 2019 © HydroProtocol.io ALL RIGHTS RESERVED</div>
+        <div className="bottom-container">
+          <div className="container">
+            <div className="copyright">COPYRIGHT 2019 © HydroProtocol.io ALL RIGHTS RESERVED</div>
+          </div>
         </div>
       </div>
     );

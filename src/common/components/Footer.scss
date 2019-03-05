@@ -21,22 +21,23 @@
 
         .item {
             line-height: 28px;
+
+            a {
+                color: $color-footer-font;
+                text-decoration: none;
+            }
         }
 
-        .hydro-wrapper {
-            width: 20%;
+        .col1-wrapper {
+            width: 33%;
         }
 
-        .developer-wrapper {
-            width: 20%;
+        .col2-wrapper {
+            width: 34%;
         }
 
-        .products-wrapper {
-            width: 20%;
-        }
-
-        .links-wrapper {
-            width: 40%;
+        .col3-wrapper {
+            width: 33%;
         }
     }
 
@@ -51,15 +52,19 @@
     .bottom-container {
         padding: 0;
         height: 44px;
-        position: relative;
+        position: absolute;
+        width: 100%;
         bottom: 0;
+
+        .container {
+            padding: 0 30px 0 0;
+            text-align: right;
+        }
     }
 
     .copyright {
+        color: $color-light;
         font-size: $font-size-sm;
         line-height: 44px;
-        position: absolute;
-        right: 30px;
-        bottom: 0;
     }
 }
