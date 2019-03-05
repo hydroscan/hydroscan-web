@@ -21,7 +21,7 @@ const mapStateToProps = (state, props) => {
 
 class LatestTrades extends React.PureComponent<any, any> {
   public render() {
-    const { trades, page, pageSize, total, tokenAddress, tradesLoading } = this.props;
+    const { trades, page, pageSize, total, tokenAddress, relayerAddress, traderAddress, tradesLoading } = this.props;
     return (
       <div className="LatestTrades section-wrapper">
         <div className="section-header">
@@ -101,9 +101,9 @@ class LatestTrades extends React.PureComponent<any, any> {
     );
   }
 
-  public handlePageChange(current, size) {
-    const { dispatch } = this.props;
-    dispatch(fetchTrades({ page: current }));
+  public handlePageChange(page, size) {
+    const { dispatch, tokenAddress, relayerAddress, traderAddress } = this.props;
+    dispatch(fetchTrades({ page, tokenAddress, relayerAddress, traderAddress }));
   }
 }
 

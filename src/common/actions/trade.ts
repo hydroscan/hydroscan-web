@@ -80,3 +80,24 @@ export const setTradeLoading = payload => {
     payload
   };
 };
+
+export const fetchTrader = payload => {
+  return {
+    type: 'FETCH_TRADER',
+    payload
+  };
+};
+
+export const setTrader = payload => {
+  return {
+    type: 'SET_TRADER',
+    payload
+  };
+};
+
+export const setTraderLoading = payload => {
+  return {
+    type: 'SET_TRADER_LOADING',
+    payload
+  };
+};

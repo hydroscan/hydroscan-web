@@ -2,14 +2,16 @@ import { makeRouteConfig, Route } from 'found';
 import React from 'react';
 import Home from './layouts/Home';
 import Relayers from './layouts/Relayers';
+import Relayer from './layouts/Relayer';
 import Tokens from './layouts/Tokens';
 import Trades from './layouts/Trades';
 import Trade from './layouts/Trade';
+import Trader from './layouts/Trader';
 import Token from './layouts/Token';
 import NotFound from './layouts/NotFound';
-import { fetchTrades, fetchTrade, fetchTradesIndicators, fetchTradesChart } from './actions/trade';
+import { fetchTrades, fetchTrade, fetchTradesIndicators, fetchTradesChart, fetchTrader } from './actions/trade';
 import { fetchTokens, fetchToken } from './actions/token';
-import { fetchRelayers } from './actions/relayer';
+import { fetchRelayers, fetchRelayer } from './actions/relayer';
 import { Providers } from './layouts/Providers';
 
 const routes = (
@@ -81,6 +83,30 @@ const routes = (
           context.store.dispatch(fetchToken({ address: params.address }));
           context.store.dispatch(fetchTrades({ tokenAddress: params.address }));
           context.store.dispatch(fetchTradesChart({ tokenAddress: params.address, tab: '1M' }));
+          resolve({ store: context.store });
+        })
+      }
+    />
+    <Route
+      path="/relayers/:slug"
+      Component={Relayer}
+      getData={({ params, context }) =>
+        new Promise(resolve => {
+          context.store.dispatch(fetchRelayer({ slug: params.slug }));
+          context.store.dispatch(fetchTrades({ relayerAddress: params.address }));
+          context.store.dispatch(fetchTradesChart({ relayerAddress: params.address, tab: '1M' }));
+          resolve({ store: context.store });
+        })
+      }
+    />
+    <Route
+      path="/traders/:address"
+      Component={Trader}
+      getData={({ params, context }) =>
+        new Promise(resolve => {
+          context.store.dispatch(fetchTrader({ address: params.address }));
+          context.store.dispatch(fetchTrades({ traderAddress: params.address }));
+          context.store.dispatch(fetchTradesChart({ traderAddress: params.address, tab: '1M' }));
           resolve({ store: context.store });
         })
       }

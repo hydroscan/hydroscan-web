@@ -1,6 +1,9 @@
 const initialState: any = {
   relayers: [],
-  relayersLoading: false
+  relayersLoading: false,
+
+  relayer: [],
+  relayerLoading: false
 };
 
 const relayer = (state: any = initialState, action: any): any => {
@@ -14,6 +17,17 @@ const relayer = (state: any = initialState, action: any): any => {
       return {
         ...state,
         relayersLoading: action.payload.loading
+      };
+
+    case 'SET_RELAYER':
+      return {
+        ...state,
+        relayer: action.payload.relayer
+      };
+    case 'SET_RELAYER_LOADING':
+      return {
+        ...state,
+        relayerLoading: action.payload.loading
       };
     default:
       return state;

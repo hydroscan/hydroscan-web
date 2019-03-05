@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import { catchError, filter, flatMap, map } from 'rxjs/operators';
-import { setRelayers, setRelayersLoading } from '../actions/relayer';
+import { setRelayers, setRelayersLoading, setRelayer, setRelayerLoading } from '../actions/relayer';
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
 
@@ -25,4 +25,24 @@ export const fetchRelayers: Epic = action$ =>
     map(body => body as any[]),
     flatMap((relayers: any[]) => [setRelayers({ relayers }), setRelayersLoading({ loading: false })]),
     catchError((error: Error) => [console.log(error), setRelayersLoading({ loading: false })])
+  );
+
+export const fetchRelayerLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_RELAYER'),
+    map(() => {
+      return setRelayerLoading({ loading: true });
+    })
+  );
+
+export const fetchRelayer: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_RELAYER'),
+    flatMap(action => {
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/relayers/${action.payload.slug}`);
+    }),
+    flatMap(response => response.json()),
+    map(body => body as any),
+    flatMap((relayer: any) => [setRelayer({ relayer }), setRelayerLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setRelayerLoading({ loading: false })])
   );

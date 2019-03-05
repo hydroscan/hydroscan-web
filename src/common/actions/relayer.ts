@@ -17,3 +17,24 @@ export const setRelayersLoading = payload => {
     payload
   };
 };
+
+export const fetchRelayer = payload => {
+  return {
+    type: 'FETCH_RELAYER',
+    payload
+  };
+};
+
+export const setRelayer = payload => {
+  return {
+    type: 'SET_RELAYER',
+    payload
+  };
+};
+
+export const setRelayerLoading = payload => {
+  return {
+    type: 'SET_RELAYER_LOADING',
+    payload
+  };
+};

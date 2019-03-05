@@ -31,13 +31,6 @@ class Token extends React.Component<any, any> {
 
   public render() {
     const { token, params, tokenLoading } = this.props;
-    // if (!token.address) {
-    //   return (
-    //     <div className="Token">
-    //       <Header />
-    //     </div>
-    //   );
-    // }
 
     return (
       <div className="Token">
@@ -53,7 +46,7 @@ class Token extends React.Component<any, any> {
             </div>
           </div>
           <div className="top-sections">
-            <div className="token-info section-wrapper">
+            <div className="left-info section-wrapper">
               {tokenLoading ? (
                 <Loading />
               ) : (
@@ -77,7 +70,7 @@ class Token extends React.Component<any, any> {
                 </div>
               )}
             </div>
-            <div className="trades-info section-wrapper">
+            <div className="right-info section-wrapper">
               {tokenLoading ? (
                 <Loading />
               ) : (

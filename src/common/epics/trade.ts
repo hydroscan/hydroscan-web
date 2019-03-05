@@ -8,7 +8,9 @@ import {
   setTradesChart,
   setTradesChartLoading,
   setTrade,
-  setTradeLoading
+  setTradeLoading,
+  setTrader,
+  setTraderLoading
 } from '../actions/trade';
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
@@ -29,10 +31,19 @@ export const fetchTrades: Epic = action$ =>
       return action;
     }),
     flatMap(action => {
-      const { page, pageSize, tokenAddress, baseTokenAddress, quoteTokenAddress } = action.payload;
+      const {
+        page,
+        pageSize,
+        tokenAddress,
+        baseTokenAddress,
+        quoteTokenAddress,
+        relayerAddress,
+        traderAddress
+      } = action.payload;
       return fetch(
         `${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&pageSize=${pageSize || 25}&tokenAddress=${tokenAddress ||
-          ''}&baseTokenAddress=${baseTokenAddress || ''}&quoteTokenAddress=${quoteTokenAddress || ''}`
+          ''}&baseTokenAddress=${baseTokenAddress || ''}&quoteTokenAddress=${quoteTokenAddress ||
+          ''}&relayerAddress=${relayerAddress || ''}&traderAddress=${traderAddress || ''}`
       );
     }),
     flatMap(response => response.json()),
@@ -111,4 +122,24 @@ export const fetchTrade: Epic = action$ =>
     map(body => body as any),
     flatMap((trade: any) => [setTrade({ trade }), setTradeLoading({ loading: false })]),
     catchError((error: Error) => [console.log(error), setTradeLoading({ loading: false })])
+  );
+
+export const fetchTraderLoading: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADER'),
+    map(() => {
+      return setTraderLoading({ loading: true });
+    })
+  );
+
+export const fetchTrader: Epic = action$ =>
+  action$.pipe(
+    filter(action => action.type === 'FETCH_TRADER'),
+    flatMap(action => {
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/traders/${action.payload.address}`);
+    }),
+    flatMap(response => response.json()),
+    map(body => body as any),
+    flatMap((trader: any) => [setTrader({ trader }), setTraderLoading({ loading: false })]),
+    catchError((error: Error) => [console.log(error), setTraderLoading({ loading: false })])
   );

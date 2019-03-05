@@ -15,7 +15,10 @@ const initialState: any = {
   // tradesLatestLoading: false,
 
   trade: {},
-  tradeLoading: false
+  tradeLoading: false,
+
+  trader: {},
+  traderLoading: false
 };
 
 const trade = (state: any = initialState, action: any): any => {
@@ -62,6 +65,17 @@ const trade = (state: any = initialState, action: any): any => {
       return {
         ...state,
         tradeLoading: action.payload.loading
+      };
+
+    case 'SET_TRADER':
+      return {
+        ...state,
+        trader: action.payload.trader
+      };
+    case 'SET_TRADER_LOADING':
+      return {
+        ...state,
+        traderLoading: action.payload.loading
       };
     default:
       return state;

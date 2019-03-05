@@ -27,7 +27,7 @@ class Chart extends React.PureComponent<any, any> {
   }
 
   public render() {
-    const { chartData, tokenAddress, dispatch, chartDataLoading } = this.props;
+    const { chartData, tokenAddress, relayerAddress, traderAddress, dispatch, chartDataLoading } = this.props;
     const { currentTab, tabs, currentSection, sections } = this.state;
     if (chartData.length === 0) {
       return <div />;
@@ -58,7 +58,7 @@ class Chart extends React.PureComponent<any, any> {
               tabs={tabs}
               clickTab={tab => {
                 this.setState({ currentTab: tab });
-                dispatch(fetchTradesChart({ tokenAddress, tab }));
+                dispatch(fetchTradesChart({ tokenAddress, relayerAddress, traderAddress, tab }));
               }}
             />
           </div>
