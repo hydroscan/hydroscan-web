@@ -65,7 +65,7 @@ class Chart extends React.PureComponent<any, any> {
           <div className="bottom-border" />
         </div>
         <div className="responsive-wrapper">
-          {chartDataLoading && chartData.length === 0 ? (
+          {chartDataLoading ? (
             <Loading />
           ) : (
             <ResponsiveContainer>
