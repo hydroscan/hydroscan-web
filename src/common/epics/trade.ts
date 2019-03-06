@@ -38,12 +38,14 @@ export const fetchTrades: Epic = action$ =>
         baseTokenAddress,
         quoteTokenAddress,
         relayerAddress,
-        traderAddress
+        traderAddress,
+        transaction
       } = action.payload;
       return fetch(
         `${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&pageSize=${pageSize || 25}&tokenAddress=${tokenAddress ||
           ''}&baseTokenAddress=${baseTokenAddress || ''}&quoteTokenAddress=${quoteTokenAddress ||
-          ''}&relayerAddress=${relayerAddress || ''}&traderAddress=${traderAddress || ''}`
+          ''}&relayerAddress=${relayerAddress || ''}&traderAddress=${traderAddress || ''}&transaction=${transaction ||
+          ''}`
       );
     }),
     flatMap(response => response.json()),

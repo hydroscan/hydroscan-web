@@ -46,7 +46,8 @@ const routes = (
         new Promise(resolve => {
           // back to tokens page: delta === -1
           const page = location.delta === -1 ? context.store.getState().token.page : 1;
-          context.store.dispatch(fetchTokens({ page }));
+          const { keyword, relayerAddress, traderAddress } = location.query;
+          context.store.dispatch(fetchTokens({ page, keyword, relayerAddress, traderAddress }));
           resolve({ store: context.store });
         })
       }
@@ -59,8 +60,8 @@ const routes = (
           // back to trades page: delta === -1
           // const page = location.delta === -1 ? context.store.getState().token.page : 1;
           const page = 1;
-          const { baseTokenAddress, quoteTokenAddress } = location.query;
-          context.store.dispatch(fetchTrades({ page, baseTokenAddress, quoteTokenAddress }));
+          const { baseTokenAddress, quoteTokenAddress, transaction } = location.query;
+          context.store.dispatch(fetchTrades({ page, baseTokenAddress, quoteTokenAddress, transaction }));
           resolve({ store: context.store });
         })
       }

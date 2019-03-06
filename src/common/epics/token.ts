@@ -16,9 +16,10 @@ export const fetchTokens: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TOKENS'),
     flatMap(action => {
-      const { page, pageSize, tab } = action.payload;
+      const { page, pageSize, tab, keyword, relayerAddress, traderAddress } = action.payload;
       return fetch(
-        `${HYDROSCAN_API_URL}/api/v1/tokens?page=${page || 1}&pageSize=${pageSize || 25}&filter=${tab || '24H'}`
+        `${HYDROSCAN_API_URL}/api/v1/tokens?page=${page || 1}&pageSize=${pageSize || 25}&filter=${tab ||
+          '24H'}&keyword=${keyword || ''}&relayerAddress=${relayerAddress || ''}&traderAddress=${traderAddress || ''}`
       );
     }),
     flatMap(response => response.json()),
