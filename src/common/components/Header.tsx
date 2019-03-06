@@ -66,15 +66,18 @@ class Header extends React.PureComponent<any, any> {
           </Link>
           <div className="tabs">
             <Link className="tab" to="/relayers">
-              RELAYERS
+              <img src={require('../images/relayers.svg')} />
+              <div> RELAYERS</div>
             </Link>
 
             <Link className="tab" to="/tokens">
-              TOKENS
+              <img src={require('../images/tokens.svg')} />
+              <div> TOKENS</div>
             </Link>
 
             <Link className="tab" to="/trades">
-              TRADES
+              <img src={require('../images/trades.svg')} />
+              <div> TRADES</div>
             </Link>
           </div>
           <div className="search-wrapper">

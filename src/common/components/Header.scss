@@ -30,6 +30,13 @@
                 margin-right: 30px;
                 cursor: pointer;
                 text-decoration: none;
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 16px;
+                    margin-right: 4px;
+                }
 
                 &:hover {
                     color: $color-gray-dark;
