@@ -6,6 +6,7 @@ body {
 
     .container {
         max-width: 1200px;
+        min-height: calc(100vh - 91px - 230px);
         width: 100%;
         margin-right: auto;
         margin-left: auto;
