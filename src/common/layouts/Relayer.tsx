@@ -26,7 +26,7 @@ class Relayer extends React.Component<any, any> {
 
   public render() {
     const { relayer, params, relayerLoading } = this.props;
-
+    const { slug } = params;
     return (
       <div className="Relayer">
         <Header />
@@ -34,6 +34,7 @@ class Relayer extends React.Component<any, any> {
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
+              <img src={require(`../images/relayers/${slug}.png`)} />
               <div className="main-title">{relayer.name}</div>
               <div className="secondary">{relayer.address}</div>
             </div>

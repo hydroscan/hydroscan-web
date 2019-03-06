@@ -22,11 +22,6 @@ const mapStateToProps = state => {
 };
 
 class Tokens extends React.Component<any, any> {
-  // public componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   dispatch(fetchTokens({ page: 1 }));
-  // }
-
   public render() {
     const { tokens, page, pageSize, total, tokensLoading, location } = this.props;
     const { traderAddress } = location.query;

@@ -3,5 +3,15 @@
 .Relayers {
     .container {
         padding: 15px 30px;
+
+        .relayer {
+            display: flex;
+            align-items: center;
+            img {
+                height: 30px;
+                width: 30px;
+                margin-right: $padding;
+            }
+        }
     }
 }

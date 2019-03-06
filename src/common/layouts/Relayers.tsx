@@ -15,11 +15,6 @@ const mapStateToProps = state => {
 };
 
 class Relayers extends React.Component<any, any> {
-  // public componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   dispatch(fetchRelayers());
-  // }
-
   public render() {
     const { relayers, relayersLoading } = this.props;
     return (
@@ -37,7 +32,7 @@ class Relayers extends React.Component<any, any> {
                 <table className="main-table">
                   <thead>
                     <tr>
-                      <td className="name">Name</td>
+                      <td className="name">Relayer</td>
                       <td className="url">Link</td>
                       <td className="address">Relayer Address</td>
                     </tr>
@@ -47,9 +42,14 @@ class Relayers extends React.Component<any, any> {
                       return (
                         <tr key={relayer.ID}>
                           <td>
-                            <Link className="link" to={`/relayers/${relayer.slug}`}>
-                              {relayer.name}
-                            </Link>
+                            <div className="relayer">
+                              <Link className="link" to={`/relayers/${relayer.slug}`}>
+                                <img src={require(`../images/relayers/${relayer.slug}.png`)} />
+                              </Link>
+                              <Link className="link" to={`/relayers/${relayer.slug}`}>
+                                {relayer.name}
+                              </Link>
+                            </div>
                           </td>
                           <td>
                             <a className="link" href={relayer.url} target="_blank">
