@@ -60,7 +60,7 @@ class TopTokens extends React.PureComponent<any, any> {
               <tbody>
                 {tokens.map((token, index) => {
                   return (
-                    <tr key={token.ID}>
+                    <tr key={token.address}>
                       <td className="rank">{index + 1}</td>
                       <td className="token">
                         <Link className="link" to={`/tokens/${token.address}`}>

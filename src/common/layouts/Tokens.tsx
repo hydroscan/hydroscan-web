@@ -28,7 +28,8 @@ class Tokens extends React.Component<any, any> {
   // }
 
   public render() {
-    const { tokens, page, pageSize, total, tokensLoading } = this.props;
+    const { tokens, page, pageSize, total, tokensLoading, location } = this.props;
+    const { traderAddress } = location.query;
     return (
       <div className="Tokens">
         <Header />
@@ -48,14 +49,14 @@ class Tokens extends React.Component<any, any> {
                       <td className="token">Token</td>
                       <td className="volume">24h Volume (USD)</td>
                       <td className="change">24H Vol Change</td>
-                      <td className="traders">Traders</td>
+                      {!traderAddress && <td className="traders">Traders</td>}
                       <td className="price">Last Price (USD)</td>
                     </tr>
                   </thead>
                   <tbody>
                     {tokens.map((token, index) => {
                       return (
-                        <tr key={token.ID}>
+                        <tr key={token.address}>
                           <td className="rank">{(page - 1) * pageSize + index + 1}</td>
                           <td className="token">
                             <object data={getTokenLogoUrl(token.address)} type="image/png">
@@ -75,9 +76,11 @@ class Tokens extends React.Component<any, any> {
                           <td className={`change ${token.volume24hChange >= 0 ? 'green' : 'red'}`}>
                             <div className="main">{formatPercent(token.volume24hChange)}</div>
                           </td>
-                          <td className="traders">
-                            <div className="main">{formatCount(token.traders24h)}</div>
-                          </td>
+                          {!traderAddress && (
+                            <td className="traders">
+                              <div className="main">{formatCount(token.traders24h)}</div>
+                            </td>
+                          )}
                           <td className="price">
                             <div className="main">{token.priceUSD === '0' ? '-' : formatPriceUsd(token.priceUSD)}</div>
                             <div className="secondary">
@@ -111,8 +114,9 @@ class Tokens extends React.Component<any, any> {
   }
 
   public handlePageChange(page, size) {
-    const { dispatch } = this.props;
-    dispatch(fetchTokens({ page }));
+    const { dispatch, location } = this.props;
+    const { keyword, relayerAddress, traderAddress } = location.query;
+    dispatch(fetchTokens({ page, keyword, relayerAddress, traderAddress }));
   }
 }
 
