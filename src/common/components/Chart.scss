@@ -3,6 +3,11 @@
 .Chart {
     height: 335px;
 
+    .custom-tooltip {
+        color: $color-gray;
+        font-size: $font-size-md;
+    }
+
     .chart-header {
         height: 25px;
         position: relative;

@@ -48,3 +48,7 @@ export const formatPercent = (data: string | number, showPositiveSign: boolean =
 export const formatAddress = (data: string): string => {
   return data && data.slice ? data.slice(0, 6) + '...' + data.slice(-4) : data;
 };
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};

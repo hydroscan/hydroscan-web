@@ -4,9 +4,27 @@ import './Chart.scss';
 import { fetchTradesChart } from '../actions/trade';
 import { ComposedChart, Area, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
-import { formatVolumeUsdShort, formatCountShort } from '../lib/formatter';
+import { formatVolumeUsdShort, formatCountShort, formatVolumeUsd, formatCount, capitalize } from '../lib/formatter';
 import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
+
+const CustomTooltip = args => {
+  const { active, payload, label, showTraders } = args;
+  if (active) {
+    console.log(payload);
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{moment(label).format('MMMM Do YYYY, h:mm:ss a')}</p>
+        <p className="label">{`${capitalize(payload[1].dataKey)}: ${formatVolumeUsd(payload[1].value)}`}</p>
+        {showTraders && (
+          <p className="label">{`${capitalize(payload[0].dataKey)}: ${formatCount(payload[0].value)}`}</p>
+        )}
+      </div>
+    );
+  }
+
+  return null;
+};
 
 const mapStateToProps = (state, props) => {
   return {
@@ -29,10 +47,10 @@ class Chart extends React.PureComponent<any, any> {
   public render() {
     const { chartData, tokenAddress, relayerAddress, traderAddress, dispatch, chartDataLoading } = this.props;
     const { currentTab, tabs, currentSection, sections } = this.state;
-    if (chartData.length === 0) {
-      return <div />;
-    }
-
+    // if (chartData.length === 0) {
+    //   return <div />;
+    // }
+    const showTraders = !traderAddress;
     const areaKey = currentSection === 'VOLUME' ? 'volume' : 'trades';
     return (
       <div className="Chart section-wrapper">
@@ -78,20 +96,27 @@ class Chart extends React.PureComponent<any, any> {
                   bottom: 5
                 }}>
                 <XAxis
+                  axisLine={false}
+                  tickLine={false}
                   dataKey="date"
                   tickFormatter={tick => {
                     return moment(tick).format('MMM Do');
                   }}
                 />
                 <YAxis
+                  axisLine={false}
+                  tickLine={false}
                   yAxisId={areaKey}
                   tickFormatter={tick => {
                     return currentSection === 'VOLUME' ? formatVolumeUsdShort(tick) : formatCountShort(tick);
                   }}
                 />
-                {!traderAddress && (
+                {showTraders && (
                   <YAxis
-                    height={50}
+                    hide={true}
+                    axisLine={false}
+                    tickLine={false}
+                    domain={['dataMin', dataMax => dataMax * 3]}
                     yAxisId="traders"
                     tickFormatter={tick => {
                       return formatCountShort(tick);
@@ -99,9 +124,7 @@ class Chart extends React.PureComponent<any, any> {
                     orientation="right"
                   />
                 )}
-                <Tooltip />
-                <Legend />
-                {!traderAddress && (
+                {showTraders && (
                   <Bar
                     type="monotone"
                     dataKey="traders"
@@ -119,6 +142,7 @@ class Chart extends React.PureComponent<any, any> {
                   </linearGradient>
                 </defs>
                 <Area type="monotone" dataKey={areaKey} yAxisId={areaKey} stroke="#00c6a3" fill="url(#LineGradient)" />
+                <Tooltip content={<CustomTooltip showTraders={showTraders} />} />
               </ComposedChart>
             </ResponsiveContainer>
           )}

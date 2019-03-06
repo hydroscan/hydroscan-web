@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './TopTokens.scss';
 import { fetchTokens } from '../actions/token';
-import { formatVolumeUsd, formatPercent } from '../lib/formatter';
+import { formatVolumeUsd, formatPercent, capitalize } from '../lib/formatter';
 import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
 import { Link } from 'found';
@@ -26,7 +26,7 @@ class TopTokens extends React.PureComponent<any, any> {
   public render() {
     const { tabs, currentTab } = this.state;
     const { dispatch, tokens, tokensLoading } = this.props;
-    const volumeKey = `volume${currentTab.charAt(0).toUpperCase() + currentTab.slice(1).toLowerCase()}`;
+    const volumeKey = `volume${capitalize(currentTab)}`;
     const changeKey = volumeKey + 'Change';
     return (
       <div className="TopTokens section-wrapper">
