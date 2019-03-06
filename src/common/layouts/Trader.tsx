@@ -19,11 +19,6 @@ const mapStateToProps = state => {
 };
 
 class Trader extends React.Component<any, any> {
-  // public componentDidMount() {
-  //   const { dispatch, params } = this.props;
-  //   dispatch(fetchTrader({ address: params.address }));
-  // }
-
   public componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(setTrader({ trader: {} }));
@@ -39,7 +34,9 @@ class Trader extends React.Component<any, any> {
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              <div className="main-title">{`Traders - ${trader.address}`}</div>
+              <img src={require('../images/user.svg')} />
+              <div className="main-title">{`Trader`}</div>
+              <div className="secondary">{trader.address}</div>
             </div>
           </div>
           <div className="top-sections">

@@ -5,10 +5,15 @@
         .main-header {
             display: flex;
             align-items: center;
-            object {
-                max-height: 30px;
-                max-width: 30px;
+            img {
+                height: 15px;
+                width: 15px;
                 margin-right: 8px;
+            }
+            .secondary {
+                margin-left: $padding;
+                color: $color-gray;
+                font-size: $font-size-sm;
             }
         }
         .main-body {

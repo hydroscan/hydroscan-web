@@ -10,6 +10,12 @@
                 max-width: 30px;
                 margin-right: 8px;
             }
+
+            .secondary {
+                margin-left: $padding;
+                color: $color-gray;
+                font-size: $font-size-sm;
+            }
         }
         .main-body {
             padding: 30px;

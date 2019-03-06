@@ -9,16 +9,15 @@ import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
 
 const CustomTooltip = args => {
-  const { active, payload, label, showTraders } = args;
+  const { active, payload, label } = args;
   if (active) {
-    console.log(payload);
     return (
       <div className="custom-tooltip">
         <p className="label">{moment(label).format('MMMM Do YYYY, h:mm:ss a')}</p>
-        <p className="label">{`${capitalize(payload[1].dataKey)}: ${formatVolumeUsd(payload[1].value)}`}</p>
-        {showTraders && (
-          <p className="label">{`${capitalize(payload[0].dataKey)}: ${formatCount(payload[0].value)}`}</p>
+        {payload[1] && (
+          <p className="label">{`${capitalize(payload[1].dataKey)}: ${formatVolumeUsd(payload[1].value)}`}</p>
         )}
+        <p className="label">{`${capitalize(payload[0].dataKey)}: ${formatCount(payload[0].value)}`}</p>
       </div>
     );
   }
@@ -47,9 +46,6 @@ class Chart extends React.PureComponent<any, any> {
   public render() {
     const { chartData, tokenAddress, relayerAddress, traderAddress, dispatch, chartDataLoading } = this.props;
     const { currentTab, tabs, currentSection, sections } = this.state;
-    // if (chartData.length === 0) {
-    //   return <div />;
-    // }
     const showTraders = !traderAddress;
     const areaKey = currentSection === 'VOLUME' ? 'volume' : 'trades';
     return (
@@ -142,7 +138,7 @@ class Chart extends React.PureComponent<any, any> {
                   </linearGradient>
                 </defs>
                 <Area type="monotone" dataKey={areaKey} yAxisId={areaKey} stroke="#00c6a3" fill="url(#LineGradient)" />
-                <Tooltip content={<CustomTooltip showTraders={showTraders} />} />
+                <Tooltip content={<CustomTooltip />} />
               </ComposedChart>
             </ResponsiveContainer>
           )}
