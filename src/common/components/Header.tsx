@@ -44,7 +44,7 @@ class Header extends React.PureComponent<any, any> {
       case 'TRADER':
         router.push(`/traders/${searchParams.searchKey}`);
         break;
-      case 'TRADES':
+      case 'TRANSACTION':
         router.push(`/trades?transaction=${searchParams.searchKey}`);
         break;
       case 'TOKENS':
