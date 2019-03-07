@@ -72,3 +72,26 @@
         line-height: 44px;
     }
 }
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Footer {
+        height: 430px;
+
+        .content-wrapper {
+            display: block;
+
+            .col1-wrapper,
+            .col2-wrapper,
+            .col3-wrapper {
+                width: 100%;
+                padding-bottom: 15px;
+            }
+        }
+
+        .bottom-container {
+            .container {
+                text-align: center;
+            }
+        }
+    }
+}

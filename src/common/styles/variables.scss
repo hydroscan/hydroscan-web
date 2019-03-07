@@ -46,3 +46,7 @@ $font-family-basic: 'PT Sans Caption', -apple-system, BlinkMacSystemFont, 'Segoe
 $font-family-arial-rounded: 'arial rounded mt bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+
+@media screen and (max-width: $breakpoint-default) {
+    $padding: 8px;
+}
