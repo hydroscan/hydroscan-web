@@ -22,3 +22,29 @@
         }
     }
 }
+
+@media screen and (max-width: $max-width-md) {
+    .Trades {
+        .buyer,
+        .seller {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Trades {
+        .trade-price,
+        .sell-amount {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Trades {
+        .container {
+            padding: 0 10px;
+        }
+    }
+}

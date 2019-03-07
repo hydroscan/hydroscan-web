@@ -146,7 +146,7 @@ body {
 
         .pagination-wrapper {
             width: 100%;
-            height: 50px;
+            height: 54px;
 
             .rc-pagination {
                 float: right;
@@ -172,6 +172,21 @@ body {
     body {
         .container {
             padding: $padding-m;
+
+            .main-wrapper {
+                .main-header {
+                    margin: 10px 0;
+                }
+
+                .main-body {
+                    min-height: auto;
+                }
+            }
+
+            .pagination-wrapper {
+                display: flex;
+                justify-content: center;
+            }
         }
 
         .showing-range {

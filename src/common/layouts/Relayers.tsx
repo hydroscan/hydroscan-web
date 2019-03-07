@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import './Relayers.scss';
 import Loading from '../components/Loading';
 import { Link } from 'found';
+import { shortAddress } from '../lib/formatter';
 
 const mapStateToProps = state => {
   return {
@@ -57,9 +58,8 @@ class Relayers extends React.Component<any, any> {
                             </a>
                           </td>
                           <td>
-                            {' '}
                             <Link className="link" to={`/relayers/${relayer.address}`}>
-                              {relayer.address}
+                              {shortAddress(relayer.address)}
                             </Link>
                           </td>
                         </tr>

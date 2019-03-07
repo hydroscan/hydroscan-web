@@ -15,3 +15,11 @@
         }
     }
 }
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Relayers {
+        .container {
+            padding: 0 10px;
+        }
+    }
+}

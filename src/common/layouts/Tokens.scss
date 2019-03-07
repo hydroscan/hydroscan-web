@@ -54,3 +54,45 @@
         }
     }
 }
+
+@media screen and (max-width: $max-width-md) {
+    .Tokens {
+        .token {
+            object {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Tokens {
+        .rank {
+            width: auto;
+        }
+
+        .token {
+            padding: 10px 0 0 0 !important;
+            .main {
+                width: auto;
+                max-width: 100px;
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .traders,
+        .price {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Tokens {
+        .container {
+            padding: 0 10px;
+        }
+    }
+}
