@@ -12,7 +12,7 @@ const mapStateToProps = (state, props) => {
 class Header extends React.PureComponent<any, any> {
   constructor(props) {
     super(props);
-    this.state = { keyword: '' };
+    this.state = { keyword: '', showMenu: false };
   }
 
   public handleChange(e) {
@@ -30,6 +30,17 @@ class Header extends React.PureComponent<any, any> {
           this.doSearch(searchParams);
         });
     }
+  }
+
+  public search() {
+    const { keyword } = this.state;
+    fetch(`${HYDROSCAN_API_URL}/api/v1/trades_search?keyword=${keyword}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(searchParams => {
+        this.doSearch(searchParams);
+      });
   }
 
   public doSearch(searchParams) {
@@ -59,40 +70,92 @@ class Header extends React.PureComponent<any, any> {
 
   public render() {
     return (
-      <div className="Header">
-        <div className="header-container">
-          <Link className="link" to="/">
-            <img src={require('../images/hydroscan.svg')} />
-          </Link>
-          <div className="tabs">
-            <Link className="tab" to="/relayers">
-              <img src={require('../images/relayers.svg')} />
-              <div> RELAYERS</div>
+      <div>
+        <div className="Header header-gradient">
+          <div className="header-container">
+            <Link className="link" to="/">
+              <img src={require('../images/hydroscan.svg')} />
             </Link>
+            <div className="tabs">
+              <Link className="tab" to="/relayers">
+                <img src={require('../images/relayers.svg')} />
+                <div> RELAYERS</div>
+              </Link>
 
-            <Link className="tab" to="/tokens">
-              <img src={require('../images/tokens.svg')} />
-              <div> TOKENS</div>
-            </Link>
+              <Link className="tab" to="/tokens">
+                <img src={require('../images/tokens.svg')} />
+                <div> TOKENS</div>
+              </Link>
 
-            <Link className="tab" to="/trades">
-              <img src={require('../images/trades.svg')} />
-              <div> TRADES</div>
+              <Link className="tab" to="/trades">
+                <img src={require('../images/trades.svg')} />
+                <div> TRADES</div>
+              </Link>
+            </div>
+            <div className="search-wrapper">
+              <i className="fa fa-search" aria-hidden="true" />
+              <input
+                value={this.state.keyword}
+                onKeyDown={this.keyPress.bind(this)}
+                onChange={this.handleChange.bind(this)}
+                className="search-input"
+                placeholder="Search Address, transaction, token"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="Header-sm header-gradient">
+          <div className="header-container">
+            <Link className="link" to="/">
+              <img src={require('../images/hydroscan.svg')} />
             </Link>
+            <i className="fa fa-ellipsis-v" aria-hidden="true" onClick={this.openMenu.bind(this)} />
           </div>
-          <div className="search-wrapper">
-            <i className="fa fa-search" aria-hidden="true" />
-            <input
-              value={this.state.keyword}
-              onKeyDown={this.keyPress.bind(this)}
-              onChange={this.handleChange.bind(this)}
-              className="search-input"
-              placeholder="Search Address, transaction, token"
-            />
-          </div>
+          {this.state.showMenu && (
+            <div className="header-menu">
+              <i className="fa fa-times close" aria-hidden="true" onClick={this.closeMenu.bind(this)} />
+              <div className="search-wrapper">
+                <div className="search-icon-wrapper" onClick={this.search.bind(this)}>
+                  <i className="fa fa-search" aria-hidden="true" />
+                </div>
+                <input
+                  value={this.state.keyword}
+                  onKeyDown={this.keyPress.bind(this)}
+                  onChange={this.handleChange.bind(this)}
+                  className="search-input"
+                  placeholder="Search Address, transaction, token"
+                />
+              </div>
+              <div className="tabs">
+                <div className="tab" onClick={this.handleLink.bind(this, '/relayers')}>
+                  RELAYERS
+                </div>
+                <div className="tab" onClick={this.handleLink.bind(this, '/tokens')}>
+                  TOKENS
+                </div>
+                <div className="tab" onClick={this.handleLink.bind(this, '/trades')}>
+                  TRADES
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
+  }
+
+  public openMenu() {
+    this.setState({ showMenu: true });
+  }
+
+  public closeMenu() {
+    this.setState({ showMenu: false });
+  }
+
+  public handleLink(link) {
+    const { router } = this.props;
+    router.push(link);
   }
 }
 
