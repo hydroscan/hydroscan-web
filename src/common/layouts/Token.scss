@@ -105,3 +105,38 @@
         }
     }
 }
+
+@media screen and (max-width: $max-width-md) {
+    .Token {
+        .container {
+            padding: 10px;
+
+            .top-sections {
+                display: block;
+
+                .left-info {
+                    width: 100%;
+                }
+                .right-info {
+                    width: 100%;
+                    margin-left: 0;
+                    margin-top: 10px;
+                    .item-content {
+                        width: 50% !important;
+                    }
+                    .item-change-wrapper {
+                        margin-left: $padding;
+                    }
+                }
+            }
+
+            .chart-wrapper {
+                margin-top: 10px;
+            }
+
+            .latest-trades-wrapper {
+                margin-top: 10px;
+            }
+        }
+    }
+}

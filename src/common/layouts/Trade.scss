@@ -24,3 +24,24 @@
         }
     }
 }
+
+@media screen and (max-width: $max-width-md) {
+    .Trade {
+        .container {
+            .main-body {
+                .item {
+                    .item-label {
+                        width: 30%;
+                    }
+
+                    .item-content {
+                        width: 70%;
+                        overflow-x: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+}
