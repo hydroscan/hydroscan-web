@@ -4,14 +4,15 @@
     padding-bottom: 60px;
 
     .section-body {
+        .secondary {
+            font-weight: lighter;
+            font-size: $font-size-md;
+            color: $color-gray;
+        }
+
         .pair {
             .pair-main {
                 font-weight: 600;
-            }
-
-            .pair-secondary {
-                font-size: $font-size-sm;
-                color: $color-secondary;
             }
         }
 
@@ -21,11 +22,6 @@
 
             .trade-price-main {
                 font-weight: 600;
-            }
-
-            .trade-price-secondary {
-                font-size: $font-size-sm;
-                color: $color-secondary;
             }
         }
 
