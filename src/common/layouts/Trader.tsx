@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import { fetchTrader, setTrader } from '../actions/trade';
-import { formatAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
+import { shortAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
 import Loading from '../components/Loading';

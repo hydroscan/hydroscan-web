@@ -14,6 +14,7 @@ import {
 } from '../actions/trade';
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
+import { formatAddress } from '../lib/formatter';
 
 export const fetchTradesLoading: Epic = action$ =>
   action$.pipe(
@@ -42,10 +43,13 @@ export const fetchTrades: Epic = action$ =>
         transaction
       } = action.payload;
       return fetch(
-        `${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&pageSize=${pageSize || 25}&tokenAddress=${tokenAddress ||
-          ''}&baseTokenAddress=${baseTokenAddress || ''}&quoteTokenAddress=${quoteTokenAddress ||
-          ''}&relayerAddress=${relayerAddress || ''}&traderAddress=${traderAddress || ''}&transaction=${transaction ||
-          ''}`
+        `${HYDROSCAN_API_URL}/api/v1/trades?page=${page || 1}&pageSize=${pageSize || 25}&tokenAddress=${
+          tokenAddress ? formatAddress(tokenAddress) : ''
+        }&baseTokenAddress=${baseTokenAddress ? formatAddress(baseTokenAddress) : ''}&quoteTokenAddress=${
+          quoteTokenAddress ? formatAddress(quoteTokenAddress) : ''
+        }&relayerAddress=${relayerAddress ? formatAddress(relayerAddress) : ''}&traderAddress=${
+          traderAddress ? formatAddress(traderAddress) : ''
+        }&transaction=${transaction || ''}`
       );
     }),
     flatMap(response => response.json()),
@@ -96,8 +100,11 @@ export const fetchTradesChart: Epic = action$ =>
     flatMap(action => {
       const { tab, tokenAddress, traderAddress, relayerAddress } = action.payload;
       return fetch(
-        `${HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${tab || '1M'}&tokenAddress=${tokenAddress ||
-          ''}&traderAddress=${traderAddress || ''}&relayerAddress=${relayerAddress || ''}`
+        `${HYDROSCAN_API_URL}/api/v1/trades_chart?filter=${tab || '1M'}&tokenAddress=${
+          tokenAddress ? formatAddress(tokenAddress) : ''
+        }&traderAddress=${traderAddress ? formatAddress(traderAddress) : ''}&relayerAddress=${
+          relayerAddress ? formatAddress(relayerAddress) : ''
+        }`
       );
     }),
     flatMap(response => response.json()),
@@ -138,7 +145,8 @@ export const fetchTrader: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_TRADER'),
     flatMap(action => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/traders/${action.payload.address}`);
+      const { address } = action.payload;
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/traders/${formatAddress(address)}`);
     }),
     flatMap(response => response.json()),
     map(body => body as any),

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { formatAmount, formatPriceUsd, formatAddress, formatCount } from '../lib/formatter';
+import { formatAmount, formatPriceUsd, shortAddress, formatCount } from '../lib/formatter';
 import { fetchTrades } from '../actions/trade';
 import { connect } from 'react-redux';
 import BigNumber from 'bignumber.js';
@@ -85,7 +85,7 @@ class Trades extends React.Component<any, any> {
                           <td className="buyer">
                             <div className="main">
                               <Link className="link" to={`/traders/${trade.makerAddress}`}>
-                                {formatAddress(trade.makerAddress)}
+                                {shortAddress(trade.makerAddress)}
                               </Link>
                             </div>
                             <div className="secondary">maker</div>
@@ -101,14 +101,14 @@ class Trades extends React.Component<any, any> {
                           <td className="seller">
                             <div className="main">
                               <Link className="link" to={`/traders/${trade.takerAddress}`}>
-                                {formatAddress(trade.takerAddress)}
+                                {shortAddress(trade.takerAddress)}
                               </Link>
                             </div>
                             <div className="secondary">taker</div>
                           </td>
                           <td className="transaction">
                             <Link className="link" to={`/trades/${trade.uuid}`}>
-                              {formatAddress(trade.transactionHash)}
+                              {shortAddress(trade.transactionHash)}
                             </Link>
                           </td>
                         </tr>

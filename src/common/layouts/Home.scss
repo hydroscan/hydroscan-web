@@ -24,7 +24,7 @@
     }
 }
 
-@media screen and (max-width: $breakpoint-default) {
+@media screen and (max-width: $max-width-lg) {
     .Home {
         .container {
             .chart-and-top-tokens {

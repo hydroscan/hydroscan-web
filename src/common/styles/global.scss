@@ -167,3 +167,15 @@ body {
         }
     }
 }
+
+@media screen and (max-width: $breakpoint-sm) {
+    body {
+        .container {
+            padding: $padding-m;
+        }
+
+        .showing-range {
+            display: none;
+        }
+    }
+}

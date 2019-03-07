@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import { fetchToken, setToken } from '../actions/token';
-import { formatAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
+import { shortAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
 import { getTokenLogoUrl } from '../lib/tokenLogo';
@@ -58,7 +58,7 @@ class Token extends React.Component<any, any> {
                     <div className="item-label">Contract Address</div>
                     <div className="item-content">
                       <a className="link" href={`https://etherscan.io/address/${token.address}`} target="_blank">
-                        {formatAddress(token.address)}
+                        {shortAddress(token.address)}
                       </a>
                     </div>
                   </div>

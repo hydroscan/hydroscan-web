@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './LatestTrades.scss';
 import { fetchTrades } from '../actions/trade';
-import { formatAmount, formatPriceUsd, formatAddress, formatCount } from '../lib/formatter';
+import { formatAmount, formatPriceUsd, shortAddress, formatCount } from '../lib/formatter';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
 import { Link } from 'found';
@@ -75,19 +75,19 @@ class LatestTrades extends React.PureComponent<any, any> {
                       </td>
                       <td className="buyer">
                         <Link className="link" to={`/traders/${trade.makerAddress}`}>
-                          {formatAddress(trade.makerAddress)}
+                          {shortAddress(trade.makerAddress)}
                         </Link>
                       </td>
                       <td className="buy-amount">{formatAmount(trade.baseTokenAmount)}</td>
                       <td className="sell-amount">{formatAmount(trade.quoteTokenAmount)}</td>
                       <td className="seller">
                         <Link className="link" to={`/traders/${trade.takerAddress}`}>
-                          {formatAddress(trade.takerAddress)}
+                          {shortAddress(trade.takerAddress)}
                         </Link>
                       </td>
                       <td className="transaction">
                         <Link className="link" to={`/trades/${trade.uuid}`}>
-                          {formatAddress(trade.transactionHash)}
+                          {shortAddress(trade.transactionHash)}
                         </Link>
                       </td>
                     </tr>

@@ -84,7 +84,7 @@
     display: none;
 }
 
-@media screen and (max-width: $breakpoint-default) {
+@media screen and (max-width: $max-width-lg) {
     .Header {
         display: none;
     }

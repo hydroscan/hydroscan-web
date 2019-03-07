@@ -43,10 +43,10 @@ class Relayers extends React.Component<any, any> {
                         <tr key={relayer.ID}>
                           <td>
                             <div className="relayer">
-                              <Link className="link" to={`/relayers/${relayer.slug}`}>
+                              <Link className="link" to={`/relayers/${relayer.address}`}>
                                 <img src={require(`../images/relayers/${relayer.slug}.png`)} />
                               </Link>
-                              <Link className="link" to={`/relayers/${relayer.slug}`}>
+                              <Link className="link" to={`/relayers/${relayer.address}`}>
                                 {relayer.name}
                               </Link>
                             </div>
@@ -58,7 +58,7 @@ class Relayers extends React.Component<any, any> {
                           </td>
                           <td>
                             {' '}
-                            <Link className="link" to={`/relayers/${relayer.slug}`}>
+                            <Link className="link" to={`/relayers/${relayer.address}`}>
                               {relayer.address}
                             </Link>
                           </td>

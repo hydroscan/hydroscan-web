@@ -27,6 +27,7 @@ $color-token-icon: #dcdde4;
 $color-footer-font: #d8d8d8;
 
 $padding: 15px;
+$padding-m: 8px;
 $radius: 4px;
 
 $breakpoint-sm: 576px;
@@ -34,7 +35,8 @@ $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 
-$breakpoint-default: 991px;
+$max-width-md: 767px;
+$max-width-lg: 991px;
 
 $font-size-sm: 11px; //tooltips and notes
 $font-size-md: 12px;
@@ -46,7 +48,3 @@ $font-family-basic: 'PT Sans Caption', -apple-system, BlinkMacSystemFont, 'Segoe
 $font-family-arial-rounded: 'arial rounded mt bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
-
-@media screen and (max-width: $breakpoint-default) {
-    $padding: 8px;
-}

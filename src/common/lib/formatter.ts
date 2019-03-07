@@ -1,5 +1,6 @@
 import numeral from 'numeral';
 import BigNumber from 'bignumber.js';
+import { web3 } from './web3';
 
 BigNumber.config({ EXPONENTIAL_AT: 18 });
 
@@ -45,10 +46,14 @@ export const formatPercent = (data: string | number, showPositiveSign: boolean =
   return result;
 };
 
-export const formatAddress = (data: string): string => {
+export const shortAddress = (data: string): string => {
   return data && data.slice ? data.slice(0, 6) + '...' + data.slice(-4) : data;
 };
 
-export const capitalize = (str: string) => {
+export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
+export const formatAddress = (data: string): string => {
+  return web3.toChecksumAddress(data);
 };
