@@ -128,6 +128,7 @@ class Chart extends React.PureComponent<any, any> {
                     barSize={10}
                     stroke="#f1f3f4"
                     fill="#f1f3f4"
+                    isAnimationActive={false}
                   />
                 )}
                 <defs>
@@ -137,7 +138,14 @@ class Chart extends React.PureComponent<any, any> {
                     <stop offset="100%" stopColor={'#00c6a3'} stopOpacity={0.1} />
                   </linearGradient>
                 </defs>
-                <Area type="monotone" dataKey={areaKey} yAxisId={areaKey} stroke="#00c6a3" fill="url(#LineGradient)" />
+                <Area
+                  type="monotone"
+                  dataKey={areaKey}
+                  yAxisId={areaKey}
+                  stroke="#00c6a3"
+                  fill="url(#LineGradient)"
+                  isAnimationActive={false}
+                />
                 <Tooltip content={<CustomTooltip />} />
               </ComposedChart>
             </ResponsiveContainer>

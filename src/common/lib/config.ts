@@ -1,4 +1,4 @@
-const isServer = () => {
+export const isServer = () => {
   return typeof window === 'undefined';
 };
 
