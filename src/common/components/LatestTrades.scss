@@ -73,6 +73,7 @@
 
 @media screen and (max-width: $breakpoint-sm) {
     .LatestTrades {
+        .trade-price,
         .sell-amount {
             display: none;
         }

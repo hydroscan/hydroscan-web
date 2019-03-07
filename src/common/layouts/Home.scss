@@ -41,3 +41,19 @@
         }
     }
 }
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Home {
+        .container {
+            .chart-and-top-tokens {
+                .chart-wrapper,
+                .top-tokens-wrapper {
+                    padding: $padding-m;
+                }
+            }
+            .latest-trades-wrapper {
+                padding: $padding-m;
+            }
+        }
+    }
+}

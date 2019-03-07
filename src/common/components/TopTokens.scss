@@ -87,3 +87,11 @@
         }
     }
 }
+
+@media screen and (max-width: $breakpoint-sm) {
+    .TopTokens {
+        .rank {
+            display: none;
+        }
+    }
+}

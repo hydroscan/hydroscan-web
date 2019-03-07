@@ -23,3 +23,11 @@
         padding: $padding;
     }
 }
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Indicators {
+        .indicator-wrapper {
+            padding: $padding-m;
+        }
+    }
+}
