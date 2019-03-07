@@ -89,7 +89,7 @@ class Chart extends React.PureComponent<any, any> {
                   top: 10,
                   right: 0,
                   left: 0,
-                  bottom: 5
+                  bottom: 0
                 }}>
                 <XAxis
                   axisLine={false}
