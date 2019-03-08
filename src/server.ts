@@ -1,13 +1,11 @@
 import express from 'express';
-
 import { createServer } from '@christophediprima/razzle-react-redux-observable-found';
-
 import rootEpic from './common/epics';
 import rootReducer from './common/reducers';
 import routes from './common/routes';
-
 import Document, { DocumentExtraProps } from './common/layouts/Document';
 import { styleSheets } from './common/layouts/Providers';
+import morgan from 'morgan';
 
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST || '');
 const server = express();
@@ -20,8 +18,10 @@ const serverConfig = createServer<any, any, DocumentExtraProps>({
   razzleAssets,
   rootEpic,
   rootReducer,
-  routes,
+  routes
 });
+
+server.use(morgan('common'));
 
 server
   .disable('x-powered-by')
