@@ -43,7 +43,7 @@ class Tokens extends React.Component<any, any> {
                       <td className="rank">#</td>
                       <td className="token">Token</td>
                       <td className="volume">24h Volume (USD)</td>
-                      <td className="change">24H Vol Change</td>
+                      <td className="change">24h Vol Change</td>
                       {!traderAddress && <td className="traders">Traders</td>}
                       <td className="price">Last Price (USD)</td>
                     </tr>

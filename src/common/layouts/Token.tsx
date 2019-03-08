@@ -37,7 +37,7 @@ class Token extends React.Component<any, any> {
               <object data={getTokenLogoUrl(params.address)} type="image/png">
                 <div className="default-img" />
               </object>
-              {!tokenLoading && <div className="main-title">{`TOKENS - ${token.name} (${token.symbol})`}</div>}
+              {!tokenLoading && <div className="main-title">{`TOKEN - ${token.name} (${token.symbol})`}</div>}
             </div>
           </div>
           <div className="top-sections">
