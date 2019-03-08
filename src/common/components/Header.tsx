@@ -155,6 +155,7 @@ class Header extends React.PureComponent<any, any> {
 
   public handleLink(link) {
     const { router } = this.props;
+    this.setState({ showMenu: false });
     router.push(link);
   }
 }
