@@ -23,8 +23,8 @@ const routes = (
       Component={Home}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          // hack for first time load agian in client
-          if (isServer && history === 0) {
+          // hack for first time loading agian in the client side
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -44,7 +44,7 @@ const routes = (
       Component={Relayers}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -61,7 +61,7 @@ const routes = (
       Component={Tokens}
       getData={({ params, context, location }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -81,7 +81,7 @@ const routes = (
       Component={Trades}
       getData={({ params, context, location }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -102,7 +102,7 @@ const routes = (
       Component={Trade}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -119,7 +119,7 @@ const routes = (
       Component={Token}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -138,7 +138,7 @@ const routes = (
       Component={Relayer}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
@@ -157,7 +157,7 @@ const routes = (
       Component={Trader}
       getData={({ params, context }) =>
         new Promise(resolve => {
-          if (isServer && history === 0) {
+          if (!isServer() && history === 0) {
             history = history + 1;
             return resolve({ store: context.store });
           }
