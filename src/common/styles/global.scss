@@ -4,9 +4,16 @@ body {
     font-family: $font-family-basic;
     background-color: $color-gray-light;
 
+    .gradient {
+        background: -webkit-linear-gradient(left, $color-purple, $color-purple-light); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right, $color-purple, $color-purple-light); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right, $color-purple, $color-purple-light); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right, $color-purple, $color-purple-light); /* Standard（must be last） */
+    }
+
     .container {
         max-width: 1200px;
-        min-height: calc(100vh - 91px - 230px);
+        min-height: calc(100vh - 56px - 133px);
         width: 100%;
         margin-right: auto;
         margin-left: auto;

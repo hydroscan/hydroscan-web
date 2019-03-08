@@ -12,56 +12,25 @@ class Footer extends React.PureComponent<any, any> {
       <div className="Footer">
         <div className="container">
           <div className="content-wrapper">
-            <div className="col1-wrapper">
-              <div className="headline">HYDRO FOUNDATION</div>
-              <div className="item">
-                <a href="https://hydroprotocol.io/" target="_blank">
-                  Hydro Protocol
-                </a>
-              </div>
-              <div className="item">
-                <a href="https://medium.com/hydro-protocol" target="_blank">
-                  News and Updates
-                </a>
-              </div>
+            <div className="donate">Donate to Help us Improve</div>
+            <div className="copy-wrapper">
+              <div className="address">0xE3Cba0C3ce94365D3E59C7bA6352D598DBCc00b1</div>
+              <div className="copy gradient">Copy Address</div>
             </div>
-            <div className="col2-wrapper">
-              <div className="headline">DEVELOPER</div>
-              <div className="item">
-                <a href="https://github.com/HydroProtocol" target="_blank">
-                  Github
-                </a>
-              </div>
-              <div className="item">
-                <a href="https://github.com/HydroProtocol/protocol" target="_blank">
-                  Smart Contracts
-                </a>
-              </div>
-            </div>
-            <div className="col3-wrapper">
-              <div className="headline">CONNECT</div>
-              <div className="item">
-                <a href="https://twitter.com/protocol_hydro" target="_blank">
-                  Twitter
-                </a>
-              </div>
-              <div className="item">
-                <a href="https://www.reddit.com/r/hydroprotocol/" target="_blank">
-                  Reddit
-                </a>
-              </div>
-              <div className="item">
-                <a href="https://t.me/hydroprotocol" target="_blank">
-                  Telegram
-                </a>
-              </div>
+            <div className="link-wrapper">
+              <a href="https://github.com/hydroscan" target="_black">
+                <img className="github" src={require('../images/github.svg')} />
+              </a>
+              <a href="https://etherscan.io/address/0xE3Cba0C3ce94365D3E59C7bA6352D598DBCc00b1" target="_black">
+                <img className="etherscan" src={require('../images/etherscan.png')} />
+              </a>
             </div>
           </div>
         </div>
         <div className="bottom-line" />
         <div className="bottom-container">
           <div className="container">
-            <div className="copyright">COPYRIGHT 2019 © HydroProtocol.io ALL RIGHTS RESERVED</div>
+            <div className="copyright">COPYRIGHT 2019 © HydroScan.io ALL RIGHTS RESERVED</div>
           </div>
         </div>
       </div>

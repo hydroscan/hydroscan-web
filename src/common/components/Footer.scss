@@ -2,7 +2,7 @@
 
 .Footer {
     width: 100%;
-    height: 230px;
+    height: 133px;
     background-color: $color-gray;
     color: $color-light;
     position: relative;
@@ -13,35 +13,56 @@
 
     .content-wrapper {
         width: 100%;
-        height: 153px;
-        font-size: $font-size-md;
-        display: flex;
         text-align: center;
 
-        .headline {
-            font-weight: 600;
-            line-height: 36px;
+        .donate {
+            color: $color-footer-font;
+            font-size: $font-size-md;
         }
 
-        .item {
-            line-height: 28px;
+        .copy-wrapper {
+            font-size: $font-size-sm;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
 
-            a {
-                color: $color-footer-font;
-                text-decoration: none;
+            .address {
+                color: $color-gray;
+                background-color: $color-gray-light;
+                height: 32px;
+                line-height: 32px;
+                border-top-left-radius: 16px;
+                border-bottom-left-radius: 16px;
+                padding: 0 12px;
+            }
+
+            .copy {
+                color: $color-white;
+                height: 32px;
+                line-height: 32px;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                padding: 0 11px;
+                cursor: pointer;
             }
         }
 
-        .col1-wrapper {
-            width: 33%;
-        }
+        .link-wrapper {
+            display: flex;
+            width: 176px;
+            float: right;
+            margin-top: -22px;
 
-        .col2-wrapper {
-            width: 34%;
-        }
+            .github {
+                // height: 17px;
+                width: 78px;
+            }
 
-        .col3-wrapper {
-            width: 33%;
+            .etherscan {
+                // height: 17px;
+                margin-left: 20px;
+                width: 78px;
+            }
         }
     }
 
@@ -50,26 +71,25 @@
         height: 1px;
         position: absolute;
         background-color: $color-gray-mid;
-        bottom: 45px;
+        bottom: 35px;
     }
 
     .bottom-container {
         padding: 0;
-        height: 44px;
+        height: 34px;
         position: absolute;
         width: 100%;
         bottom: 0;
 
         .container {
-            padding: 0 30px 0 0;
-            text-align: right;
+            padding: 0 30px;
         }
     }
 
     .copyright {
         color: $color-light;
         font-size: $font-size-sm;
-        line-height: 44px;
+        line-height: 34px;
     }
 }
 

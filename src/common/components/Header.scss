@@ -1,15 +1,8 @@
 @import '../styles/variables.scss';
 
-.header-gradient {
-    background: -webkit-linear-gradient(left, $color-purple, $color-purple-light); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, $color-purple, $color-purple-light); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, $color-purple, $color-purple-light); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, $color-purple, $color-purple-light); /* Standard（must be last） */
-}
-
 .Header {
     width: 100%;
-    height: 91px;
+    height: 56px;
 
     .header-container {
         max-width: 1200px;
@@ -17,7 +10,7 @@
         height: 100%;
         margin-right: auto;
         margin-left: auto;
-        padding: 30px;
+        padding: 0 30px;
         box-sizing: border-box;
 
         display: flex;

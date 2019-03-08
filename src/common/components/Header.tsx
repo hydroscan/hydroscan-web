@@ -83,7 +83,7 @@ class Header extends React.PureComponent<any, any> {
 
     return (
       <div>
-        <div className="Header header-gradient">
+        <div className="Header gradient">
           <div className="header-container">
             <Link className="link" to="/">
               <img src={require('../images/hydroscan.svg')} />
@@ -117,7 +117,7 @@ class Header extends React.PureComponent<any, any> {
           </div>
         </div>
 
-        <div className="Header-sm header-gradient">
+        <div className="Header-sm gradient">
           <div className="header-container">
             <Link className="link" to="/">
               <img src={require('../images/hydroscan.svg')} />
