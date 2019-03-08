@@ -8,7 +8,6 @@ import { styleSheets } from './common/layouts/Providers';
 import morgan from 'morgan';
 
 const razzleAssets = require(process.env.RAZZLE_ASSETS_MANIFEST || '');
-const server = express();
 
 const initialState = {};
 
@@ -21,11 +20,18 @@ const serverConfig = createServer<any, any, DocumentExtraProps>({
   routes
 });
 
+const server = express();
+
 server.use(morgan('common'));
 
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR || ''))
   .get('/*', serverConfig);
+
+server.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 export default server;
