@@ -8,10 +8,11 @@ import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
 import { getTokenLogoUrl } from '../lib/tokenLogo';
 import Loading from '../components/Loading';
+import { withRouter } from 'found';
 
 import './Token.scss';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
     token: state.token.token,
     tokenLoading: state.token.tokenLoading
@@ -19,6 +20,13 @@ const mapStateToProps = state => {
 };
 
 class Token extends React.Component<any, any> {
+  // public componentDidMount() {
+  //   const { token, tokensLoading, router } = this.props;
+  //   if (!tokensLoading && !token.address) {
+  //     router.push('/404');
+  //   }
+  // }
+
   public componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(setToken({ token: {} }));
@@ -125,4 +133,4 @@ class Token extends React.Component<any, any> {
   }
 }
 
-export default connect(mapStateToProps)(Token);
+export default connect(mapStateToProps)(withRouter(Token));

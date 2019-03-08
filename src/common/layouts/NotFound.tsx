@@ -1,8 +1,21 @@
 import React from 'react';
 import { Link } from 'found';
+import { connect } from 'react-redux';
 import './NotFound.scss';
+import { setNotFound } from '../actions/notFound';
 
-class NotFound extends React.Component {
+const mapStateToProps = (state, props) => {
+  return {
+    notFound: state.notFound.notFound
+  };
+};
+
+class NotFound extends React.Component<any, any> {
+  public componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(setNotFound({ notFound: false }));
+  }
+
   public render() {
     return (
       <div className="NotFound">
@@ -27,4 +40,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export default connect(mapStateToProps)(NotFound);

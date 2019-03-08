@@ -33,7 +33,7 @@ class Relayer extends React.Component<any, any> {
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              {!relayerLoading && <img src={require(`../images/relayers/${relayer.slug}.png`)} />}
+              {!relayerLoading && relayer.slug && <img src={require(`../images/relayers/${relayer.slug}.png`)} />}
               <div className="main-title">{relayer.name}</div>
               <div className="secondary">{relayer.address}</div>
             </div>

@@ -14,10 +14,16 @@ const initialState: any = {
   // tradesLatest: [],
   // tradesLatestLoading: false,
 
-  trade: {},
+  trade: {
+    baseToken: {},
+    quoteToken: {},
+    relayer: {}
+  },
   tradeLoading: false,
 
-  trader: {},
+  trader: {
+    topTokens: []
+  },
   traderLoading: false
 };
 

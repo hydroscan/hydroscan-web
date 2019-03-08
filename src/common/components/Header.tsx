@@ -6,13 +6,23 @@ import fetch from 'isomorphic-fetch';
 import { HYDROSCAN_API_URL } from '../lib/config';
 
 const mapStateToProps = (state, props) => {
-  return {};
+  return {
+    notFound: state.notFound.notFound
+  };
 };
 
 class Header extends React.PureComponent<any, any> {
   constructor(props) {
     super(props);
     this.state = { keyword: '', showMenu: false };
+  }
+
+  public componentDidMount() {
+    const { router, notFound } = this.props;
+    if (notFound) {
+      // so can use browser back
+      router.replace('/404');
+    }
   }
 
   public handleChange(e) {
@@ -70,7 +80,6 @@ class Header extends React.PureComponent<any, any> {
 
   public render() {
     const { pathname } = this.props.match.location;
-    console.log(pathname);
 
     return (
       <div>

@@ -15,6 +15,7 @@ import {
 import Epic from './epic';
 import { HYDROSCAN_API_URL } from '../lib/config';
 import { formatAddress } from '../lib/formatter';
+import { setNotFound } from '../actions/notFound';
 
 export const fetchTradesLoading: Epic = action$ =>
   action$.pipe(
@@ -63,7 +64,7 @@ export const fetchTrades: Epic = action$ =>
       }),
       setTradesLoading({ loading: false })
     ]),
-    catchError((error: Error) => [console.log(error), setTradesLoading({ loading: false })])
+    catchError((error: Error) => [setTradesLoading({ loading: false })])
   );
 
 export const fetchTradesIndicatorsLoading: Epic = action$ =>
@@ -83,7 +84,7 @@ export const fetchTradesIndicators: Epic = action$ =>
     flatMap(response => response.json()),
     map(body => body),
     flatMap((indicators: any) => [setTradesIndicators({ indicators }), setTradesIndicatorsLoading({ loading: false })]),
-    catchError((error: Error) => [console.log(error), setTradesIndicatorsLoading({ loading: false })])
+    catchError((error: Error) => [setTradesIndicatorsLoading({ loading: false })])
   );
 
 export const fetchTradesChartLoading: Epic = action$ =>
@@ -110,7 +111,7 @@ export const fetchTradesChart: Epic = action$ =>
     flatMap(response => response.json()),
     map(body => body as any[]),
     flatMap((chartData: any[]) => [setTradesChart({ chartData }), setTradesChartLoading({ loading: false })]),
-    catchError((error: Error) => [console.log(error), setTradesChartLoading({ loading: false })])
+    catchError((error: Error) => [setTradesChartLoading({ loading: false })])
   );
 
 export const fetchTradeLoading: Epic = action$ =>
@@ -127,10 +128,15 @@ export const fetchTrade: Epic = action$ =>
     flatMap(action => {
       return fetch(`${HYDROSCAN_API_URL}/api/v1/trades/${action.payload.uuid}`);
     }),
-    flatMap(response => response.json()),
+    flatMap(response => {
+      if (response.status > 400) {
+        throw response.status;
+      }
+      return response.json();
+    }),
     map(body => body as any),
     flatMap((trade: any) => [setTrade({ trade }), setTradeLoading({ loading: false })]),
-    catchError((error: Error) => [console.log(error), setTradeLoading({ loading: false })])
+    catchError((error: Error) => [setTradeLoading({ loading: false }), setNotFound({ notFound: true })])
   );
 
 export const fetchTraderLoading: Epic = action$ =>
@@ -148,8 +154,13 @@ export const fetchTrader: Epic = action$ =>
       const { address } = action.payload;
       return fetch(`${HYDROSCAN_API_URL}/api/v1/traders/${formatAddress(address)}`);
     }),
-    flatMap(response => response.json()),
+    flatMap(response => {
+      if (response.status > 400) {
+        throw response.status;
+      }
+      return response.json();
+    }),
     map(body => body as any),
     flatMap((trader: any) => [setTrader({ trader }), setTraderLoading({ loading: false })]),
-    catchError((error: Error) => [console.log(error), setTraderLoading({ loading: false })])
+    catchError((error: Error) => [setTraderLoading({ loading: false }), setNotFound({ notFound: true })])
   );

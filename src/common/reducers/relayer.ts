@@ -2,7 +2,9 @@ const initialState: any = {
   relayers: [],
   relayersLoading: false,
 
-  relayer: [],
+  relayer: {
+    topTokens: []
+  },
   relayerLoading: false
 };
 
