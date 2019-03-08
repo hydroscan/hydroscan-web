@@ -69,6 +69,9 @@ class Header extends React.PureComponent<any, any> {
   }
 
   public render() {
+    const { pathname } = this.props.match.location;
+    console.log(pathname);
+
     return (
       <div>
         <div className="Header header-gradient">
@@ -77,18 +80,18 @@ class Header extends React.PureComponent<any, any> {
               <img src={require('../images/hydroscan.svg')} />
             </Link>
             <div className="tabs">
-              <Link className="tab" to="/relayers">
-                <img src={require('../images/relayers.svg')} />
+              <Link className={`tab ${pathname.startsWith('/relayers') ? 'active' : ''}`} to="/relayers">
+                <div className="img relayers-img" />
                 <div> RELAYERS</div>
               </Link>
 
-              <Link className="tab" to="/tokens">
-                <img src={require('../images/tokens.svg')} />
+              <Link className={`tab ${pathname.startsWith('/tokens') ? 'active' : ''}`} to="/tokens">
+                <div className="img tokens-img" />
                 <div> TOKENS</div>
               </Link>
 
-              <Link className="tab" to="/trades">
-                <img src={require('../images/trades.svg')} />
+              <Link className={`tab ${pathname.startsWith('/trade') ? 'active' : ''}`} to="/trades">
+                <div className="img trades-img" />
                 <div> TRADES</div>
               </Link>
             </div>

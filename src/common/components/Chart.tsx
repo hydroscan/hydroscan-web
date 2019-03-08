@@ -10,7 +10,7 @@ import Loading from '../components/Loading';
 
 const CustomTooltip = args => {
   const { active, payload, label } = args;
-  if (active) {
+  if (active && payload) {
     return (
       <div className="custom-tooltip">
         <p className="label">{moment(label).format('MMMM Do YYYY, h:mm:ss a')}</p>

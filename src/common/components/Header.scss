@@ -36,13 +36,35 @@
                 display: flex;
                 align-items: center;
 
-                img {
+                .img {
                     width: 16px;
+                    height: 16px;
                     margin-right: 4px;
+                    background-size: 16px 16px;
                 }
 
-                &:hover {
+                .relayers-img {
+                    background-image: url('../images/relayers.svg');
+                }
+                .tokens-img {
+                    background-image: url('../images/tokens.svg');
+                }
+                .trades-img {
+                    background-image: url('../images/trades.svg');
+                }
+
+                &:hover,
+                &.active {
                     color: $color-gray-dark;
+                    .relayers-img {
+                        background-image: url('../images/relayers_dark.svg');
+                    }
+                    .tokens-img {
+                        background-image: url('../images/tokens_dark.svg');
+                    }
+                    .trades-img {
+                        background-image: url('../images/trades_dark.svg');
+                    }
                 }
             }
         }
