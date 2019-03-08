@@ -9,6 +9,7 @@ import Trade from './layouts/Trade';
 import Trader from './layouts/Trader';
 import Token from './layouts/Token';
 import NotFound from './layouts/NotFound';
+import NoResult from './layouts/NoResult';
 import { fetchTrades, fetchTrade, fetchTradesIndicators, fetchTradesChart, fetchTrader } from './actions/trade';
 import { fetchTokens, fetchToken } from './actions/token';
 import { fetchRelayers, fetchRelayer } from './actions/relayer';
@@ -171,6 +172,7 @@ const routes = (
         })
       }
     />
+    <Route path="/no_result" Component={NoResult} />
     <Route path="*" Component={NotFound} />
   </Route>
 );

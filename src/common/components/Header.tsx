@@ -73,7 +73,7 @@ class Header extends React.PureComponent<any, any> {
         break;
       default:
         console.log('no result');
-        router.push(`/trades`);
+        router.push(`/no_result`);
         break;
     }
   }
