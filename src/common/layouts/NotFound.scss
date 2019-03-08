@@ -1,0 +1,55 @@
+@import '../styles/variables.scss';
+
+.NotFound {
+    width: 100%;
+    overflow: hidden;
+    padding-top: calc((100vh - 330px) / 2 - 10%);
+
+    .item-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .not-found-left,
+    .not-found-right {
+        height: 40px;
+    }
+    .hydroscan-gray {
+        height: 63px;
+        margin: 10px 15px 0;
+    }
+
+    .not-found-text {
+        width: 147px;
+        margin-top: 65px;
+    }
+
+    .sorry {
+        margin-top: 40px;
+        font-size: $font-size-lg;
+        color: $color-gray;
+        max-width: 80%;
+    }
+
+    .link {
+        margin-top: 40px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+    .NotFound {
+        .not-found-left,
+        .not-found-right {
+            height: 20px;
+        }
+        .hydroscan-gray {
+            height: 33px;
+        }
+
+        .not-found-text {
+            width: 77px;
+        }
+    }
+}
