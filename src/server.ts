@@ -29,7 +29,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR || ''))
   .get('/*', serverConfig);
 
-server.use(function(err, req, res, next) {
+server.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
