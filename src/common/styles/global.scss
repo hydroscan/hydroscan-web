@@ -162,22 +162,22 @@ body {
         .pagination-wrapper {
             width: 100%;
             height: 54px;
+            display: flex;
+            justify-content: center;
+            position: relative;
 
             .rc-pagination {
-                float: right;
-                margin-right: $padding;
-
                 li:focus {
                     outline: none;
                 }
             }
 
             .showing-range {
-                float: right;
-                margin-right: $padding;
-                font-size: $font-size-lg;
-                color: $color-gray-dark;
-                margin-top: 18px;
+                font-size: $font-size-sm;
+                color: $color-gray;
+                margin-top: 20px;
+                position: absolute;
+                right: $padding;
             }
         }
     }
