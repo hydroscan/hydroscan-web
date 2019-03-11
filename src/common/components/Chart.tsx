@@ -50,7 +50,7 @@ class Chart extends React.PureComponent<any, any> {
     const areaKey = currentSection === 'VOLUME' ? 'volume' : 'trades';
     return (
       <div className="Chart section-wrapper">
-        <div className="chart-header">
+        <div className="section-header">
           <div className="chart-title">
             {sections.map(section => {
               return (

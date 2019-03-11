@@ -98,14 +98,22 @@ body {
             position: relative;
 
             .section-header {
-                height: 25px;
+                height: 39px;
                 position: relative;
+                margin-top: -15px;
+                display: flex;
+                align-items: center;
 
                 .section-title {
                     color: $color-dark;
                     font-size: $font-size-lg;
                     height: $font-size-lg;
                     font-weight: 600;
+                }
+
+                .filter-wrapper {
+                    position: absolute;
+                    right: 0;
                 }
 
                 .bottom-border {
@@ -134,7 +142,7 @@ body {
                 thead {
                     color: $color-gray;
                     tr {
-                        height: 50px;
+                        height: 40px;
                     }
                 }
 

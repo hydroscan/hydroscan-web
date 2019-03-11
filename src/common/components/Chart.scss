@@ -8,10 +8,7 @@
         font-size: $font-size-md;
     }
 
-    .chart-header {
-        height: 25px;
-        position: relative;
-
+    .section-header {
         .chart-title {
             color: $color-dark;
             font-size: $font-size-lg;
@@ -22,7 +19,8 @@
             .section-title {
                 border-bottom: 2px solid $color-dark;
                 margin-right: $padding;
-                height: 20px;
+                height: 25px !important;
+                z-index: 9;
             }
 
             .section-title-inactive {
@@ -31,21 +29,6 @@
                 margin-right: $padding;
                 cursor: pointer;
             }
-        }
-
-        .filter-wrapper {
-            position: absolute;
-            top: -5px;
-            right: 0;
-        }
-
-        .bottom-border {
-            position: absolute;
-            bottom: 0;
-            left: -15px;
-            right: -15px;
-            background-color: $color-gray-light;
-            height: 1px;
         }
     }
 

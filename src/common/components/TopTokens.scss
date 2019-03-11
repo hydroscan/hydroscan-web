@@ -3,30 +3,6 @@
 .TopTokens {
     height: 335px;
 
-    .section-header {
-        height: 25px;
-        position: relative;
-        .section-title {
-            color: $color-dark;
-            font-size: $font-size-lg;
-            height: $font-size-lg;
-            font-weight: 600;
-        }
-        .filter-wrapper {
-            position: absolute;
-            top: -5px;
-            right: 0;
-        }
-        .bottom-border {
-            position: absolute;
-            bottom: 0;
-            left: -15px;
-            right: -15px;
-            background-color: $color-gray-light;
-            height: 1px;
-        }
-    }
-
     .section-body {
         .section-table {
             table-layout: auto;
