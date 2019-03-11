@@ -45,7 +45,7 @@ class Trades extends React.Component<any, any> {
                   <thead>
                     <tr>
                       <td className="pair">Pair</td>
-                      <td className="trade-price">Trade Price</td>
+                      <td className="trade-price">Trade Size</td>
                       <td className="buyer">Buyer</td>
                       <td className="buy-amount">Buy Amount</td>
                       <td className="sell-amount">Sell Amount</td>
@@ -56,7 +56,7 @@ class Trades extends React.Component<any, any> {
                   <tbody>
                     {trades.map(trade => {
                       return (
-                        <tr key={trade.ID}>
+                        <tr key={trade.uuid}>
                           <td className="pair">
                             <Link
                               className="link"
@@ -70,17 +70,7 @@ class Trades extends React.Component<any, any> {
                           </td>
 
                           <td className="trade-price">
-                            <div className="main">
-                              {formatAmount(new BigNumber(trade.quoteTokenAmount).div(trade.baseTokenAmount).toFixed())}
-                            </div>
-                            <div className="secondary">
-                              {formatPriceUsd(
-                                new BigNumber(trade.quoteTokenAmount)
-                                  .div(trade.baseTokenAmount)
-                                  .times(trade.quoteTokenPriceUSD)
-                                  .toFixed()
-                              )}
-                            </div>
+                            <div className="main">{formatPriceUsd(trade.volumeUSD)}</div>
                           </td>
                           <td className="buyer">
                             <div className="main">

@@ -111,7 +111,7 @@ class Header extends React.PureComponent<any, any> {
                 onKeyDown={this.keyPress.bind(this)}
                 onChange={this.handleChange.bind(this)}
                 className="search-input"
-                placeholder="Search Address, transaction, token"
+                placeholder="Search Address, Transaction hash, Token."
               />
             </div>
           </div>
@@ -136,7 +136,7 @@ class Header extends React.PureComponent<any, any> {
                   onKeyDown={this.keyPress.bind(this)}
                   onChange={this.handleChange.bind(this)}
                   className="search-input"
-                  placeholder="Search Address, transaction, token"
+                  placeholder="Search Address, Transaction hash, Token."
                 />
               </div>
               <div className="tabs">

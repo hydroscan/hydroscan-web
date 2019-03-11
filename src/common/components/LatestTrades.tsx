@@ -36,7 +36,7 @@ class LatestTrades extends React.PureComponent<any, any> {
               <thead>
                 <tr>
                   <td className="pair">Pair</td>
-                  <td className="trade-price">Trade Price</td>
+                  <td className="trade-price">{tokenAddress ? 'Trade Price' : 'Trade Size'}</td>
                   <td className="buyer">Buyer</td>
                   <td className="buy-amount">Buy Amount</td>
                   <td className="sell-amount">Sell Amount</td>
@@ -61,17 +61,23 @@ class LatestTrades extends React.PureComponent<any, any> {
                         <div className="secondary">{moment(trade.date).fromNow()}</div>
                       </td>
                       <td className="trade-price">
-                        <div className="trade-price-main">
-                          {formatAmount(new BigNumber(trade.quoteTokenAmount).div(trade.baseTokenAmount).toFixed())}
-                        </div>
-                        <div className="secondary">
-                          {formatPriceUsd(
-                            new BigNumber(trade.quoteTokenAmount)
-                              .div(trade.baseTokenAmount)
-                              .times(trade.quoteTokenPriceUSD)
-                              .toFixed()
-                          )}
-                        </div>
+                        {tokenAddress ? (
+                          <div>
+                            <div className="trade-price-main">
+                              {formatAmount(new BigNumber(trade.quoteTokenAmount).div(trade.baseTokenAmount).toFixed())}
+                            </div>
+                            <div className="secondary">
+                              {formatPriceUsd(
+                                new BigNumber(trade.quoteTokenAmount)
+                                  .div(trade.baseTokenAmount)
+                                  .times(trade.quoteTokenPriceUSD)
+                                  .toFixed()
+                              )}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="main">{formatPriceUsd(trade.volumeUSD)}</div>
+                        )}
                       </td>
                       <td className="buyer">
                         <Link className="link" to={`/traders/${trade.makerAddress}`}>
