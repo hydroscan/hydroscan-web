@@ -83,7 +83,7 @@ class LatestTrades extends React.PureComponent<any, any> {
                         <Link className="link" to={`/traders/${trade.makerAddress}`}>
                           {shortAddress(trade.makerAddress)}
                         </Link>
-                        <div className="secondary">maker</div>
+                        <div className="secondary">Maker</div>
                       </td>
                       <td className="buy-amount">
                         {formatAmount(trade.baseTokenAmount)}
@@ -97,7 +97,7 @@ class LatestTrades extends React.PureComponent<any, any> {
                         <Link className="link" to={`/traders/${trade.takerAddress}`}>
                           {shortAddress(trade.takerAddress)}
                         </Link>
-                        <div className="secondary">taker</div>
+                        <div className="secondary">Taker</div>
                       </td>
                       <td className="transaction">
                         <Link className="link" to={`/trades/${trade.uuid}`}>

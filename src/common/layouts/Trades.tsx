@@ -78,7 +78,7 @@ class Trades extends React.Component<any, any> {
                                 {shortAddress(trade.makerAddress)}
                               </Link>
                             </div>
-                            <div className="secondary">maker</div>
+                            <div className="secondary">Maker</div>
                           </td>
                           <td className="buy-amount">
                             <div className="main">{formatAmount(trade.baseTokenAmount)}</div>
@@ -94,7 +94,7 @@ class Trades extends React.Component<any, any> {
                                 {shortAddress(trade.takerAddress)}
                               </Link>
                             </div>
-                            <div className="secondary">taker</div>
+                            <div className="secondary">Taker</div>
                           </td>
                           <td className="transaction">
                             <Link className="link" to={`/trades/${trade.uuid}`}>
