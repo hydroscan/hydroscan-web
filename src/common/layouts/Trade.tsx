@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { fetchTrade } from '../actions/trade';
 import { formatAmount, shortAddress } from '../lib/formatter';
 import Loading from '../components/Loading';
-
+import moment from 'moment';
 import './Trade.scss';
 
 const mapStateToProps = state => {
@@ -42,7 +42,7 @@ class Trade extends React.Component<any, any> {
                   </div>
                   <div className="item">
                     <div className="item-label">Date</div>
-                    <div className="item-content">{trade.date}</div>
+                    <div className="item-content">{moment(trade.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
                   </div>
 
                   <div className="item" />
