@@ -93,18 +93,32 @@
     }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media screen and (max-width: $max-width-lg) {
     .Footer {
-        height: 430px;
+        height: 170px;
 
         .content-wrapper {
             display: block;
+            padding-top: 15px;
 
-            .col1-wrapper,
-            .col2-wrapper,
-            .col3-wrapper {
+            .copy-wrapper {
+                .address {
+                    overflow-x: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .copy {
+                    overflow-x: hidden;
+                    width: 40px;
+                }
+            }
+
+            .link-wrapper {
+                display: flex;
+                margin-top: 20px;
+                justify-content: center;
                 width: 100%;
-                padding-top: 15px;
             }
         }
 
