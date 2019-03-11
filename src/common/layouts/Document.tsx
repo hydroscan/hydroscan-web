@@ -2,6 +2,9 @@ import { DocumentProps } from '@christophediprima/razzle-react-redux-observable-
 import React from 'react';
 import { SheetsRegistry } from 'react-jss';
 import { runtimeEnv } from '../lib/config';
+import { Helmet } from 'react-helmet';
+
+const helmet = Helmet.renderStatic();
 
 export interface DocumentExtraProps {
   styleSheets: SheetsRegistry;
@@ -10,13 +13,17 @@ export interface DocumentExtraProps {
 class Document extends React.Component<DocumentProps & DocumentExtraProps> {
   public render() {
     const { assets, html, initialState, styleSheets } = this.props;
+    const htmlAttrs = helmet.htmlAttributes.toComponent();
+    const bodyAttrs = helmet.bodyAttributes.toComponent();
 
     return (
-      <html>
+      <html {...htmlAttrs}>
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />
           <title>Hydroscan</title>
+          {helmet.title.toComponent()}
+          {helmet.meta.toComponent()}
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
           <link
             rel="stylesheet"
@@ -26,8 +33,9 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
           <style type="text/css" id="server-side-styles">
             {styleSheets.toString()}
           </style>
+          {helmet.link.toComponent()}
         </head>
-        <body>
+        <body {...bodyAttrs}>
           <div
             id="root"
             dangerouslySetInnerHTML={{

@@ -28,6 +28,7 @@
         "rc-pagination": "^1.17.8",
         "react": "^16.7.0",
         "react-dom": "^16.7.0",
+        "react-helmet": "^5.2.0",
         "react-jss": "^8.6.1",
         "react-redux": "5",
         "react-redux-epic": "^1.1.0",
