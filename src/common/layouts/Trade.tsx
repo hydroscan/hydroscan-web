@@ -6,6 +6,7 @@ import { fetchTrade } from '../actions/trade';
 import { formatAmount, shortAddress } from '../lib/formatter';
 import Loading from '../components/Loading';
 import moment from 'moment';
+import { Link } from 'found';
 import './Trade.scss';
 
 const mapStateToProps = state => {
@@ -42,7 +43,9 @@ class Trade extends React.Component<any, any> {
                   </div>
                   <div className="item">
                     <div className="item-label">Date</div>
-                    <div className="item-content">{moment(trade.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
+                    <div className="item-content">{`${moment(trade.date).fromNow()} (${moment(trade.date).format(
+                      'MMMM Do YYYY, h:mm:ss a'
+                    )})`}</div>
                   </div>
 
                   <div className="item" />
@@ -74,17 +77,17 @@ class Trade extends React.Component<any, any> {
                   <div className="item">
                     <div className="item-label">Maker</div>
                     <div className="item-content">
-                      <a className="link" href={`https://etherscan.io/address/${trade.makerAddress}`} target="_blank">
+                      <Link className="link" to={`/traders/${trade.makerAddress}`}>
                         {trade.makerAddress}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="item">
                     <div className="item-label">Taker</div>
                     <div className="item-content">
-                      <a className="link" href={`https://etherscan.io/address/${trade.takerAddress}`} target="_blank">
+                      <Link className="link" to={`/traders/${trade.takerAddress}`}>
                         {trade.takerAddress}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="item">
