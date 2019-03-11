@@ -4,8 +4,44 @@
     height: 335px;
 
     .custom-tooltip {
+        color: $color-white;
+        font-size: $font-size-sm;
+        background-color: #5d6166;
+        border-radius: 5px;
+        padding: 8px 12px;
+
+        .label-date {
+            margin-top: 10px;
+        }
+    }
+
+    .custom-legend {
         color: $color-gray;
-        font-size: $font-size-md;
+        font-size: $font-size-sm;
+        position: absolute;
+        left: 80px;
+
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+
+            .line {
+                height: 2px;
+                width: 15px;
+                background-color: #00c6a3;
+                margin-right: 8px;
+            }
+
+            .bar {
+                height: 4px;
+                width: 15px;
+                background-color: $color-gray-light;
+                margin-right: 8px;
+                border: 1px solid $color-gray;
+                box-sizing: border-box;
+            }
+        }
     }
 
     .section-header {
@@ -35,7 +71,7 @@
     .responsive-wrapper {
         width: 100%;
         height: 280px;
-        margin-top: 8px;
+        margin-top: 15px;
         position: relative;
     }
 }

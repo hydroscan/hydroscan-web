@@ -185,6 +185,16 @@ body {
             }
         }
     }
+
+    .recharts-text {
+        tspan {
+            font-size: $font-size-sm;
+        }
+    }
+    .recharts-legend-item-text {
+        color: $color-gray;
+        font-size: $font-size-sm;
+    }
 }
 
 @media screen and (max-width: $breakpoint-sm) {

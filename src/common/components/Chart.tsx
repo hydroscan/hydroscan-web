@@ -8,21 +8,36 @@ import { formatVolumeUsdShort, formatCountShort, formatVolumeUsd, formatCount, c
 import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
 
-const CustomTooltip = args => {
-  const { active, payload, label } = args;
+const CustomTooltip = props => {
+  const { active, payload, label } = props;
   if (active && payload) {
     return (
       <div className="custom-tooltip">
-        <p className="label">{moment(label).format('MMMM Do YYYY, h:mm:ss a')}</p>
         {payload[1] && (
-          <p className="label">{`${capitalize(payload[1].dataKey)}: ${formatVolumeUsd(payload[1].value)}`}</p>
+          <div className="label">{`${capitalize(payload[1].dataKey)}: ${formatVolumeUsd(payload[1].value)}`}</div>
         )}
-        <p className="label">{`${capitalize(payload[0].dataKey)}: ${formatCount(payload[0].value)}`}</p>
+        <div className="label">{`${capitalize(payload[0].dataKey)}: ${formatCount(payload[0].value)}`}</div>
+        <div className="label-date">{moment(label).format('MMMM Do YYYY, h:mm:ss a')}</div>
       </div>
     );
   }
 
   return null;
+};
+
+const CustomLegend = props => {
+  const { payload } = props;
+
+  return (
+    <div className="custom-legend">
+      {payload.reverse().map((entry, index) => (
+        <div key={`item-${index}`} className="item">
+          <div className={entry.value.toLowerCase() === 'traders' ? 'bar' : 'line'} />
+          <div>{entry.value}</div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 const mapStateToProps = (state, props) => {
@@ -86,9 +101,9 @@ class Chart extends React.PureComponent<any, any> {
               <ComposedChart
                 data={chartData}
                 margin={{
-                  top: 10,
+                  top: 0,
                   right: 0,
-                  left: 0,
+                  left: -18,
                   bottom: 0
                 }}>
                 <XAxis
@@ -96,7 +111,7 @@ class Chart extends React.PureComponent<any, any> {
                   tickLine={false}
                   dataKey="date"
                   tickFormatter={tick => {
-                    return moment(tick).format('MMM Do');
+                    return currentTab === '24H' ? moment(tick).format('h a') : moment(tick).format('MMM Do');
                   }}
                 />
                 <YAxis
@@ -129,6 +144,7 @@ class Chart extends React.PureComponent<any, any> {
                     stroke="#f1f3f4"
                     fill="#f1f3f4"
                     isAnimationActive={false}
+                    name="Traders"
                   />
                 )}
                 <defs>
@@ -145,8 +161,10 @@ class Chart extends React.PureComponent<any, any> {
                   stroke="#00c6a3"
                   fill="url(#LineGradient)"
                   isAnimationActive={false}
+                  name={areaKey && capitalize(areaKey)}
                 />
                 <Tooltip content={<CustomTooltip />} />
+                <Legend verticalAlign="top" content={<CustomLegend />} />
               </ComposedChart>
             </ResponsiveContainer>
           )}

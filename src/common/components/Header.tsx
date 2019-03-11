@@ -72,7 +72,6 @@ class Header extends React.PureComponent<any, any> {
         router.push(`/tokens?keyword=${searchParams.searchKey}`);
         break;
       default:
-        console.log('no result');
         router.push(`/no_result`);
         break;
     }
