@@ -8,7 +8,7 @@ import './Tokens.scss';
 import Pagination from 'rc-pagination';
 import moment from 'moment';
 import { Link } from 'found';
-import { getTokenLogoUrl } from '../lib/tokenLogo';
+import { getTokenLogoUrl, changeColor } from '../lib/utils';
 import Loading from '../components/Loading';
 
 const mapStateToProps = state => {
@@ -68,7 +68,7 @@ class Tokens extends React.Component<any, any> {
                             <div className="main">{formatVolumeUsd(token.volume24h)}</div>
                             <div className="secondary">{`${formatAmount(token.amount24h)} ${token.symbol}`}</div>
                           </td>
-                          <td className={`change ${token.volume24hChange >= 0 ? 'green' : 'red'}`}>
+                          <td className={`change ${changeColor(token.volume24hChange)}`}>
                             <div className="main">{formatPercent(token.volume24hChange)}</div>
                           </td>
                           {!traderAddress && (

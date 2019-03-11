@@ -6,7 +6,7 @@ import { fetchToken, setToken } from '../actions/token';
 import { shortAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
-import { getTokenLogoUrl } from '../lib/tokenLogo';
+import { getTokenLogoUrl, changeColor } from '../lib/utils';
 import Loading from '../components/Loading';
 import { withRouter } from 'found';
 
@@ -20,13 +20,6 @@ const mapStateToProps = (state, props) => {
 };
 
 class Token extends React.Component<any, any> {
-  // public componentDidMount() {
-  //   const { token, tokensLoading, router } = this.props;
-  //   if (!tokensLoading && !token.address) {
-  //     router.push('/404');
-  //   }
-  // }
-
   public componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(setToken({ token: {} }));
@@ -82,7 +75,7 @@ class Token extends React.Component<any, any> {
                     <div className="item-label">24h Volume</div>
                     <div className="item-content">{formatVolumeUsd(token.volume24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(token.volume24hChange)}`}>
+                      <div className={`change ${changeColor(token.volume24hChange)}`}>
                         {formatPercent(token.volume24hChange)}
                       </div>
                     </div>
@@ -91,7 +84,7 @@ class Token extends React.Component<any, any> {
                     <div className="item-label">24h Trades</div>
                     <div className="item-content">{formatCount(token.trades24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(token.trades24hChange)}`}>
+                      <div className={`change ${changeColor(token.trades24hChange)}`}>
                         {formatPercent(token.trades24hChange)}
                       </div>
                     </div>
@@ -100,7 +93,7 @@ class Token extends React.Component<any, any> {
                     <div className="item-label">24h Traders</div>
                     <div className="item-content">{formatCount(token.traders24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(token.traders24hChange)}`}>
+                      <div className={`change ${changeColor(token.traders24hChange)}`}>
                         {formatPercent(token.traders24hChange)}
                       </div>
                     </div>
@@ -120,16 +113,6 @@ class Token extends React.Component<any, any> {
         <Footer />
       </div>
     );
-  }
-
-  public changeClass(change) {
-    if (change > 0) {
-      return 'green';
-    } else if (change < 0) {
-      return 'red';
-    } else {
-      return 'gray';
-    }
   }
 }
 

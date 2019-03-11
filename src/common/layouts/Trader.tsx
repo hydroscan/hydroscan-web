@@ -3,11 +3,18 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import { fetchTrader, setTrader } from '../actions/trade';
-import { shortAddress, formatVolumeUsd, formatCount, formatPercent, formatAmountWithDecimals } from '../lib/formatter';
+import {
+  shortAddress,
+  formatVolumeUsd,
+  formatCount,
+  formatPercent,
+  formatAmountWithDecimals,
+  formatPriceUsd
+} from '../lib/formatter';
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
 import Loading from '../components/Loading';
-import { getTokenLogoUrl } from '../lib/tokenLogo';
+import { getTokenLogoUrl, changeColor } from '../lib/utils';
 import './Trader.scss';
 import { Link } from 'found';
 
@@ -57,7 +64,7 @@ class Trader extends React.Component<any, any> {
                     <div className="item-label">24h Volume</div>
                     <div className="item-content">{formatVolumeUsd(trader.volume24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(trader.volume24hChange)}`}>
+                      <div className={`change ${changeColor(trader.volume24hChange)}`}>
                         {formatPercent(trader.volume24hChange)}
                       </div>
                     </div>
@@ -66,19 +73,14 @@ class Trader extends React.Component<any, any> {
                     <div className="item-label">24h Trades</div>
                     <div className="item-content">{formatCount(trader.trades24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(trader.trades24hChange)}`}>
+                      <div className={`change ${changeColor(trader.trades24hChange)}`}>
                         {formatPercent(trader.trades24hChange)}
                       </div>
                     </div>
                   </div>
                   <div className="item">
-                    <div className="item-label">24h Traders</div>
-                    <div className="item-content">{formatCount(trader.traders24h)}</div>
-                    <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(trader.traders24hChange)}`}>
-                        {formatPercent(trader.traders24hChange)}
-                      </div>
-                    </div>
+                    <div className="item-label">Total Maker Rebate</div>
+                    <div className="item-content">{formatPriceUsd(trader.totalMakerRebate)}</div>
                   </div>
                 </div>
               )}
@@ -107,7 +109,7 @@ class Trader extends React.Component<any, any> {
                           <div className="item-label">{token.name}</div>
                           <div className="item-content">{formatVolumeUsd(token.volume)}</div>
                           <div className={'item-change-wrapper'}>
-                            <div className={`change ${this.changeClass(token.volumeChange)}`}>
+                            <div className={`change ${changeColor(token.volumeChange)}`}>
                               {formatPercent(token.volumeChange)}
                             </div>
                           </div>
@@ -132,16 +134,6 @@ class Trader extends React.Component<any, any> {
         <Footer />
       </div>
     );
-  }
-
-  public changeClass(change) {
-    if (change > 0) {
-      return 'green';
-    } else if (change < 0) {
-      return 'red';
-    } else {
-      return 'gray';
-    }
   }
 }
 

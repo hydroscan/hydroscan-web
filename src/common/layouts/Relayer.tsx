@@ -7,7 +7,7 @@ import { shortAddress, formatVolumeUsd, formatCount, formatPercent, formatAmount
 import LatestTrades from '../components/LatestTrades';
 import Chart from '../components/Chart';
 import Loading from '../components/Loading';
-import { getTokenLogoUrl } from '../lib/tokenLogo';
+import { getTokenLogoUrl, changeColor } from '../lib/utils';
 import './Relayer.scss';
 import { Link } from 'found';
 
@@ -56,7 +56,7 @@ class Relayer extends React.Component<any, any> {
                     <div className="item-label">24h Volume</div>
                     <div className="item-content">{formatVolumeUsd(relayer.volume24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(relayer.volume24hChange)}`}>
+                      <div className={`change ${changeColor(relayer.volume24hChange)}`}>
                         {formatPercent(relayer.volume24hChange)}
                       </div>
                     </div>
@@ -65,7 +65,7 @@ class Relayer extends React.Component<any, any> {
                     <div className="item-label">24h Trades</div>
                     <div className="item-content">{formatCount(relayer.trades24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(relayer.trades24hChange)}`}>
+                      <div className={`change ${changeColor(relayer.trades24hChange)}`}>
                         {formatPercent(relayer.trades24hChange)}
                       </div>
                     </div>
@@ -74,7 +74,7 @@ class Relayer extends React.Component<any, any> {
                     <div className="item-label">24h Traders</div>
                     <div className="item-content">{formatCount(relayer.traders24h)}</div>
                     <div className={'item-change-wrapper'}>
-                      <div className={`change ${this.changeClass(relayer.traders24hChange)}`}>
+                      <div className={`change ${changeColor(relayer.traders24hChange)}`}>
                         {formatPercent(relayer.traders24hChange)}
                       </div>
                     </div>
@@ -106,7 +106,7 @@ class Relayer extends React.Component<any, any> {
                           <div className="item-label">{token.name}</div>
                           <div className="item-content">{formatVolumeUsd(token.volume)}</div>
                           <div className={'item-change-wrapper'}>
-                            <div className={`change ${this.changeClass(token.volumeChange)}`}>
+                            <div className={`change ${changeColor(token.volumeChange)}`}>
                               {formatPercent(token.volumeChange)}
                             </div>
                           </div>
@@ -128,16 +128,6 @@ class Relayer extends React.Component<any, any> {
         <Footer />
       </div>
     );
-  }
-
-  public changeClass(change) {
-    if (change > 0) {
-      return 'green';
-    } else if (change < 0) {
-      return 'red';
-    } else {
-      return 'gray';
-    }
   }
 }
 

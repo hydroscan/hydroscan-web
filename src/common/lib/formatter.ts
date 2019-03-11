@@ -38,7 +38,11 @@ export const formatCountShort = (data: string | number): string => {
   return numeral(data).format('0a');
 };
 
-export const formatPercent = (data: string | number, showPositiveSign: boolean = true): string => {
+export const formatPercent = (data: number, showPositiveSign: boolean = true): string => {
+  // the minimum change is -1 (-100%)
+  if (!data || data < -1) {
+    return '-';
+  }
   const result = numeral(data).format('0.00%');
   if (showPositiveSign && !result.startsWith('-')) {
     return '+' + result;
