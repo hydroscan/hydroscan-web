@@ -17,6 +17,7 @@ import Loading from '../components/Loading';
 import { getTokenLogoUrl, changeColor } from '../lib/utils';
 import './Trader.scss';
 import { Link } from 'found';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const mapStateToProps = state => {
   return {
@@ -81,6 +82,13 @@ class Trader extends React.Component<any, any> {
                   <div className="item">
                     <div className="item-label">Total Maker Rebate</div>
                     <div className="item-content">{formatPriceUsd(trader.totalMakerRebate)}</div>
+                    <div className="rebate-tooltip">
+                      <Tooltip
+                        title="Some relayers rebate up to 50% of all taker fees. Click for more details."
+                        placement="top">
+                        <i className="fa fa-question-circle" aria-hidden="true" />
+                      </Tooltip>
+                    </div>
                   </div>
                 </div>
               )}

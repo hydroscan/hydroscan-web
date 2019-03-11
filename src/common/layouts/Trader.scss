@@ -117,6 +117,13 @@
                             }
                         }
                     }
+
+                    .rebate-tooltip {
+                        font-size: $font-size-md;
+                        color: $color-gray;
+                        margin-left: 12px;
+                        cursor: pointer;
+                    }
                 }
             }
 
