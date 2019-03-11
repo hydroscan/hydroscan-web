@@ -88,7 +88,7 @@
                 font-size: $font-size-lg;
 
                 &:focus {
-                    border: 1px inset $color-gray;
+                    border: 1px solid $color-gray;
                 }
             }
         }
@@ -185,12 +185,12 @@
                     outline: none;
                     padding: 0 38px 0 15px;
                     border-width: 0;
-                    border: 1px solid $color-white;
+                    border: 1px solid $color-gray-light;
                     font-size: $font-size-lg;
                     background-color: $color-gray-light;
 
                     &:focus {
-                        border: 1px inset $color-footer-font;
+                        border: 1px solid $color-footer-font;
                     }
                 }
             }
