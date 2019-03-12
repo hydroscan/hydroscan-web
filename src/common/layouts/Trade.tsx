@@ -69,9 +69,9 @@ class Trade extends React.Component<any, any> {
                   <div className="item">
                     <div className="item-label">Relayer</div>
                     <div className="item-content">
-                      <a className="link" href={trade.relayer.url} target="_blank">
+                      <Link className="link" to={`/relayers/${trade.relayer.address}`}>
                         {trade.relayer.name}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="item">
