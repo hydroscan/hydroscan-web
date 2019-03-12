@@ -13,10 +13,11 @@ const CustomTooltip = props => {
   if (active && payload) {
     return (
       <div className="custom-tooltip">
-        {payload[1] && (
-          <div className="label">{`${capitalize(payload[1].dataKey)}: ${formatVolumeUsd(payload[1].value)}`}</div>
-        )}
-        <div className="label">{`${capitalize(payload[0].dataKey)}: ${formatCount(payload[0].value)}`}</div>
+        {payload.reverse().map((entry, index) => (
+          <div key={`item-${index}`} className="label">{`${capitalize(entry.dataKey)}: ${
+            entry.dataKey.toLowerCase() === 'volume' ? formatVolumeUsd(entry.value) : formatCount(entry.value)
+          }`}</div>
+        ))}
         <div className="label-date">{moment(label).format('MMMM Do YYYY, h:mm:ss a')}</div>
       </div>
     );
@@ -27,7 +28,6 @@ const CustomTooltip = props => {
 
 const CustomLegend = props => {
   const { payload } = props;
-
   return (
     <div className="custom-legend">
       {payload.reverse().map((entry, index) => (
