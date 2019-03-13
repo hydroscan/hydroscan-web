@@ -85,7 +85,7 @@ class Header extends React.PureComponent<any, any> {
         <div className="Header gradient">
           <div className="header-container">
             <Link className="link" to="/">
-              <img src={require('../images/hydroscan.svg')} />
+              <img src={require('../images/hydroscan.png')} />
             </Link>
             <div className="tabs">
               <Link className={`tab ${pathname.startsWith('/relayers') ? 'active' : ''}`} to="/relayers">
@@ -119,7 +119,7 @@ class Header extends React.PureComponent<any, any> {
         <div className="Header-sm gradient">
           <div className="header-container">
             <Link className="link" to="/">
-              <img src={require('../images/hydroscan.svg')} />
+              <img src={require('../images/hydroscan.png')} />
             </Link>
             <i className="fa fa-ellipsis-v" aria-hidden="true" onClick={this.openMenu.bind(this)} />
           </div>
