@@ -23,6 +23,11 @@ class Header extends React.PureComponent<any, any> {
       // using replace instead of push so that we can use browser back
       router.replace('/404');
     }
+
+    ['relayers_dark.svg', 'tokens_dark.svg', 'trades_dark.svg'].forEach(imgName => {
+      const img = new Image();
+      img.src = require('../images/' + imgName);
+    });
   }
 
   public handleChange(e) {
