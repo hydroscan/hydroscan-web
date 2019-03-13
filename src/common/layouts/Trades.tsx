@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { formatAmount, formatPriceUsd, shortAddress, formatCount } from '../lib/formatter';
+import { formatAmount, formatPriceUsd, shortAddress, formatCount, formatVolumeUsd } from '../lib/formatter';
 import { fetchTrades } from '../actions/trade';
 import { connect } from 'react-redux';
 import BigNumber from 'bignumber.js';
@@ -25,6 +25,7 @@ class Trades extends React.Component<any, any> {
   public render() {
     const { trades, page, pageSize, total, tradesLoading, location } = this.props;
     const { baseTokenAddress, quoteTokenAddress } = location.query;
+    const isPair = baseTokenAddress && quoteTokenAddress;
     return (
       <div className="Trades">
         <Header />
@@ -32,7 +33,7 @@ class Trades extends React.Component<any, any> {
           <div className="main-wrapper">
             <div className="main-header">
               <div className="main-title">
-                {baseTokenAddress && quoteTokenAddress && trades[0]
+                {isPair && trades[0]
                   ? `All Trades - ${trades[0].baseToken.symbol}/${trades[0].quoteToken.symbol}`
                   : 'All Trades'}
               </div>
@@ -45,7 +46,7 @@ class Trades extends React.Component<any, any> {
                   <thead>
                     <tr>
                       <td className="pair">Pair</td>
-                      <td className="trade-price">Trade Size</td>
+                      <td className="trade-price">{isPair ? 'Trade Price' : 'Trade Size'}</td>
                       <td className="buyer">Buyer</td>
                       <td className="buy-amount">Buy Amount</td>
                       <td className="sell-amount">Sell Amount</td>
@@ -70,7 +71,25 @@ class Trades extends React.Component<any, any> {
                           </td>
 
                           <td className="trade-price">
-                            <div className="main">{formatPriceUsd(trade.volumeUSD)}</div>
+                            {isPair ? (
+                              <div>
+                                <div className="trade-price-main">
+                                  {formatAmount(
+                                    new BigNumber(trade.quoteTokenAmount).div(trade.baseTokenAmount).toFixed()
+                                  )}
+                                </div>
+                                <div className="secondary">
+                                  {formatPriceUsd(
+                                    new BigNumber(trade.quoteTokenAmount)
+                                      .div(trade.baseTokenAmount)
+                                      .times(trade.quoteTokenPriceUSD)
+                                      .toFixed()
+                                  )}
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="main">{formatVolumeUsd(trade.volumeUSD)}</div>
+                            )}
                           </td>
                           <td className="buyer">
                             <div className="main">

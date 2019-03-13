@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './LatestTrades.scss';
 import { fetchTrades } from '../actions/trade';
-import { formatAmount, formatPriceUsd, shortAddress, formatCount } from '../lib/formatter';
+import { formatAmount, formatPriceUsd, shortAddress, formatCount, formatVolumeUsd } from '../lib/formatter';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
 import { Link } from 'found';
@@ -76,7 +76,7 @@ class LatestTrades extends React.PureComponent<any, any> {
                             </div>
                           </div>
                         ) : (
-                          <div className="main">{formatPriceUsd(trade.volumeUSD)}</div>
+                          <div className="main">{formatVolumeUsd(trade.volumeUSD)}</div>
                         )}
                       </td>
                       <td className="buyer">
