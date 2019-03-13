@@ -20,7 +20,7 @@ class Header extends React.PureComponent<any, any> {
   public componentDidMount() {
     const { router, notFound } = this.props;
     if (notFound) {
-      // so can use browser back
+      // using replace instead of push so that we can use browser back
       router.replace('/404');
     }
   }
