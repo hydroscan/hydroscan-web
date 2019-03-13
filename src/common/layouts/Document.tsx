@@ -21,7 +21,7 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />
-          <title>Hydroscan</title>
+          <title>HydroScan</title>
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />

@@ -15,9 +15,15 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <Helmet>
-          <title>Hydroscan</title>
-          <meta name="description" content="Hydroscan description" />
-          <meta name="keywords" content="Hydroscan,keywords" />
+          <title>HydroScan</title>
+          <meta
+            name="description"
+            content="Explore and Search Hydro Protocol Trades, Users and Exchanges on HydroScan."
+          />
+          <meta
+            name="keywords"
+            content="hydro scan, hydroscan, hydro protocol, hydro tracker, hydro watcher, hydro explorer"
+          />
         </Helmet>
 
         <Header />
