@@ -184,6 +184,9 @@ body {
                 .rc-pagination-item:hover a {
                     color: $color-purple;
                 }
+                .rc-pagination-item-active:hover a {
+                    color: #fff;
+                }
             }
 
             .showing-range {
