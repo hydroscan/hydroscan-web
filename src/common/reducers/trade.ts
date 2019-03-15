@@ -11,9 +11,6 @@ const initialState: any = {
   chartData: [],
   chartDataLoading: false,
 
-  // tradesLatest: [],
-  // tradesLatestLoading: false,
-
   trade: {
     baseToken: {},
     quoteToken: {},

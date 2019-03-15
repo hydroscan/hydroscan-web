@@ -13,10 +13,6 @@ const mapStateToProps = state => {
 };
 
 class Indicators extends React.PureComponent<any, any> {
-  // public componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   dispatch(fetchTradesIndicators());
-  // }
   public render() {
     const { indicators, indicatorsLoading } = this.props;
     return (
