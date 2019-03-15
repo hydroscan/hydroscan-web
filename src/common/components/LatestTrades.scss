@@ -4,6 +4,9 @@
     padding-bottom: 60px;
 
     .section-body {
+        &.full-items {
+            height: 1040px;
+        }
         .secondary {
             font-weight: lighter;
             font-size: $font-size-sm;

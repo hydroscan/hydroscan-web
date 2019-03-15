@@ -28,7 +28,7 @@ class LatestTrades extends React.PureComponent<any, any> {
           <div className="section-title">LATEST TRADES</div>
           <div className="bottom-border" />
         </div>
-        <div className="section-body">
+        <div className={`section-body ${trades.length === pageSize ? 'full-items' : ''}`}>
           {tradesLoading ? (
             <Loading />
           ) : (
