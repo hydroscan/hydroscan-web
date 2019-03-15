@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './LatestTrades.scss';
-import { fetchTrades } from '../actions/trade';
+import { fetchTrades, resetTradesPage } from '../actions/trade';
 import { formatAmount, formatPriceUsd, shortAddress, formatCount, formatVolumeUsd } from '../lib/formatter';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
@@ -20,15 +20,21 @@ const mapStateToProps = (state, props) => {
 };
 
 class LatestTrades extends React.PureComponent<any, any> {
+  public componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(resetTradesPage());
+  }
+
   public render() {
     const { trades, page, pageSize, total, tokenAddress, relayerAddress, traderAddress, tradesLoading } = this.props;
+    const hasFilter = tokenAddress || relayerAddress || traderAddress;
     return (
       <div className="LatestTrades section-wrapper">
         <div className="section-header">
           <div className="section-title">LATEST TRADES</div>
           <div className="bottom-border" />
         </div>
-        <div className={`section-body ${trades.length === pageSize ? 'full-items' : ''}`}>
+        <div className={`section-body ${hasFilter && trades.length === pageSize ? 'full-items' : ''}`}>
           {tradesLoading ? (
             <Loading />
           ) : (
@@ -111,14 +117,15 @@ class LatestTrades extends React.PureComponent<any, any> {
             </table>
           )}
         </div>
-        {tokenAddress || relayerAddress || traderAddress ? (
+        {hasFilter ? (
           <div className="pagination-wrapper">
             <div className="showing-range">
               {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}
             </div>
             <Pagination
               className="ant-pagination"
-              defaultCurrent={page}
+              defaultCurrent={1}
+              current={page}
               pageSize={pageSize}
               total={total}
               onChange={this.handlePageChange.bind(this)}

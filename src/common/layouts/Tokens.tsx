@@ -96,7 +96,8 @@ class Tokens extends React.Component<any, any> {
             </div>
             <Pagination
               className="ant-pagination"
-              defaultCurrent={page}
+              defaultCurrent={1}
+              current={page}
               pageSize={pageSize}
               total={total}
               onChange={this.handlePageChange.bind(this)}

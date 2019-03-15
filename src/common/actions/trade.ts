@@ -1,3 +1,9 @@
+export const resetTradesPage = () => {
+  return {
+    type: 'RESET_TRADES_PAGE'
+  };
+};
+
 export const fetchTrades = payload => {
   return {
     type: 'FETCH_TRADES',

@@ -26,6 +26,11 @@ const initialState: any = {
 
 const trade = (state: any = initialState, action: any): any => {
   switch (action.type) {
+    case 'RESET_TRADES_PAGE':
+      return {
+        ...state,
+        page: 1
+      };
     case 'SET_TRADES':
       return {
         ...state,

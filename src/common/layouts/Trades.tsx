@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { formatAmount, formatPriceUsd, shortAddress, formatCount, formatVolumeUsd } from '../lib/formatter';
-import { fetchTrades } from '../actions/trade';
+import { fetchTrades, resetTradesPage } from '../actions/trade';
 import { connect } from 'react-redux';
 import BigNumber from 'bignumber.js';
 import moment from 'moment';
@@ -11,7 +11,7 @@ import Pagination from 'rc-pagination';
 import { Link } from 'found';
 import Loading from '../components/Loading';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
     trades: state.trade.trades,
     page: state.trade.page,
@@ -22,8 +22,13 @@ const mapStateToProps = state => {
 };
 
 class Trades extends React.Component<any, any> {
+  public componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(resetTradesPage());
+  }
+
   public render() {
-    const { trades, page, pageSize, total, tradesLoading, location } = this.props;
+    const { trades, page, pageSize, total, tradesLoading, location, dispatch, router } = this.props;
     const { baseTokenAddress, quoteTokenAddress } = location.query;
     const isPair = baseTokenAddress && quoteTokenAddress;
     return (
@@ -63,7 +68,10 @@ class Trades extends React.Component<any, any> {
                               className="link"
                               to={`/trades/?baseTokenAddress=${trade.baseToken.address}&quoteTokenAddress=${
                                 trade.quoteToken.address
-                              }`}>
+                              }`}
+                              onClick={() => {
+                                dispatch(resetTradesPage());
+                              }}>
                               <div className="main">{`${trade.baseToken.symbol}/${trade.quoteToken.symbol}`}</div>
                             </Link>
 
@@ -134,7 +142,8 @@ class Trades extends React.Component<any, any> {
             </div>
             <Pagination
               className="ant-pagination"
-              defaultCurrent={page}
+              defaultCurrent={1}
+              current={page}
               pageSize={pageSize}
               total={total}
               onChange={this.handlePageChange.bind(this)}
