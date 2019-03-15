@@ -175,11 +175,14 @@ body {
                     outline: none;
                 }
                 .rc-pagination-item:hover {
-                    border-color: #6872e0;
+                    border-color: $color-purple;
                 }
                 .rc-pagination-item-active {
-                    background-color: #6872e0;
-                    border-color: #6872e0;
+                    background-color: $color-purple;
+                    border-color: $color-purple;
+                }
+                .rc-pagination-item:hover a {
+                    color: $color-purple;
                 }
             }
 
