@@ -135,7 +135,7 @@ const routes = (
       }
     />
     <Route
-      path="/relayers/:slug"
+      path="/relayers/:address"
       Component={Relayer}
       getData={({ params, context }) =>
         new Promise(resolve => {
@@ -144,7 +144,7 @@ const routes = (
             return resolve({ store: context.store });
           }
 
-          context.store.dispatch(fetchRelayer({ slug: params.slug }));
+          context.store.dispatch(fetchRelayer({ address: params.address }));
           context.store.dispatch(fetchTrades({ relayerAddress: params.address }));
           context.store.dispatch(fetchTradesChart({ relayerAddress: params.address, tab: '1M' }));
 

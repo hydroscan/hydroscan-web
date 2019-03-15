@@ -40,7 +40,7 @@ export const fetchRelayer: Epic = action$ =>
   action$.pipe(
     filter(action => action.type === 'FETCH_RELAYER'),
     flatMap(action => {
-      return fetch(`${HYDROSCAN_API_URL}/api/v1/relayers/${action.payload.slug}`);
+      return fetch(`${HYDROSCAN_API_URL}/api/v1/relayers/${action.payload.address}`);
     }),
     flatMap(response => {
       if (response.status > 400) {
