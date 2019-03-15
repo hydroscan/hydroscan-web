@@ -33,7 +33,7 @@ body {
         }
 
         .link {
-            color: $color-blue;
+            color: $color-purple;
             text-decoration: none;
         }
 
@@ -173,6 +173,13 @@ body {
             .rc-pagination {
                 li:focus {
                     outline: none;
+                }
+                .rc-pagination-item:hover {
+                    border-color: #6872e0;
+                }
+                .rc-pagination-item-active {
+                    background-color: #6872e0;
+                    border-color: #6872e0;
                 }
             }
 
