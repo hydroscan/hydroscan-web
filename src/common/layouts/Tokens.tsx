@@ -24,14 +24,29 @@ const mapStateToProps = state => {
 class Tokens extends React.Component<any, any> {
   public render() {
     const { tokens, page, pageSize, total, tokensLoading, location } = this.props;
-    const { traderAddress } = location.query;
+    const { keyword, relayerAddress, traderAddress } = location.query;
+    let title = 'Tokens';
+    let secondary = '';
+    if (keyword) {
+      title = 'Tokens - Search ';
+      secondary = keyword;
+    } else if (relayerAddress) {
+      title = 'Tokens - Relayer ';
+      secondary = relayerAddress;
+    } else if (traderAddress) {
+      title = 'Tokens - Trader ';
+      secondary = traderAddress;
+    }
     return (
       <div className="Tokens">
         <Header />
         <div className="container">
           <div className="main-wrapper">
             <div className="main-header">
-              <div className="main-title">Tokens</div>
+              <div className="main-title">
+                <div className="main">{title}</div>
+                <div className="secondary">{secondary}</div>
+              </div>
             </div>
             <div className="main-body">
               {tokensLoading ? (

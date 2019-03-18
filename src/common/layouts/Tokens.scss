@@ -4,6 +4,21 @@
     .container {
         padding: 15px 30px;
 
+        .main-title {
+            display: flex;
+            align-items: center;
+
+            .main {
+                margin-right: $padding;
+            }
+        }
+
+        .secondary {
+            font-weight: lighter;
+            font-size: $font-size-sm;
+            color: $color-gray;
+        }
+
         .main-wrapper {
             tbody {
                 tr {
@@ -44,12 +59,6 @@
 
             .price {
                 text-align: right;
-            }
-
-            .secondary {
-                font-weight: lighter;
-                font-size: $font-size-sm;
-                color: $color-gray;
             }
         }
     }
