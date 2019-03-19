@@ -33,7 +33,7 @@ class Indicators extends React.PureComponent<any, any> {
         </div>
         <div className="indicator-wrapper">
           <Indicator
-            title="MAKER REBATE (24H)"
+            title="MAKER REBATES (24H)"
             data={formatAmount(indicators.marketRabate24h)}
             indicatorsLoading={indicatorsLoading}
           />

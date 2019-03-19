@@ -80,7 +80,7 @@ class Trader extends React.Component<any, any> {
                     </div>
                   </div>
                   <div className="item">
-                    <div className="item-label">Total Maker Rebate</div>
+                    <div className="item-label">Total Maker Rebates</div>
                     <div className="item-content">{formatPriceUsd(trader.totalMakerRebate)}</div>
                     <div className="rebate-tooltip">
                       <Tooltip
