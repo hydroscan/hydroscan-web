@@ -34,6 +34,14 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
             {styleSheets.toString()}
           </style>
           {helmet.link.toComponent()}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136958988-1" />
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html:
+                'if(window !== "undefined"){function gtag(){window.dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-136958988-1")}'
+            }}
+          />
         </head>
         <body {...bodyAttrs}>
           <div
