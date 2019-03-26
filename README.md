@@ -1,6 +1,6 @@
 # HydroScan Client
 
-[![Build Status](https://travis-ci.com/hydroscan/hydroscan-web.svg?branch=master)](https://travis-ci.org/hydroscan/hydroscan-web)
+[![CircleCI](https://circleci.com/gh/hydroscan/hydroscan-web.svg?style=svg)](https://circleci.com/gh/hydroscan/hydroscan-web)
 
 > A server-rendering single page client application built with React and Typescript. Connects to the HydroScan API for data.
 
