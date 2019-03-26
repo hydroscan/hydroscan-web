@@ -39,7 +39,7 @@ class Document extends React.Component<DocumentProps & DocumentExtraProps> {
             type="text/javascript"
             dangerouslySetInnerHTML={{
               __html:
-                'if(window !== "undefined"){function gtag(){window.dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-136958988-1")}'
+                'if(window !== "undefined"){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-136958988-1")}'
             }}
           />
         </head>
