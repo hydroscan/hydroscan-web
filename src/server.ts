@@ -24,6 +24,8 @@ const server = express();
 
 server.use(morgan('common'));
 
+server.get('/ping', (req, res) => res.send('pong'));
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR || ''))
