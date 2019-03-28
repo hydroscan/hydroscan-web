@@ -4,6 +4,12 @@
     .container {
         padding: 15px 30px;
 
+        .main-body {
+            &.full-page {
+                height: 1101px;
+            }
+        }
+
         .main-wrapper {
             .trade-price {
                 text-align: right;

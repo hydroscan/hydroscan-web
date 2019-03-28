@@ -48,7 +48,7 @@ class Tokens extends React.Component<any, any> {
                 <div className="secondary">{secondary}</div>
               </div>
             </div>
-            <div className="main-body">
+            <div className={`main-body ${tokens.length === pageSize ? 'full-page' : ''}`}>
               {tokensLoading ? (
                 <Loading />
               ) : (

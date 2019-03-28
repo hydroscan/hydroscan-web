@@ -43,7 +43,7 @@ class Trades extends React.Component<any, any> {
                   : 'All Trades'}
               </div>
             </div>
-            <div className="main-body">
+            <div className={`main-body ${trades.length === pageSize ? 'full-page' : ''}`}>
               {tradesLoading ? (
                 <Loading />
               ) : (

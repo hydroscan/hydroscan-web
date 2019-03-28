@@ -34,7 +34,7 @@ class LatestTrades extends React.PureComponent<any, any> {
           <div className="section-title">LATEST TRADES</div>
           <div className="bottom-border" />
         </div>
-        <div className={`section-body ${hasFilter && trades.length === pageSize ? 'full-items' : ''}`}>
+        <div className={`section-body ${hasFilter && trades.length === pageSize ? 'full-page' : ''}`}>
           {tradesLoading ? (
             <Loading />
           ) : (
