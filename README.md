@@ -1,6 +1,8 @@
 # HydroScan Client
 
 [![CircleCI](https://circleci.com/gh/hydroscan/hydroscan-web.svg?style=svg)](https://circleci.com/gh/hydroscan/hydroscan-web)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/hydroscanio/hydroscan-web.svg)](https://hub.docker.com/r/hydroscanio/hydroscan-web)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/hydroscanio/hydroscan-web.svg)](https://hub.docker.com/r/hydroscanio/hydroscan-web)
 [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m782290063-a639e34e5ff926b9e1f73e90.svg)](https://hydroscan.io)
 
 > A server-rendering single page client application built with React and Typescript. Connects to the HydroScan API for data.
