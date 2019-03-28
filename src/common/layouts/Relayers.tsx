@@ -35,8 +35,8 @@ class Relayers extends React.Component<any, any> {
                     <tr>
                       <td className="name">Relayer</td>
                       <td className="url">Website</td>
-                      <td className="volume">24h Volume (USD)</td>
                       <td className="trades">24h Trades</td>
+                      <td className="volume">24h Volume (USD)</td>
                       <td className="address">Relayer Address</td>
                     </tr>
                   </thead>
@@ -59,12 +59,13 @@ class Relayers extends React.Component<any, any> {
                               {relayer.url}
                             </a>
                           </td>
+                          <td className="trades">
+                            <div className="main">{formatCount(relayer.trades24h)}</div>
+                          </td>
                           <td className="volume">
                             <div className="main">{formatVolumeUsd(relayer.volume24h)}</div>
                           </td>
-                          <td className="trades">
-                            <div className="main">{formatCount(relayer.volume24h)}</div>
-                          </td>
+
                           <td>
                             <Link className="link" to={`/relayers/${relayer.address}`}>
                               {shortAddress(relayer.address)}
