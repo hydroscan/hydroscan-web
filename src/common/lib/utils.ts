@@ -13,3 +13,13 @@ export const changeColor = num => {
   }
   return 'gray';
 };
+
+export const getTradeWithSide = trade => {
+  trade.buyerAddress = trade.buyerAddress ? trade.buyerAddress : trade.takerAddress;
+  const buyerIsTaker = trade.buyerAddress === trade.takerAddress;
+  trade.sellerAddress = buyerIsTaker ? trade.makerAddress : trade.takerAddress;
+  trade.takerSide = buyerIsTaker ? 'buy' : 'sell';
+  trade.buyerIs = buyerIsTaker ? 'Taker' : 'Maker';
+  trade.sellerIs = buyerIsTaker ? 'Maker' : 'Taker';
+  return trade;
+};

@@ -7,6 +7,7 @@ import { formatAmount, shortAddress } from '../lib/formatter';
 import Loading from '../components/Loading';
 import moment from 'moment';
 import { Link } from 'found';
+import { getTradeWithSide } from '../lib/utils';
 import './Trade.scss';
 
 const mapStateToProps = state => {
@@ -92,7 +93,7 @@ class Trade extends React.Component<any, any> {
                   </div>
                   <div className="item">
                     <div className="item-label">Taker Side</div>
-                    <div className="item-content">{'Buy'}</div>
+                    <div className="item-content">{getTradeWithSide(trade).takerSide}</div>
                   </div>
 
                   <div className="item" />

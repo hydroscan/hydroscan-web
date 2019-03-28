@@ -8,6 +8,7 @@ import moment from 'moment';
 import { Link } from 'found';
 import Pagination from 'rc-pagination';
 import Loading from '../components/Loading';
+import { getTradeWithSide } from '../lib/utils';
 
 const mapStateToProps = (state, props) => {
   return {
@@ -51,7 +52,8 @@ class LatestTrades extends React.PureComponent<any, any> {
                 </tr>
               </thead>
               <tbody>
-                {trades.map(trade => {
+                {trades.map(t => {
+                  const trade = getTradeWithSide(t);
                   return (
                     <tr key={trade.ID}>
                       <td className="pair">
@@ -70,10 +72,10 @@ class LatestTrades extends React.PureComponent<any, any> {
                         <div className="main">{formatVolumeUsd(trade.volumeUSD)}</div>
                       </td>
                       <td className="buyer">
-                        <Link className="link" to={`/traders/${trade.makerAddress}`}>
-                          {shortAddress(trade.makerAddress)}
+                        <Link className="link" to={`/traders/${trade.buyerAddress}`}>
+                          {shortAddress(trade.buyerAddress)}
                         </Link>
-                        <div className="secondary">Maker</div>
+                        <div className="secondary">{trade.buyerIs}</div>
                       </td>
                       <td className="buy-amount">
                         {formatAmount(trade.baseTokenAmount)}
@@ -84,10 +86,10 @@ class LatestTrades extends React.PureComponent<any, any> {
                         <div className="secondary">{trade.quoteToken.symbol}</div>
                       </td>
                       <td className="seller">
-                        <Link className="link" to={`/traders/${trade.takerAddress}`}>
-                          {shortAddress(trade.takerAddress)}
+                        <Link className="link" to={`/traders/${trade.sellerAddress}`}>
+                          {shortAddress(trade.sellerAddress)}
                         </Link>
-                        <div className="secondary">Taker</div>
+                        <div className="secondary">{trade.sellerIs}</div>
                       </td>
                       <td className="transaction">
                         <Link className="link" to={`/trades/${trade.uuid}`}>
