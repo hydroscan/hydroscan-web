@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import './Relayers.scss';
 import Loading from '../components/Loading';
 import { Link } from 'found';
-import { shortAddress } from '../lib/formatter';
+import { shortAddress, formatCount, formatVolumeUsd } from '../lib/formatter';
 
 const mapStateToProps = state => {
   return {
@@ -34,7 +34,9 @@ class Relayers extends React.Component<any, any> {
                   <thead>
                     <tr>
                       <td className="name">Relayer</td>
-                      <td className="url">Link</td>
+                      <td className="url">Website</td>
+                      <td className="volume">24h Volume (USD)</td>
+                      <td className="trades">24h Trades</td>
                       <td className="address">Relayer Address</td>
                     </tr>
                   </thead>
@@ -56,6 +58,12 @@ class Relayers extends React.Component<any, any> {
                             <a className="link" href={relayer.url} target="_blank">
                               {relayer.url}
                             </a>
+                          </td>
+                          <td className="volume">
+                            <div className="main">{formatVolumeUsd(relayer.volume24h)}</div>
+                          </td>
+                          <td className="trades">
+                            <div className="main">{formatCount(relayer.volume24h)}</div>
                           </td>
                           <td>
                             <Link className="link" to={`/relayers/${relayer.address}`}>
