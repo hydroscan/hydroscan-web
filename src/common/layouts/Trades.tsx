@@ -51,7 +51,8 @@ class Trades extends React.Component<any, any> {
                   <thead>
                     <tr>
                       <td className="pair">Pair</td>
-                      <td className="trade-price">{isPair ? 'Trade Price' : 'Trade Size'}</td>
+                      {isPair && <td className="trade-price">Trade Price</td>}
+                      <td className="trade-price">Trade Size</td>
                       <td className="buyer">Buyer</td>
                       <td className="buy-amount">Buy Amount</td>
                       <td className="sell-amount">Sell Amount</td>
@@ -78,8 +79,8 @@ class Trades extends React.Component<any, any> {
                             <div className="secondary">{moment(trade.date).fromNow()}</div>
                           </td>
 
-                          <td className="trade-price">
-                            {isPair ? (
+                          {isPair && (
+                            <td className="trade-price">
                               <div>
                                 <div className="trade-price-main">
                                   {formatAmount(
@@ -95,9 +96,10 @@ class Trades extends React.Component<any, any> {
                                   )}
                                 </div>
                               </div>
-                            ) : (
-                              <div className="main">{formatVolumeUsd(trade.volumeUSD)}</div>
-                            )}
+                            </td>
+                          )}
+                          <td className="trade-price">
+                            <div className="main">{formatVolumeUsd(trade.volumeUSD)}</div>
                           </td>
                           <td className="buyer">
                             <div className="main">
