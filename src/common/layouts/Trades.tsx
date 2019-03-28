@@ -43,6 +43,16 @@ class Trades extends React.Component<any, any> {
                   ? `All Trades - ${trades[0].baseToken.symbol}/${trades[0].quoteToken.symbol}`
                   : 'All Trades'}
               </div>
+              <div className="pagination-wrapper-top">
+                <Pagination
+                  className="ant-pagination"
+                  defaultCurrent={1}
+                  current={page}
+                  pageSize={pageSize}
+                  total={total}
+                  onChange={this.handlePageChange.bind(this)}
+                />
+              </div>
             </div>
             <div className={`main-body ${trades.length === pageSize ? 'full-page' : ''}`}>
               {tradesLoading ? (

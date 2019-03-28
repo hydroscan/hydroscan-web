@@ -39,10 +39,14 @@ body {
 
         .main-wrapper {
             .main-header {
-                font-size: $font-size-lg;
-                color: $color-gray-dark;
-                font-weight: 600;
                 margin: 10px 0 25px;
+                position: relative;
+
+                .main-title {
+                    font-size: $font-size-lg;
+                    color: $color-gray-dark;
+                    font-weight: 600;
+                }
             }
             .main-body {
                 width: 100%;
@@ -162,6 +166,12 @@ body {
             }
         }
 
+        .pagination-wrapper-top {
+            position: absolute;
+            right: 0;
+            top: -15px;
+        }
+
         .pagination-wrapper {
             width: 100%;
             height: 54px;
@@ -169,31 +179,31 @@ body {
             justify-content: center;
             position: relative;
 
-            .rc-pagination {
-                li:focus {
-                    outline: none;
-                }
-                .rc-pagination-item:hover {
-                    border-color: $color-purple;
-                }
-                .rc-pagination-item-active {
-                    background-color: $color-purple;
-                    border-color: $color-purple;
-                }
-                .rc-pagination-item:hover a {
-                    color: $color-purple;
-                }
-                .rc-pagination-item-active:hover a {
-                    color: #fff;
-                }
-            }
-
             .showing-range {
                 font-size: $font-size-sm;
                 color: $color-gray;
                 margin-top: 20px;
                 position: absolute;
                 right: $padding;
+            }
+        }
+
+        .rc-pagination {
+            li:focus {
+                outline: none;
+            }
+            .rc-pagination-item:hover {
+                border-color: $color-purple;
+            }
+            .rc-pagination-item-active {
+                background-color: $color-purple;
+                border-color: $color-purple;
+            }
+            .rc-pagination-item:hover a {
+                color: $color-purple;
+            }
+            .rc-pagination-item-active:hover a {
+                color: #fff;
             }
         }
     }
@@ -222,6 +232,10 @@ body {
                 .main-body {
                     min-height: 100px;
                 }
+            }
+
+            .pagination-wrapper-top {
+                display: none;
             }
 
             .pagination-wrapper {

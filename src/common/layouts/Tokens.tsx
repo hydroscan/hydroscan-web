@@ -47,6 +47,16 @@ class Tokens extends React.Component<any, any> {
                 <div className="main">{title}</div>
                 <div className="secondary">{secondary}</div>
               </div>
+              <div className="pagination-wrapper-top">
+                <Pagination
+                  className="ant-pagination"
+                  defaultCurrent={1}
+                  current={page}
+                  pageSize={pageSize}
+                  total={total}
+                  onChange={this.handlePageChange.bind(this)}
+                />
+              </div>
             </div>
             <div className={`main-body ${tokens.length === pageSize ? 'full-page' : ''}`}>
               {tokensLoading ? (
