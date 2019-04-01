@@ -10,6 +10,24 @@
             }
         }
 
+        .download-btn {
+            width: 86px;
+            height: 28px;
+            background-color: #ffffff;
+            font-size: 11px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.1px;
+            color: #7a8289;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+
         .main-wrapper {
             .trade-price {
                 text-align: right;
@@ -25,6 +43,60 @@
                 font-size: $font-size-sm;
                 color: $color-gray;
             }
+        }
+    }
+}
+
+.download-modal-body {
+    width: 100%;
+    height: 100%;
+
+    .download-title {
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+        margin-top: 25px;
+        font-size: 15px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.1px;
+        color: #343a40;
+    }
+
+    .download-content {
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.1px;
+        color: #343a40;
+    }
+
+    .download-wrap {
+        text-align: center;
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+
+        .download {
+            width: 100px;
+            height: 26px;
+            border-radius: 13px;
+            background-color: #f1f3f4;
+            font-size: 12px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 26px;
+            letter-spacing: -0.1px;
+            color: #343a40;
+            text-decoration: none;
         }
     }
 }

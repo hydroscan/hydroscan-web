@@ -11,6 +11,10 @@ import Pagination from 'rc-pagination';
 import { Link } from 'found';
 import Loading from '../components/Loading';
 import { getTradeWithSide } from '../lib/utils';
+import Modal from '@material-ui/core/Modal';
+import { CSVLink } from 'react-csv';
+import fetch from 'isomorphic-fetch';
+import { HYDROSCAN_API_URL } from '../lib/config';
 
 const mapStateToProps = (state, props) => {
   return {
@@ -22,7 +26,63 @@ const mapStateToProps = (state, props) => {
   };
 };
 
+const modalStyle = {
+  top: '50%',
+  left: '50%',
+  transform: `translate(-50%, -60%)`,
+  position: 'absolute' as 'absolute',
+  width: 600,
+  height: 200,
+  backgroundColor: '#fff',
+  boxShadow: '0 1px 4px 1px rgba(0, 0, 0, 0.5)',
+  padding: 15,
+  outline: 'none',
+  borderRadius: 5
+};
+
 class Trades extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      downloadModalIsOpen: false,
+      csvData: []
+    };
+  }
+
+  public openDownloadModal() {
+    this.setState({ downloadModalIsOpen: true });
+    fetch(`${HYDROSCAN_API_URL}/api/v1/trades?filter=ALL&page=1&pageSize=1000`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        const trades = data.trades.map(trade => {
+          return {
+            date: trade.date,
+            pair: `${trade.baseToken.symbol}/${trade.quoteToken.symbol}`,
+            baseTokenAmount: trade.baseTokenAmount,
+            quoteTokenAmount: trade.quoteTokenAmount,
+            quoteTokenPriceUSD: trade.quoteTokenPriceUSD,
+            baseTokenAddress: trade.baseTokenAddress,
+            quoteTokenAddress: trade.quoteTokenAddress,
+            transactionHash: trade.transactionHash,
+            makerAddress: trade.makerAddress,
+            takerAddress: trade.takerAddress,
+            buyerAddress: trade.buyerAddress,
+            makerFee: trade.makerFee,
+            takerFee: trade.takerFee,
+            makerRebate: trade.makerRebate
+          };
+        });
+        this.setState({ csvData: trades });
+      });
+  }
+
+  public closeDownloadModal() {
+    this.setState({ downloadModalIsOpen: false });
+  }
+
   public componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(resetTradesPage());
@@ -150,6 +210,9 @@ class Trades extends React.Component<any, any> {
               )}
             </div>
           </div>
+          <div className="download-btn" onClick={this.openDownloadModal.bind(this)}>
+            Download CSV
+          </div>
           <div className="pagination-wrapper">
             <div className="showing-range">
               {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}
@@ -165,6 +228,19 @@ class Trades extends React.Component<any, any> {
           </div>
         </div>
         <Footer />
+        <Modal open={this.state.downloadModalIsOpen} onClose={this.closeDownloadModal.bind(this)}>
+          <div style={modalStyle}>
+            <div className="download-modal-body">
+              <div className="download-title">Download Data</div>
+              <div className="download-content">You are about to export the last 1,000 records as CSV. </div>
+              <div className="download-wrap">
+                <CSVLink filename={'hydro-trades.csv'} data={this.state.csvData} className="download">
+                  Download
+                </CSVLink>
+              </div>
+            </div>
+          </div>
+        </Modal>
       </div>
     );
   }
