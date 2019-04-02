@@ -6,6 +6,7 @@ import { fetchTokens } from '../actions/token';
 import { connect } from 'react-redux';
 import './Tokens.scss';
 import Pagination from 'rc-pagination';
+import en_US from 'rc-pagination/lib/locale/en_US';
 import moment from 'moment';
 import { Link } from 'found';
 import { getTokenLogoUrl, changeColor } from '../lib/utils';
@@ -50,6 +51,7 @@ class Tokens extends React.Component<any, any> {
               <div className="pagination-wrapper-top">
                 <Pagination
                   className="ant-pagination"
+                  locale={en_US}
                   defaultCurrent={1}
                   current={page}
                   pageSize={pageSize}
@@ -121,6 +123,7 @@ class Tokens extends React.Component<any, any> {
             </div>
             <Pagination
               className="ant-pagination"
+              locale={en_US}
               defaultCurrent={1}
               current={page}
               pageSize={pageSize}

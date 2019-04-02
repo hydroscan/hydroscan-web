@@ -7,6 +7,7 @@ import BigNumber from 'bignumber.js';
 import moment from 'moment';
 import { Link } from 'found';
 import Pagination from 'rc-pagination';
+import en_US from 'rc-pagination/lib/locale/en_US';
 import Loading from '../components/Loading';
 import { getTradeWithSide } from '../lib/utils';
 
@@ -110,6 +111,7 @@ class LatestTrades extends React.PureComponent<any, any> {
             </div>
             <Pagination
               className="ant-pagination"
+              locale={en_US}
               defaultCurrent={1}
               current={page}
               pageSize={pageSize}

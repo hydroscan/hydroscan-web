@@ -8,6 +8,7 @@ import BigNumber from 'bignumber.js';
 import moment from 'moment';
 import './Trades.scss';
 import Pagination from 'rc-pagination';
+import en_US from 'rc-pagination/lib/locale/en_US';
 import { Link } from 'found';
 import Loading from '../components/Loading';
 import { getTradeWithSide } from '../lib/utils';
@@ -106,6 +107,7 @@ class Trades extends React.Component<any, any> {
               <div className="pagination-wrapper-top">
                 <Pagination
                   className="ant-pagination"
+                  locale={en_US}
                   defaultCurrent={1}
                   current={page}
                   pageSize={pageSize}
@@ -219,6 +221,7 @@ class Trades extends React.Component<any, any> {
             </div>
             <Pagination
               className="ant-pagination"
+              locale={en_US}
               defaultCurrent={1}
               current={page}
               pageSize={pageSize}
