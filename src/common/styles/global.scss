@@ -172,19 +172,42 @@ body {
             top: -15px;
         }
 
-        .pagination-wrapper {
+        .page-wrapper {
+            &.pagination-wrapper {
+                width: 100%;
+                height: 54px;
+                display: flex;
+                justify-content: center;
+                position: relative;
+
+                .showing-range {
+                    font-size: $font-size-sm;
+                    color: $color-gray;
+                    margin-top: 20px;
+                    position: absolute;
+                    right: $padding;
+                }
+            }
+        }
+
+        .bottom-wrapper {
             width: 100%;
-            height: 54px;
-            display: flex;
-            justify-content: center;
+            height: 80px;
             position: relative;
+
+            .pagination-wrapper {
+                height: 54px;
+                position: absolute;
+                right: 0;
+                top: 5px;
+            }
 
             .showing-range {
                 font-size: $font-size-sm;
                 color: $color-gray;
-                margin-top: 20px;
                 position: absolute;
-                right: $padding;
+                top: 60px;
+                right: 0;
             }
         }
 

@@ -1,7 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { formatAmount, formatPriceUsd, shortAddress, formatCount, formatVolumeUsd } from '../lib/formatter';
+import {
+  formatAmount,
+  formatPriceUsd,
+  shortAddress,
+  formatCount,
+  formatVolumeUsd,
+  formatAddress
+} from '../lib/formatter';
 import { fetchTrades, resetTradesPage } from '../actions/trade';
 import { connect } from 'react-redux';
 import BigNumber from 'bignumber.js';
@@ -53,7 +60,13 @@ class Trades extends React.Component<any, any> {
 
   public openDownloadModal() {
     this.setState({ downloadModalIsOpen: true });
-    fetch(`${HYDROSCAN_API_URL}/api/v1/trades?filter=ALL&page=1&pageSize=1000`)
+    const { baseTokenAddress, quoteTokenAddress } = this.props.location.query;
+
+    fetch(
+      `${HYDROSCAN_API_URL}/api/v1/trades?filter=ALL&page=1&pageSize=1000&baseTokenAddress=${
+        baseTokenAddress ? formatAddress(baseTokenAddress) : ''
+      }&quoteTokenAddress=${quoteTokenAddress ? formatAddress(quoteTokenAddress) : ''}`
+    )
       .then(response => {
         return response.json();
       })
@@ -212,22 +225,26 @@ class Trades extends React.Component<any, any> {
               )}
             </div>
           </div>
-          <div className="download-btn" onClick={this.openDownloadModal.bind(this)}>
-            Download CSV
-          </div>
-          <div className="pagination-wrapper">
-            <div className="showing-range">
-              {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}
+          <div className="bottom-wrapper">
+            <div className="download-btn" onClick={this.openDownloadModal.bind(this)}>
+              Download CSV
             </div>
-            <Pagination
-              className="ant-pagination"
-              locale={en_US}
-              defaultCurrent={1}
-              current={page}
-              pageSize={pageSize}
-              total={total}
-              onChange={this.handlePageChange.bind(this)}
-            />
+            <div className="pagination-wrapper">
+              <div className="showing-range">
+                {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(
+                  total
+                )}`}
+              </div>
+              <Pagination
+                className="ant-pagination"
+                locale={en_US}
+                defaultCurrent={1}
+                current={page}
+                pageSize={pageSize}
+                total={total}
+                onChange={this.handlePageChange.bind(this)}
+              />
+            </div>
           </div>
         </div>
         <Footer />

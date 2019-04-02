@@ -105,7 +105,7 @@ class LatestTrades extends React.PureComponent<any, any> {
           )}
         </div>
         {hasFilter ? (
-          <div className="pagination-wrapper">
+          <div className="page-wrapper pagination-wrapper">
             <div className="showing-range">
               {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + trades.length} of ${formatCount(total)}`}
             </div>

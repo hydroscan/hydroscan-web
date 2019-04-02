@@ -117,7 +117,7 @@ class Tokens extends React.Component<any, any> {
               )}
             </div>
           </div>
-          <div className="pagination-wrapper">
+          <div className="page-wrapper pagination-wrapper">
             <div className="showing-range">
               {`Showing ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + tokens.length} of ${formatCount(total)}`}
             </div>
