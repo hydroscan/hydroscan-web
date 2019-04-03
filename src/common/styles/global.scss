@@ -11,6 +11,10 @@ body {
         background: linear-gradient(to right, $color-purple, $color-purple-light); /* Standard（must be last） */
     }
 
+    div[role='tooltip'] {
+        opacity: 1 !important;
+    }
+
     .container {
         max-width: 1200px;
         min-height: calc(100vh - 56px - 133px);

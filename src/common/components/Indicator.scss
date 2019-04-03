@@ -4,10 +4,20 @@
     height: 94px;
 
     .title {
-        font-size: $font-size-md;
-        line-height: $font-size-md;
-        color: $color-gray;
-        font-weight: 600;
+        display: flex;
+
+        .text {
+            font-size: $font-size-md;
+            line-height: $font-size-md;
+            color: $color-gray;
+            font-weight: 600;
+        }
+
+        img {
+            margin-left: 8px;
+            height: 12px;
+            width: 12px;
+        }
     }
 
     .content {
@@ -16,5 +26,26 @@
         line-height: 22px;
         color: $color-gray-dark;
         font-family: $font-family-arial-rounded;
+    }
+}
+
+.tooltip-more {
+    margin: -12px;
+    padding: 12px 12px;
+    background: #5d6166;
+    border-radius: 4px;
+    color: $color-light;
+    font-size: 11px;
+
+    .date {
+        margin-top: 12px;
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+    .Indicator {
+        .data-more-img {
+            display: none;
+        }
     }
 }
