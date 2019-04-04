@@ -1,3 +1,5 @@
+import BigNumber from 'bignumber.js';
+
 export const getTokenLogoUrl = address => {
   // https://gitcdn.xyz/
   return `https://gitcdn.xyz/repo/TrustWallet/tokens/master/tokens/${address.toLowerCase()}.png`;
@@ -22,4 +24,14 @@ export const getTradeWithSide = trade => {
   trade.buyerIs = buyerIsTaker ? 'Taker' : 'Maker';
   trade.sellerIs = buyerIsTaker ? 'Maker' : 'Taker';
   return trade;
+};
+
+export const HotDiscountRules = [[5000, 1.0], [20000, 0.9], [100000, 0.8], [500000, 0.7], [2000000, 0.6], [-1, 0.5]];
+export const getHotDiscount = (balance: BigNumber): number => {
+  for (const rule of HotDiscountRules) {
+    if (balance.lt(rule[0])) {
+      return rule[1];
+    }
+  }
+  return 0.5;
 };

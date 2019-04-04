@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>memberV1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Trader---Detail" transform="translate(-342.000000, -670.000000)" fill="#78C0E0" fill-rule="nonzero">
+            <g id="Group-7-Copy" transform="translate(205.000000, 373.000000)">
+                <g id="Group-10" transform="translate(137.000000, 144.000000)">
+                    <g id="memberV1" transform="translate(0.000000, 153.000000)">
+                        <path d="M14.166695,0 L2.833305,0 C1.268625,0 0,1.268625 0,2.83339 L0,14.166695 C0,15.731375 1.268625,17 2.833305,17 L14.16661,17 C15.731375,17 17,15.731375 17,14.166695 L17,2.83339 C17,1.268625 15.731375,0 14.166695,0 Z M14.17613,13.5082 L13.508285,13.5082 L13.508285,11.505005 L13.508285,10.83716 L13.508285,8.83388 L14.17613,8.83388 L14.17613,13.5082 Z M4.827235,14.17613 L2.15611,14.17613 L2.15611,4.88988 L1.48835,4.879425 L1.48835,4.15939 L2.82387,4.15939 L4.159475,4.15939 L4.159475,10.90108 L10.83716,4.15939 L14.565345,4.15939 L4.827235,14.17613 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>memberV5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#9D9D9D" offset="0%"></stop>
+            <stop stop-color="#E2E2E2" offset="47.7217305%"></stop>
+            <stop stop-color="#9B9B9B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Trader---Detail" transform="translate(-342.000000, -517.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <g id="Group-7-Copy" transform="translate(205.000000, 373.000000)">
+                <g id="Group-10" transform="translate(137.000000, 144.000000)">
+                    <g id="memberV5">
+                        <path d="M14.1666383,0 L2.83336166,0 C1.26869732,0 8.5e-05,1.26861232 8.5e-05,2.83336166 L8.5e-05,14.1665533 C8.5e-05,15.7311327 1.26869732,17 2.83336166,17 L14.1666383,17 C15.7312177,17 16.999915,15.7311327 16.999915,14.1665533 L16.999915,2.83336166 C16.999915,1.26861232 15.7312177,0 14.1666383,0 Z M14.1760732,13.5169048 L10.8371366,13.5120599 L10.8371366,12.8442216 L13.5082349,12.8442216 L13.5082349,11.5065049 L10.8370516,11.5103299 L10.8370516,9.49109009 L10.8370516,8.83430166 L11.50489,8.83430166 L14.1759882,8.83430166 L14.1759882,9.49109009 L11.50489,9.49109009 L11.50489,10.8376466 L14.1759882,10.8376466 L14.1759882,10.8409616 L14.1760732,10.8409616 L14.1760732,13.5169048 Z M4.82727172,14.1759882 L2.15617343,14.1759882 L2.15617343,4.88983111 L1.48842011,4.87937621 L1.48842011,4.15943341 L2.82392676,4.15943341 L4.15951841,4.15943341 L4.15951841,10.900971 L10.8372216,4.15943341 L14.5653694,4.15943341 L4.82727172,14.1759882 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

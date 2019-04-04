@@ -81,6 +81,11 @@
                 .item {
                     .item-label {
                         width: 30%;
+                        i {
+                            font-size: 15px;
+                            cursor: pointer;
+                            margin-left: 4px;
+                        }
                     }
                     .item-content {
                         width: 70%;
@@ -117,10 +122,8 @@
                         }
                     }
 
-                    .rebate-tooltip {
-                        font-size: $font-size-md;
-                        color: $color-gray;
-                        margin-left: 12px;
+                    .member-logo {
+                        margin-left: 4px;
                         cursor: pointer;
                     }
                 }
@@ -160,6 +163,89 @@
 
         .latest-trades-wrapper {
             margin-top: 30px;
+        }
+    }
+}
+
+.trader-modal-body {
+    width: 100%;
+    height: 100%;
+
+    .trader-title {
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+        font-size: 15px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.1px;
+        color: #343a40;
+    }
+
+    .trader-content {
+        width: 100%;
+        text-align: center;
+        margin-top: 25px;
+        font-size: 11px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.1px;
+        color: #343a40;
+        span {
+            font-weight: bold;
+            font-style: italic;
+            padding-right: 4px;
+        }
+    }
+
+    .list {
+        padding: 20px 130px 0;
+
+        .list-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 37px;
+            font-size: 12px;
+            color: $color-dark;
+            border-bottom: 0.2px solid rgba(0, 0, 0, 0.5);
+
+            .discount {
+                width: 60px;
+                margin-left: 85px;
+            }
+
+            .hot-count {
+                width: 200px;
+                text-align: right;
+            }
+        }
+    }
+
+    .close-wrap {
+        text-align: center;
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+
+        .close {
+            width: 100px;
+            height: 26px;
+            border-radius: 13px;
+            background-color: #f1f3f4;
+            font-size: 12px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 26px;
+            letter-spacing: -0.1px;
+            color: #343a40;
+            text-decoration: none;
+            cursor: pointer;
         }
     }
 }
