@@ -23,7 +23,7 @@ class Relayers extends React.Component<any, any> {
       try {
         relayerImgs[relayer.address] = require(`../images/relayers/${relayer.slug}.png`);
       } catch (e) {
-        console.log(e);
+        relayerImgs[relayer.address] = '';
       }
     }
     return (
