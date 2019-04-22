@@ -18,6 +18,12 @@ const mapStateToProps = state => {
 class Relayers extends React.Component<any, any> {
   public render() {
     const { relayers, relayersLoading } = this.props;
+    const relayerImgs = {};
+    for (const relayer of relayers) {
+      try {
+        relayerImgs[relayer.address] = require(`../images/relayers/${relayer.slug}.png`);
+      } catch (e) {}
+    }
     return (
       <div className="Relayers">
         <Header />
@@ -47,7 +53,7 @@ class Relayers extends React.Component<any, any> {
                           <td>
                             <div className="relayer">
                               <Link className="link" to={`/relayers/${relayer.address}`}>
-                                <img src={require(`../images/relayers/${relayer.slug}.png`)} />
+                                <img src={relayerImgs[relayer.address]} />
                               </Link>
                               <Link className="link" to={`/relayers/${relayer.address}`}>
                                 {relayer.name}
