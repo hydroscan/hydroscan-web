@@ -30,7 +30,9 @@ class Relayer extends React.Component<any, any> {
     let relayerImg;
     try {
       relayerImg = require(`../images/relayers/${relayer.slug}.png`);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
 
     return (
       <div className="Relayer">
