@@ -1,6 +1,6 @@
 import './client.scss';
 
-import { hydrateClient } from '@christophediprima/razzle-react-redux-observable-found';
+import { hydrateClient } from '@wlchn/razzle-react-redux-observable-found';
 import rootEpic from './common/epics';
 import rootReducer from './common/reducers';
 import routes from './common/routes';

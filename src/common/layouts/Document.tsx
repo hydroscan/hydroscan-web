@@ -1,4 +1,4 @@
-import { DocumentProps } from '@christophediprima/razzle-react-redux-observable-found';
+import { DocumentProps } from '@wlchn/razzle-react-redux-observable-found';
 import React from 'react';
 import { SheetsRegistry } from 'react-jss';
 import { runtimeEnv } from '../lib/config';

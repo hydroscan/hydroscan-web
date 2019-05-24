@@ -1,4 +1,4 @@
-import { OutputEpic } from '@christophediprima/razzle-react-redux-observable-found';
+import { OutputEpic } from '@wlchn/razzle-react-redux-observable-found';
 
 type Epic = OutputEpic<any, any>;
 
