@@ -12,6 +12,13 @@
                 width: 30px;
                 margin-right: $padding;
             }
+            .default-img {
+                height: 30px;
+                width: 30px;
+                margin-right: $padding;
+                background-color: $color-token-icon;
+                border-radius: 15px;
+            }
         }
 
         .volume {

@@ -55,7 +55,11 @@ class Relayers extends React.Component<any, any> {
                           <td>
                             <div className="relayer">
                               <Link className="link" to={`/relayers/${relayer.address}`}>
-                                <img src={relayerImgs[relayer.address]} />
+                                {relayerImgs[relayer.address] ? (
+                                  <img src={relayerImgs[relayer.address]} />
+                                ) : (
+                                  <div className="default-img" />
+                                )}
                               </Link>
                               <Link className="link" to={`/relayers/${relayer.address}`}>
                                 {relayer.name}
