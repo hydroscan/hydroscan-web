@@ -30,7 +30,7 @@ server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR || ''))
   .get('/*', (req, res) => {
-    if (req.path.includes('%') || req.url.includes('script')) {
+    if (req.path.includes('%') || req.url.toLowerCase().includes('script')) {
       res.redirect('/404');
     }
     res.append('X-XSS-Protection', '1; mode=block');
