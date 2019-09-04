@@ -3,6 +3,8 @@ import { Link } from 'found';
 import { connect } from 'react-redux';
 import './NotFound.scss';
 import { setNotFound } from '../actions/notFound';
+import { fetchTradesIndicators, fetchTradesChart, fetchTrades } from '../actions/trade';
+import { fetchTokens } from '../actions/token';
 
 const mapStateToProps = (state, props) => {
   return {
@@ -14,6 +16,11 @@ class NotFound extends React.Component<any, any> {
   public componentDidMount() {
     const { dispatch } = this.props;
     dispatch(setNotFound({ notFound: false }));
+
+    dispatch(fetchTradesIndicators());
+    dispatch(fetchTradesChart({ tab: '1M' }));
+    dispatch(fetchTokens({ pageSize: 10, tab: '24H' }));
+    dispatch(fetchTrades({ pageSize: 8 }));
   }
 
   public render() {

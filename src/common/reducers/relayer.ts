@@ -11,6 +11,7 @@ const initialState: any = {
 const relayer = (state: any = initialState, action: any): any => {
   switch (action.type) {
     case 'SET_RELAYERS':
+      console.log(action.payload.relayers);
       return {
         ...state,
         relayers: action.payload.relayers
