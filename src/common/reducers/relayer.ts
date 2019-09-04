@@ -11,10 +11,31 @@ const initialState: any = {
 const relayer = (state: any = initialState, action: any): any => {
   switch (action.type) {
     case 'SET_RELAYERS':
-      console.log(action.payload.relayers);
+      const relayers: any[] = [];
+      const relayersNoTrade: any[] = [];
+      for (const r of action.payload.relayers) {
+        if (r.trades24h === 0) {
+          relayersNoTrade.push(r);
+        } else {
+          relayers.push(r);
+        }
+      }
+
+      for (const r of relayersNoTrade) {
+        if (!r.name.startsWith('Relayer-')) {
+          relayers.push(r);
+        }
+      }
+
+      for (const r of relayersNoTrade) {
+        if (r.name.startsWith('Relayer-')) {
+          relayers.push(r);
+        }
+      }
+
       return {
         ...state,
-        relayers: action.payload.relayers
+        relayers
       };
     case 'SET_RELAYERS_LOADING':
       return {
