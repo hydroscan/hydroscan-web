@@ -68,7 +68,7 @@ class Relayers extends React.Component<any, any> {
                           </td>
                           <td>
                             <a className="link" href={relayer.url} target="_blank">
-                              {relayer.url}
+                              {relayer.name.startsWith('Relayer-') ? relayer.url.substring(0, 35) + '...' : relayer.url}
                             </a>
                           </td>
                           <td className="trades">
