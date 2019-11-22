@@ -21,6 +21,33 @@
                 overflow-x: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+                display: flex;
+                align-items: center;
+
+                object {
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 12px;
+                }
+
+                .default-img {
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 12px;
+                    background-color: $color-token-icon;
+                    border-radius: 15px;
+                }
+            }
+
+            thead {
+                .token {
+                    margin-top: 4px;
+                }
+            }
+            tbody {
+                .token {
+                    margin-top: 2px;
+                }
             }
 
             .volume {

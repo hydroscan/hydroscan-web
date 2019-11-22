@@ -6,7 +6,7 @@ import { formatVolumeUsd, formatPercent, capitalize } from '../lib/formatter';
 import FilterTabs from './FilterTabs';
 import Loading from '../components/Loading';
 import { Link } from 'found';
-import { changeColor } from '../lib/utils';
+import { changeColor, getTokenLogoUrl } from '../lib/utils';
 
 const mapStateToProps = state => {
   return {
@@ -64,8 +64,11 @@ class TopTokens extends React.PureComponent<any, any> {
                     <tr key={token.address}>
                       <td className="rank">{index + 1}</td>
                       <td className="token">
+                        <object data={getTokenLogoUrl(token.address)} type="image/png">
+                          <div className="default-img" />
+                        </object>
                         <Link className="link" to={`/tokens/${token.address}`}>
-                          {token.name}
+                          {token.symbol}
                         </Link>
                       </td>
                       <td className="volume">{formatVolumeUsd(token[volumeKey])}</td>
