@@ -1,9 +1,13 @@
 import BigNumber from 'bignumber.js';
 
-export const getTokenLogoUrl = address => {
-  // https://gitcdn.xyz/
-  return `https://gitcdn.xyz/repo/TrustWallet/tokens/master/tokens/${address.toLowerCase()}.png`;
-  // return `https://raw.githubusercontent.com/TrustWallet/tokens/master/tokens/${address.toLowerCase()}.png`;
+export const etherAddress = '0x000000000000000000000000000000000000000E';
+
+export const getTokenLogoUrl = (address: string) => {
+  if (address === etherAddress) {
+    return 'https://gitcdn.xyz/repo/trustwallet/assets/master/blockchains/ethereum/info/logo.png';
+  }
+  return `https://gitcdn.xyz/repo/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
+  // return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
 };
 
 export const changeColor = num => {
