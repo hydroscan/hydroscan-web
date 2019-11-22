@@ -151,7 +151,7 @@ class Chart extends React.PureComponent<any, any> {
                   <linearGradient id="LineGradient" x1="0" y1="100%" x2="0" y2="0%">
                     <stop offset="0%" stopColor={'#00c6a3'} stopOpacity={0} />
                     <stop offset="50%" stopColor={'#00c6a3'} stopOpacity={0.5} />
-                    <stop offset="100%" stopColor={'#00c6a3'} stopOpacity={0.1} />
+                    <stop offset="100%" stopColor={'#00c6a3'} stopOpacity={0.6} />
                   </linearGradient>
                 </defs>
                 <Area
