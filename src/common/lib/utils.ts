@@ -1,8 +1,10 @@
 import BigNumber from 'bignumber.js';
+import { formatAddress } from './formatter';
 
 export const etherAddress = '0x000000000000000000000000000000000000000E';
 
 export const getTokenLogoUrl = (address: string) => {
+  address = formatAddress(address)
   if (address === etherAddress) {
     return 'https://gitcdn.xyz/repo/trustwallet/assets/master/blockchains/ethereum/info/logo.png';
   }
