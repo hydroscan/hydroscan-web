@@ -5,6 +5,7 @@ body {
     background-color: $color-gray-light;
 
     .gradient {
+        // background: $color-purple;
         background: -webkit-linear-gradient(left, $color-purple, $color-purple-light); /* Safari 5.1 - 6.0 */
         background: -o-linear-gradient(right, $color-purple, $color-purple-light); /* Opera 11.1 - 12.0 */
         background: -moz-linear-gradient(right, $color-purple, $color-purple-light); /* Firefox 3.6 - 15 */
