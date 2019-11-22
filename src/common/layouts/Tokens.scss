@@ -20,7 +20,6 @@
         }
 
         .secondary {
-            font-weight: lighter;
             font-size: $font-size-sm;
             color: $color-gray;
         }
@@ -34,6 +33,7 @@
                 .token {
                     display: flex;
                     padding-top: 10px;
+                    font-weight: 600;
 
                     object {
                         height: 30px;

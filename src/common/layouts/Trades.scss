@@ -8,6 +8,14 @@
             &.full-page {
                 height: 1101px;
             }
+
+            .main-table {
+                .pair {
+                    .main {
+                        font-weight: 600;
+                    }
+                }
+            }
         }
 
         .download-btn {
@@ -41,7 +49,6 @@
             }
 
             .secondary {
-                font-weight: lighter;
                 font-size: $font-size-sm;
                 color: $color-gray;
             }
