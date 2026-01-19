@@ -55,7 +55,7 @@
     "husky": "^2.4.1",
     "prettier": "^1.13.5",
     "prettier-tslint": "^0.4.2",
-    "razzle-plugin-scss": "^2.4.1",
+    "razzle-plugin-scss": "^4.2.18",
     "tslint": "^5.12.1",
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.1"
